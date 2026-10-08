@@ -1,0 +1,8 @@
+{
+  "buckets": [{"lo": -100, "hi": 69}, {"lo": 70, "hi": 71}, {"lo": 72, "hi": 200}],
+  "metric": "high",
+  "observed": 70.0,
+  "mu": 72.0,
+  "sigma": 1.8,
+  "hours": 6.0
+}

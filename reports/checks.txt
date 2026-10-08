@@ -1,0 +1,51 @@
+cargo fmt --all -- --check
+cargo test --locked --offline
+   Compiling polymarket-hft v0.2.0 (/Users/shubh/Documents/polymarket-hft/rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.63s
+     Running unittests src/lib.rs (target/debug/deps/polymarket_hft-14550b9eb319b70d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/hft-9931037e0dbd0dcf)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bench.rs (target/debug/deps/hft_bench-08a7e69ae17c2d8b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (target/debug/deps/core-152596413bc7433f)
+
+running 14 tests
+test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
+test sequence_gap_requires_snapshot_and_crossed_update_is_atomic ... ok
+test malformed_update_disables_execution_until_snapshot ... ok
+test quantization_memory_and_error_bound ... ok
+test base_only_on_config_and_market ... ok
+test sell_cannot_short_and_releases_city_budget ... ok
+test json_schema_strict_and_replay_deterministic ... ok
+test loss_kill_switch_and_rate_limit ... ok
+test stale_future_and_reversed_clocks_reject ... ok
+test cash_order_city_and_inventory_caps_include_fees ... ok
+test weather_high_low_final_observation_and_mass ... ok
+test sweep_uses_actual_depth_and_fee_then_depletes ... ok
+test weather_signal_runs_through_execution_risk ... ok
+test randomized_book_matches_ordered_reference ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+   Doc-tests polymarket_hft
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+cargo clippy --locked --offline --all-targets -- -D warnings
+    Checking polymarket-hft v0.2.0 (/Users/shubh/Documents/polymarket-hft/rust)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.53s

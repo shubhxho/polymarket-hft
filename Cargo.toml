@@ -1,0 +1,12 @@
+[workspace]
+members = ["rust"]
+resolver = "3"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+lto = "fat"
+codegen-units = 1

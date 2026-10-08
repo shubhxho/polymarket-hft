@@ -1,0 +1,165 @@
+{
+  "arch": "aarch64",
+  "fixture": "synthetic-v1",
+  "limitations": [
+    "Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning",
+    "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured",
+    "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim"
+  ],
+  "mlx_enabled": false,
+  "os": "macos",
+  "quantization": [
+    {
+      "absolute_dot_error": 0.056878089904785156,
+      "backend": "cpu_reference",
+      "bits": 2,
+      "dense_bytes": 4096,
+      "storage_bytes": 384
+    },
+    {
+      "absolute_dot_error": 0.14974403381347656,
+      "backend": "cpu_reference",
+      "bits": 4,
+      "dense_bytes": 4096,
+      "storage_bytes": 640
+    },
+    {
+      "absolute_dot_error": 0.04233837127685547,
+      "backend": "cpu_reference",
+      "bits": 8,
+      "dense_bytes": 4096,
+      "storage_bytes": 1152
+    }
+  ],
+  "release": true,
+  "results": [
+    {
+      "max_ns": 3000,
+      "name": "timer_floor",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 19793004.756259043
+    },
+    {
+      "max_ns": 27000,
+      "name": "book_snapshot",
+      "p50_ns": 792,
+      "p95_ns": 1000,
+      "p99_ns": 1083,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1137063.5765220476
+    },
+    {
+      "max_ns": 18333,
+      "name": "book_update",
+      "p50_ns": 459,
+      "p95_ns": 584,
+      "p99_ns": 625,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1830021.3911200408
+    },
+    {
+      "max_ns": 21542,
+      "name": "book_top",
+      "p50_ns": 416,
+      "p95_ns": 459,
+      "p99_ns": 500,
+      "samples": 20000,
+      "samples_per_second_with_timer": 2226675.57336896
+    },
+    {
+      "max_ns": 11625,
+      "name": "depth_sweep",
+      "p50_ns": 333,
+      "p95_ns": 334,
+      "p99_ns": 375,
+      "samples": 20000,
+      "samples_per_second_with_timer": 2789059.912493245
+    },
+    {
+      "max_ns": 10292,
+      "name": "weather_high",
+      "p50_ns": 42,
+      "p95_ns": 84,
+      "p99_ns": 84,
+      "samples": 20000,
+      "samples_per_second_with_timer": 12218097.93538581
+    },
+    {
+      "max_ns": 6291,
+      "name": "weather_low",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 13927576.60167131
+    },
+    {
+      "max_ns": 10709,
+      "name": "json_decode",
+      "p50_ns": 292,
+      "p95_ns": 333,
+      "p99_ns": 375,
+      "samples": 20000,
+      "samples_per_second_with_timer": 3173050.3945450187
+    },
+    {
+      "max_ns": 14083,
+      "name": "engine_setup_and_fill",
+      "p50_ns": 1292,
+      "p95_ns": 1625,
+      "p99_ns": 1708,
+      "samples": 20000,
+      "samples_per_second_with_timer": 716867.2813779709
+    },
+    {
+      "max_ns": 1042,
+      "name": "risk_stale_reject",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 18861999.013517454
+    },
+    {
+      "max_ns": 4417,
+      "name": "dense_f32_dot_1024",
+      "p50_ns": 458,
+      "p95_ns": 459,
+      "p99_ns": 583,
+      "samples": 20000,
+      "samples_per_second_with_timer": 2127187.972368679
+    },
+    {
+      "max_ns": 2292,
+      "name": "cpu_q2_dot_1024",
+      "p50_ns": 1000,
+      "p95_ns": 1041,
+      "p99_ns": 1209,
+      "samples": 20000,
+      "samples_per_second_with_timer": 995710.1322517134
+    },
+    {
+      "max_ns": 11917,
+      "name": "cpu_q4_dot_1024",
+      "p50_ns": 1000,
+      "p95_ns": 1042,
+      "p99_ns": 1250,
+      "samples": 20000,
+      "samples_per_second_with_timer": 983989.7003830082
+    },
+    {
+      "max_ns": 9500,
+      "name": "cpu_q8_dot_1024",
+      "p50_ns": 959,
+      "p95_ns": 1209,
+      "p99_ns": 1250,
+      "samples": 20000,
+      "samples_per_second_with_timer": 979579.825886543
+    }
+  ],
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "schema_version": 1
+}

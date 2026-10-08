@@ -1,0 +1,6 @@
+{"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":8453}
+{"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":8453}
+{"line":7,"rejected":"stale_or_unsynchronized_book"}
+{"line":8,"rejected":"Base_only: market_chain_mismatch"}
+{"summary":{"cash_micro":1007130800,"chain_id":8453,"events":8,"fills":2,"paper":true,"realized_pnl_micro":"7130800","rejects":3}}

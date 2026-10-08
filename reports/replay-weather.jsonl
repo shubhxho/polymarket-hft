@@ -1,0 +1,2 @@
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":8453}
+{"summary":{"cash_micro":995491000,"chain_id":8453,"events":3,"fills":1,"paper":true,"realized_pnl_micro":"0","rejects":0}}
