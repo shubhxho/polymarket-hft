@@ -1,0 +1,25 @@
+{
+  "candidate_model": "synthetic-provided-forecasts",
+  "reference_model": "constant-0.5-synthetic-reference",
+  "dataset_id": "synthetic-scoring-demo-v1",
+  "split": "heldout",
+  "synthetic": true,
+  "candidate": {
+    "samples": 4,
+    "brier": 0.065,
+    "log_loss": 0.2899092476264711,
+    "calibration_error": 0.25
+  },
+  "reference": {
+    "samples": 4,
+    "brier": 0.25,
+    "log_loss": 0.6931471805599453,
+    "calibration_error": 0.0
+  },
+  "candidate_minus_reference_brier": -0.185,
+  "candidate_minus_reference_log_loss": -0.4032379329334742,
+  "mean_brier_difference_standard_error": 0.014433756729740649,
+  "candidate_lower_on_both_scores": true,
+  "model_inference_measured": false,
+  "provenance_verified": false
+}

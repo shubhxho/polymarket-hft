@@ -66,7 +66,13 @@ fn cdf(x: f64) -> f64 {
         * t
         * (0.319381530
             + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
-    if x >= 0.0 { 1.0 - p } else { p }
+    if x == 0.0 {
+        0.5
+    } else if x >= 0.0 {
+        1.0 - p
+    } else {
+        p
+    }
 }
 
 pub fn probabilities(
@@ -100,6 +106,14 @@ pub fn probabilities(
         Metric::High => mean.max(observed),
         Metric::Low => mean.min(observed),
     };
+    if ![mean, sig].iter().all(|v| v.is_finite()) {
+        return Err("forecast_numeric_overflow".into());
+    }
+    let observed_z = (observed - mean) / sig;
+    let normalization = match metric {
+        Metric::High => cdf(-observed_z),
+        Metric::Low => cdf(observed_z),
+    };
     let mut out = Vec::with_capacity(buckets.len());
     for b in buckets {
         let lo = b.lo as f64 - 0.5;
@@ -109,16 +123,24 @@ pub fn probabilities(
         } else {
             match metric {
                 Metric::High if hi <= observed => 0.0,
-                Metric::High if lo <= observed => cdf((hi - mean) / sig),
+                Metric::High => {
+                    (cdf(-((lo.max(observed) - mean) / sig)) - cdf(-((hi - mean) / sig)))
+                        / normalization
+                }
                 Metric::Low if lo > observed => 0.0,
-                Metric::Low if hi > observed => 1.0 - cdf((lo - mean) / sig),
-                _ => cdf((hi - mean) / sig) - cdf((lo - mean) / sig),
+                Metric::Low => {
+                    (cdf((hi.min(observed) - mean) / sig) - cdf((lo - mean) / sig)) / normalization
+                }
             }
         };
-        out.push(p.max(0.0));
+        if !p.is_finite() || !(-1e-12..=1.0 + 2e-7).contains(&p) {
+            return Err("forecast_numeric_probability_error".into());
+        }
+        out.push(p.clamp(0.0, 1.0));
     }
     // Never normalize an incomplete partition into false certainty.
-    if out.iter().sum::<f64>() < 0.99999 {
+    let mass = out.iter().sum::<f64>();
+    if !(0.99999..=1.00001).contains(&mass) {
         return Err("partition_missing_probability_mass".into());
     }
     Ok(out)

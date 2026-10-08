@@ -57,7 +57,9 @@ Packed affine q2 weights used 384 bytes versus 4,096 bytes for the synthetic den
 
 ## Validation and limits
 
-23 default Rust tests and 24 native MLX CPU tests passed. Formatting, Clippy, replay, reversal, journal restart, news rejection, code generation and installation were exercised.
+31 default Rust tests and 32 native MLX CPU tests passed. Formatting, Clippy, replay, reversal, journal restart, news rejection, signal math, paired scoring, code generation and installation were exercised.
+
+The Rust signal interface exports expiring candidates with exact fee/edge math, conservative probabilities and capped sizing. The weather baseline now uses conditional truncated-normal normalization, verified against a half-normal reference. The paired scoring fixture is synthetic and does not establish FPT superiority. See docs/SIGNALS_AND_MATH.md and reports/FPT_STATUS.md.
 
 The host is macOS ARM64 with Rust 1.97.1 / LLVM 22.1.6, fat LTO and one codegen unit. CPU model, RAM and core count could not be captured because sandbox sysctl access was denied. No CPU pinning or thermal isolation was used.
 

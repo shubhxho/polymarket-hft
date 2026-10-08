@@ -1,5 +1,5 @@
 {"chain":"Base","chain_id":8453,"live":false,"reason":"No verified Base Polymarket exchange deployment; settlement unavailable under Base-only policy","rpc":"https://mainnet.base.org"}
-{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.749221913726538,0.250778086273462]}
+{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.6922549006727781,0.307745099327222]}
 {"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":8453}
 {"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
 {"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":8453}
@@ -11,6 +11,33 @@
 {"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":8453}
 {"token":"weather-yes","side":"sell","shares":10,"notional_micro":3000000,"fee_micro":6000,"vwap_micro":300000,"worst_price_micro":300000,"cash_micro":998485000,"time_ms":1101,"paper":true,"chain_id":8453}
 {"summary":{"cash_micro":998485000,"chain_id":8453,"events":5,"fills":2,"paper":true,"realized_pnl_micro":"-1515000","rejects":0}}
+{"schema_version":1,"id":"synthetic-signal-1","token":"weather-yes","chain_id":8453,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"buy_candidate","conservative_probability_micro":600000,"math":{"probability_micro":600000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":149100,"full_kelly_fraction_micro":271535},"capped_fraction_micro":50000,"budget_micro":25000000,"shares":20,"total_cost_micro":9018000,"suggested_event":{"type":"trade","token":"weather-yes","side":"buy","fair_micro":600000,"shares":20,"time_ms":1100},"research_only":true,"declared_evidence_only":true}
+{"schema_version":1,"id":"synthetic-signal-no-edge","token":"weather-yes","chain_id":8453,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"no_edge","conservative_probability_micro":400000,"math":{"probability_micro":400000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":-50900,"full_kelly_fraction_micro":0},"capped_fraction_micro":0,"budget_micro":0,"shares":0,"total_cost_micro":0,"suggested_event":null,"research_only":true,"declared_evidence_only":true}
+{
+  "candidate_model": "synthetic-provided-forecasts",
+  "reference_model": "constant-0.5-synthetic-reference",
+  "dataset_id": "synthetic-scoring-demo-v1",
+  "split": "heldout",
+  "synthetic": true,
+  "candidate": {
+    "samples": 4,
+    "brier": 0.065,
+    "log_loss": 0.2899092476264711,
+    "calibration_error": 0.25
+  },
+  "reference": {
+    "samples": 4,
+    "brier": 0.25,
+    "log_loss": 0.6931471805599453,
+    "calibration_error": 0.0
+  },
+  "candidate_minus_reference_brier": -0.185,
+  "candidate_minus_reference_log_loss": -0.4032379329334742,
+  "mean_brier_difference_standard_error": 0.014433756729740649,
+  "candidate_lower_on_both_scores": true,
+  "model_inference_measured": false,
+  "provenance_verified": false
+}
 {"event":1,"fill":null}
 {"event":2,"fill":null}
 {"event":3,"fill":{"cash_micro":986272600,"chain_id":8453,"fee_micro":27400,"notional_micro":13700000,"paper":true,"shares":30,"side":"buy","time_ms":1001,"token":"weather-yes","vwap_micro":456666,"worst_price_micro":460000}}
@@ -35,4 +62,4 @@
 {"id":"noaa-demo-1","rejected":"stale_future_or_reversed_news_time"}
 {"id":"noaa-demo-2","rejected":"duplicate_news"}
 Base-only live execution unavailable: no verified Base Polymarket exchange deployment
-PASS: replay, weather, Base, reversal, durable restart, news dedup, live refusal
+PASS: replay, weather, Base, reversal, signals, paired scoring, durable restart, news dedup, live refusal

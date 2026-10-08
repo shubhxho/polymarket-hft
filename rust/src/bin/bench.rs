@@ -152,6 +152,24 @@ fn main() {
         );
     }));
     let mut accuracy = Vec::new();
+    let signal: polymarket_hft::signals::SignalRequest = serde_json::from_str(
+        include_str!("../../../fixtures/signals.jsonl")
+            .lines()
+            .next()
+            .unwrap(),
+    )
+    .unwrap();
+    results.push(measure("signal_generate_checked_candidate", n, || {
+        black_box(polymarket_hft::signals::generate(black_box(&signal)).unwrap());
+    }));
+    results.push(measure("binary_quote_exact_fee_edge_kelly", n, || {
+        black_box(polymarket_hft::math::binary_quote(black_box(600000), 450000, 20).unwrap());
+    }));
+    let paired: polymarket_hft::evaluation::PairedInput =
+        serde_json::from_str(include_str!("../../../fixtures/paired-forecasts.json")).unwrap();
+    results.push(measure("score_four_supplied_forecast_pairs", n, || {
+        black_box(polymarket_hft::evaluation::paired_scores(black_box(&paired)).unwrap());
+    }));
     let item: serde_json::Value = serde_json::from_str(
         include_str!("../../../fixtures/news.jsonl")
             .lines()

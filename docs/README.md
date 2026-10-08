@@ -5,6 +5,8 @@ Version 0.3.0: Rust paper execution, Base mainnet only.
 - [Architecture and diagrams](ARCHITECTURE.md)
 - [Build, run and recover](OPERATIONS.md)
 - [Input and configuration reference](REFERENCE.md)
+- [Signal interface and math](SIGNALS_AND_MATH.md)
+- [Polygon-shaped Rust source map](RUST_MAP.md)
 - [Research and evaluation](RESEARCH.md)
 - [Benchmark tables and chart](../reports/BENCHMARKS.md)
 - [Reference systems](../reports/COMPARISONS.md)

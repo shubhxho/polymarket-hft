@@ -1,5 +1,69 @@
 sh scripts/provision-mlx.sh
 Pinned MLX sources ready in /private/tmp/polymarket-hft-publish/.cache/mlx
 CMAKE_TOOLCHAIN_FILE=/private/tmp/polymarket-hft-publish/.cache/mlx/toolchain.cmake cargo run --release --locked --offline --features mlx-cpu --bin hft-bench > reports/benchmark-mlx-cpu.json
-    Finished `release` profile [optimized] target(s) in 0.12s
+   Compiling syn v2.0.119
+   Compiling glob v0.3.4
+   Compiling clang-sys v1.9.1
+   Compiling either v1.19.0
+   Compiling libc v0.2.190
+   Compiling prettyplease v0.2.37
+   Compiling minimal-lexical v0.2.1
+   Compiling memchr v2.8.3
+   Compiling cfg-if v1.0.5
+   Compiling regex-syntax v0.8.11
+   Compiling nom v7.1.3
+   Compiling regex-automata v0.4.18
+   Compiling libloading v0.8.9
+   Compiling ident_case v1.0.1
+   Compiling bindgen v0.72.1
+   Compiling fnv v1.0.7
+   Compiling strsim v0.11.1
+   Compiling hashbrown v0.17.1
+   Compiling winnow v1.0.4
+   Compiling equivalent v1.0.2
+   Compiling indexmap v2.14.2
+   Compiling darling_core v0.21.3
+   Compiling toml_parser v1.1.4+spec-1.1.0
+   Compiling regex v1.13.1
+   Compiling cexpr v0.6.0
+   Compiling itertools v0.13.0
+   Compiling rustc-hash v2.1.3
+   Compiling bitflags v2.13.2
+   Compiling autocfg v1.5.1
+   Compiling shlex v1.3.0
+   Compiling log v0.4.34
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling toml_edit v0.25.16+spec-1.1.0
+   Compiling num-traits v0.2.19
+   Compiling darling_macro v0.21.3
+   Compiling cmake v0.1.58
+   Compiling parking_lot_core v0.9.12
+   Compiling rustversion v1.0.23
+   Compiling fastrand v2.5.0
+   Compiling zerocopy v0.8.61
+   Compiling mach-sys v0.5.4
+   Compiling mlx-sys v0.6.0
+   Compiling darling v0.21.3
+   Compiling proc-macro-crate v3.5.0
+   Compiling zerocopy-derive v0.8.61
+   Compiling scopeguard v1.2.0
+   Compiling thiserror v2.0.21
+   Compiling paste v1.0.15
+   Compiling heck v0.5.0
+   Compiling strum_macros v0.28.0
+   Compiling lock_api v0.4.14
+   Compiling num_enum_derive v0.7.6
+   Compiling itertools v0.14.0
+   Compiling thiserror-impl v2.0.21
+   Compiling mlx-internal-macros v0.32.0
+   Compiling num_enum v0.7.6
+   Compiling parking_lot v0.12.5
+   Compiling half v2.7.1
+   Compiling num-complex v0.4.6
+   Compiling strum v0.28.0
+   Compiling mlx-macros v0.32.0
+   Compiling dyn-clone v1.0.20
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+   Compiling mlx-rs v0.32.0 (/private/tmp/polymarket-hft-publish/vendor/mlx-rs)
+    Finished `release` profile [optimized] target(s) in 2m 10s
      Running `target/release/hft-bench`

@@ -5,7 +5,7 @@ Version 0.3.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 | Gate | Status |
 |---|---|
 | Base-only chain enforcement | Tested; non-8453 configuration and markets reject |
-| Rust correctness suite | 23 default tests; 24 native CPU tests including scalar/batch q2/q4/q8 |
+| Rust correctness suite | 31 default tests; 32 native CPU tests including scalar/batch q2/q4/q8 |
 | Formatting and Clippy | Passed with warnings denied |
 | CPU kernel and engine benchmarks | Completed; synthetic fixture and raw JSON included |
 | Native MLX CPU | Tests and Clippy passed; optimized release and debug benchmarks recorded |
@@ -13,6 +13,8 @@ Version 0.3.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 | News/Jev | Typed fixture gates, time/source rejection, dedup and halt recovery tested |
 | Live Jev | Unverified; no API credentials, accuracy or service latency measurement |
 | Probability scoring | Brier/log loss/calibration arithmetic tested; no held-out evaluation |
+| Signal and math interface | Exact fee/edge/budget boundaries, expiry, engine integration and truncated-normal reference checked |
+| Paired evaluation | Duplicate/leakage gates tested; supplied synthetic forecasts only, no FPT inference |
 | Base Polymarket exchange | No verified deployment; live command rejects |
 | Authenticated feed/order/fill adapter | Not implemented in Rust |
 | Durable journal | Write-ahead replay, lock/config gates, prefix idempotence, tail recovery and corruption refusal tested |

@@ -62,6 +62,8 @@ Rust packed affine 2-, 4- and 8-bit reference kernels measure storage and numeri
 
 ## Persistence and news
 
+The [Rust signal interface](docs/SIGNALS_AND_MATH.md) exports auditable candidates with exact fee/edge math, capped sizing and expiry. hft-evaluate compares supplied forecasts on identical outcomes. See the [Rust source map](docs/RUST_MAP.md) and [FPT target status](reports/FPT_STATUS.md). No FPT superiority result is claimed.
+
 `hft durable-replay fixtures/smoke.jsonl state.journal` writes and syncs events before changing state. Repeating full input validates its prefix and skips old events. Cash, inventory, configuration, deduplication and halts restore on restart. Interrupted tails recover; complete corruption fails closed. See the [journal protocol](docs/ARCHITECTURE.md#journal-protocol).
 
 `hft news fixtures/news.jsonl news.journal` validates declared sources, timestamps and duplicate content, then routes typed Jev responses to ignore, review, watch or halt. Missing models route to review. `--jev` uses TYPESAFE_API_KEY; live API operation remains unverified. News never authorizes orders; declared URLs are not independently authenticated.

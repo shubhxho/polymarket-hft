@@ -1,4 +1,4 @@
-.PHONY: check bench compare package replay fair base mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
+.PHONY: check bench compare package signals evaluate replay fair base mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
 
 check:
 	cargo fmt --all -- --check
@@ -13,6 +13,12 @@ compare:
 
 package:
 	sh scripts/package-benchmarks.sh
+
+signals:
+	cargo run --release --locked --offline --bin hft-signals -- fixtures/signals.jsonl > reports/signals-smoke.jsonl
+
+evaluate:
+	cargo run --release --locked --offline --bin hft-evaluate -- fixtures/paired-forecasts.json > reports/paired-evaluation-synthetic.json
 
 report:
 	cargo run --release --locked --offline --bin hft-report

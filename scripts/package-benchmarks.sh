@@ -22,6 +22,7 @@ Extract into an empty directory and run:
 cargo fetch --locked
 make check
 make run-through
+make signals evaluate
 make compare bench
 make mlx-cpu-check mlx-cpu-bench
 make report codegen install
