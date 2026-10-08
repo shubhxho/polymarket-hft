@@ -1,0 +1,2 @@
+# Preserve published third-party source formatting verbatim.
+vendor/mlx-rs/** -whitespace linguist-vendored

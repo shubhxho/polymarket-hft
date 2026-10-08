@@ -1,5 +1,7 @@
 # Polymarket HFT research engine — Rust, Base only
 
+Version 0.3.0. Read the [documentation index](docs/README.md), [architecture diagrams](docs/ARCHITECTURE.md) and [operations guide](docs/OPERATIONS.md).
+
 The active engine, weather model, risk controls, replay CLI, code generation and benchmark runner are Rust. It is a paper research engine. It does **not** submit orders, sign transactions, manage a real fund, or establish profitable trading performance.
 
 Base mainnet (8453) is the sole accepted chain. Polymarket's [published exchange contracts](https://docs.polymarket.com/resources/contracts) are on Polygon (137). A Base-only policy therefore blocks live Polymarket settlement. Relabeling markets does not move their contracts to Base. The fixtures are synthetic Base-tagged paper markets, not Base Polymarket deployments.
@@ -10,10 +12,12 @@ Rust 1.97.1 was used for validation. Dependencies are pinned in Cargo.lock. Offl
 
 ```sh
 make check
+make run-through
 make replay
 make fair
 make base
 make bench
+make report
 make codegen
 make install
 .local/bin/hft replay fixtures/weather.jsonl
@@ -42,7 +46,7 @@ if let Some(fill) = engine.apply(event)? {
 - Dense fixed-size level arrays, occupancy bitmaps and cached best prices give constant-time top access and skip empty price levels during sweeps. Best-level removal scans at most 16 bitmap words.
 - Paper FAK sweeps consume available levels in price order, stop when fee-adjusted edge fails, and respect cash, order, city cost-basis and inventory caps. Actual executed quantities and fees drive accounting. No naked shorts, minimum-size inflation, or assumed full fills.
 - A sequence gap, malformed update or crossed update disables trading until a valid snapshot. Replay sequences are a **normalized input contract**, not an assertion that Polymarket sends these sequence numbers. An eventual feed adapter must supply continuity and reconnect semantics.
-- Monotonic replay time, book age, per-second order attempts, a realized session-loss halt and an operator halt constrain execution. Loss state is per replay session; no unattended daily-reset scheduler exists.
+- Monotonic replay time, book age, order attempts and session drawdown constrain execution. Conservative liquidation equity includes only fresh bid depth after fees. A loss halt blocks buys but allows inventory exits; operator/news halts block both directions. No daily-reset scheduler exists.
 - The untrained normal weather model handles highs and lows, continuity-corrected integer bins and observed extrema. Incomplete partitions fail instead of being normalized into false certainty. Weather events choose the eligible buy with the highest fee-adjusted top-level edge, then apply execution risk. Generic trade events support inventory exits.
 
 Paper fees use a conservative flat bps-per-notional model rounded up per share. They are **not** a verified live Polymarket fee schedule. Prices are best within the supplied book, configured edge and risk limits; no global best-rate claim is made. The replay has no latency, queue, market-impact or gas model.
@@ -53,7 +57,15 @@ Paper fees use a conservative flat bps-per-notional model rounded up per share. 
 
 Rust packed affine 2-, 4- and 8-bit reference kernels measure storage and numerical error. Money and risk calculations remain exact integers. Quantization is an optional research surface, not an unvalidated predictor attached to orders.
 
-`make mlx-check` and `make mlx-bench` enable native MLX quantized matrix multiplication through the pinned Rust binding. Weights use groups of 64; each result is explicitly evaluated before timing completes. Transfers are included in MLX timings. The current native build is blocked because its MLX source download cannot resolve GitHub in this sandbox. CPU results must not be presented as MLX results. A trained model, held-out calibration and trading-quality accuracy gates are still required before inference can influence orders.
+`make mlx-cpu-check` and `make mlx-cpu-bench` use native MLX with Accelerate. `make mlx-check` and `make mlx-bench` select Metal and require its compiler. Native CPU correctness is validated; Metal remains blocked by the host toolchain. Native CPU release and debug timings are separately labeled. Weights use groups of 64; explicit evaluation and input/readback are included. Inference reuses its stream. See the [vendor patch](vendor/README.md). Trained-model and held-out accuracy gates remain required before inference influences orders.
+
+## Persistence and news
+
+`hft durable-replay fixtures/smoke.jsonl state.journal` writes and syncs events before changing state. Repeating full input validates its prefix and skips old events. Cash, inventory, configuration, deduplication and halts restore on restart. Interrupted tails recover; complete corruption fails closed. See the [journal protocol](docs/ARCHITECTURE.md#journal-protocol).
+
+`hft news fixtures/news.jsonl news.journal` validates declared sources, timestamps and duplicate content, then routes typed Jev responses to ignore, review, watch or halt. Missing models route to review. `--jev` uses TYPESAFE_API_KEY; live API operation remains unverified. News never authorizes orders; declared URLs are not independently authenticated.
+
+`make reverse` demonstrates target-position buy and sell with an intentional loss. Probability scoring exposes Brier, log loss and calibration error for future held-out evaluation.
 
 ## Results and remaining gates
 

@@ -1,44 +1,165 @@
 cargo fmt --all -- --check
 cargo test --locked --offline
-   Compiling polymarket-hft v0.2.0 (/Users/shubh/Documents/polymarket-hft/rust)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.63s
-     Running unittests src/lib.rs (target/debug/deps/polymarket_hft-14550b9eb319b70d)
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling libc v0.2.190
+   Compiling stable_deref_trait v1.2.1
+   Compiling bytes v1.12.1
+   Compiling pin-project-lite v0.2.17
+   Compiling shlex v2.0.1
+   Compiling futures-core v0.3.34
+   Compiling itoa v1.0.18
+   Compiling find-msvc-tools v0.1.14
+   Compiling litemap v0.8.3
+   Compiling writeable v0.6.4
+   Compiling smallvec v1.16.2
+   Compiling icu_properties_data v2.3.0
+   Compiling icu_normalizer_data v2.3.0
+   Compiling cc v1.6.0
+   Compiling cfg-if v1.0.5
+   Compiling utf8_iter v1.0.4
+   Compiling futures-sink v0.3.34
+   Compiling version_check v0.9.5
+   Compiling percent-encoding v2.3.2
+   Compiling once_cell v1.21.4
+   Compiling http v1.5.0
+   Compiling memchr v2.8.3
+   Compiling zeroize v1.9.1
+   Compiling generic-array v0.14.7
+   Compiling rustls-pki-types v1.15.1
+   Compiling futures-task v0.3.34
+   Compiling slab v0.4.12
+   Compiling serde_core v1.0.229
+   Compiling untrusted v0.9.0
+   Compiling futures-io v0.3.34
+   Compiling httparse v1.10.1
+   Compiling futures-util v0.3.34
+   Compiling try-lock v0.2.5
+   Compiling typenum v1.20.1
+   Compiling tower-service v0.3.3
+   Compiling http-body v1.1.0
+   Compiling rustls v0.23.45
+   Compiling want v0.3.2
+   Compiling tracing-core v0.1.36
+   Compiling form_urlencoded v1.2.2
+   Compiling subtle v2.6.1
+   Compiling syn v3.0.6
+   Compiling mio v1.2.4
+   Compiling socket2 v0.6.5
+   Compiling getrandom v0.2.17
+   Compiling ring v0.17.14
+   Compiling serde v1.0.229
+   Compiling atomic-waker v1.1.2
+   Compiling zmij v1.0.23
+   Compiling tokio v1.53.2
+   Compiling tracing v0.1.44
+   Compiling futures-channel v0.3.34
+   Compiling sync_wrapper v1.0.2
+   Compiling ipnet v2.12.2
+   Compiling base64 v0.23.1
+   Compiling tower-layer v0.3.3
+   Compiling serde_json v1.0.151
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling webpki-roots v1.0.9
+   Compiling ryu v1.0.23
+   Compiling bitflags v2.13.2
+   Compiling digest v0.10.7
+   Compiling cpufeatures v0.2.17
+   Compiling http-body-util v0.1.5
+   Compiling base64 v0.22.1
+   Compiling log v0.4.34
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+   Compiling sha2 v0.10.9
+   Compiling synstructure v0.14.0
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling serde_derive v1.0.229
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.4
+   Compiling zerofrom v0.1.8
+   Compiling hyper v1.12.0
+   Compiling tower v0.5.3
+   Compiling yoke v0.8.3
+   Compiling hyper-util v0.1.21
+   Compiling rustls-webpki v0.103.15
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling serde_urlencoded v0.7.1
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_collections v2.3.0
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_properties v2.3.0
+   Compiling tokio-rustls v0.26.6
+   Compiling idna_adapter v1.2.2
+   Compiling hyper-rustls v0.27.10
+   Compiling idna v1.1.0
+   Compiling url v2.5.8
+   Compiling tower-http v0.6.11
+   Compiling reqwest v0.12.28
+    Finished `test` profile [unoptimized] target(s) in 7.34s
+     Running unittests src/lib.rs (target/debug/deps/polymarket_hft-b0d9d70f9bd0f7fd)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running unittests src/main.rs (target/debug/deps/hft-9931037e0dbd0dcf)
+     Running unittests src/main.rs (target/debug/deps/hft-af45da90a24574e6)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running unittests src/bin/bench.rs (target/debug/deps/hft_bench-08a7e69ae17c2d8b)
+     Running unittests src/bin/bench.rs (target/debug/deps/hft_bench-8d8854d1ed6c17ec)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/core.rs (target/debug/deps/core-152596413bc7433f)
+     Running unittests src/bin/hft-report.rs (target/debug/deps/hft_report-1128eb168d96bce8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (target/debug/deps/core-d333c1ba5f274898)
 
 running 14 tests
-test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
 test sequence_gap_requires_snapshot_and_crossed_update_is_atomic ... ok
+test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
 test malformed_update_disables_execution_until_snapshot ... ok
-test quantization_memory_and_error_bound ... ok
 test base_only_on_config_and_market ... ok
+test quantization_memory_and_error_bound ... ok
 test sell_cannot_short_and_releases_city_budget ... ok
-test json_schema_strict_and_replay_deterministic ... ok
 test loss_kill_switch_and_rate_limit ... ok
-test stale_future_and_reversed_clocks_reject ... ok
-test cash_order_city_and_inventory_caps_include_fees ... ok
 test weather_high_low_final_observation_and_mass ... ok
+test stale_future_and_reversed_clocks_reject ... ok
 test sweep_uses_actual_depth_and_fee_then_depletes ... ok
+test cash_order_city_and_inventory_caps_include_fees ... ok
 test weather_signal_runs_through_execution_risk ... ok
+test json_schema_strict_and_replay_deterministic ... ok
 test randomized_book_matches_ordered_reference ... ok
 
-test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s
+
+     Running tests/pipeline.rs (target/debug/deps/pipeline-b54d84161455b597)
+
+running 9 tests
+test binary_scoring_is_finite_and_rejects_bad_data ... ok
+test source_time_and_content_dedup_gates ... ok
+test bad_model_outputs_fail_and_contradiction_overrides_watch ... ok
+test writer_lock_and_config_drift_reject ... ok
+test journaled_news_halt_recovers_and_blocks_orders ... ok
+test dedup_survives_restart_and_missing_model_routes_review ... ok
+test torn_final_record_recovers_but_complete_corruption_fails ... ok
+test drawdown_halts_new_risk_and_allows_inventory_exit ... ok
+test durable_state_recovers_without_double_fills ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 
    Doc-tests polymarket_hft
 
@@ -47,5 +168,91 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 cargo clippy --locked --offline --all-targets -- -D warnings
-    Checking polymarket-hft v0.2.0 (/Users/shubh/Documents/polymarket-hft/rust)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.53s
+    Checking stable_deref_trait v1.2.1
+    Checking pin-project-lite v0.2.17
+    Checking bytes v1.12.1
+    Checking futures-core v0.3.34
+    Checking itoa v1.0.18
+    Checking smallvec v1.16.2
+    Checking libc v0.2.190
+    Checking litemap v0.8.3
+    Checking writeable v0.6.4
+    Checking zerofrom v0.1.8
+    Checking cfg-if v1.0.5
+    Checking utf8_iter v1.0.4
+    Checking zeroize v1.9.1
+    Checking yoke v0.8.3
+    Checking once_cell v1.21.4
+    Checking percent-encoding v2.3.2
+    Checking futures-sink v0.3.34
+    Checking memchr v2.8.3
+    Checking icu_properties_data v2.3.0
+    Checking icu_normalizer_data v2.3.0
+    Checking rustls-pki-types v1.15.1
+    Checking futures-io v0.3.34
+    Checking futures-task v0.3.34
+    Checking untrusted v0.9.0
+    Checking slab v0.4.12
+    Checking zerovec v0.11.8
+    Checking zerotrie v0.2.5
+    Checking tower-service v0.3.3
+    Checking typenum v1.20.1
+    Checking try-lock v0.2.5
+    Checking serde_core v1.0.229
+    Checking httparse v1.10.1
+    Checking http v1.5.0
+    Checking want v0.3.2
+    Checking socket2 v0.6.5
+    Checking mio v1.2.4
+    Checking getrandom v0.2.17
+    Checking futures-util v0.3.34
+    Checking form_urlencoded v1.2.2
+    Checking ring v0.17.14
+    Checking tracing-core v0.1.36
+    Checking atomic-waker v1.1.2
+    Checking subtle v2.6.1
+    Checking futures-channel v0.3.34
+    Checking sync_wrapper v1.0.2
+    Checking tinystr v0.8.4
+    Checking potential_utf v0.1.6
+    Checking base64 v0.23.1
+    Checking tracing v0.1.44
+    Checking tokio v1.53.2
+    Checking icu_collections v2.3.0
+    Checking icu_locale_core v2.3.0
+    Checking generic-array v0.14.7
+    Checking http-body v1.1.0
+    Checking ipnet v2.12.2
+    Checking tower-layer v0.3.3
+    Checking zmij v1.0.23
+    Checking webpki-roots v1.0.9
+    Checking ryu v1.0.23
+    Checking bitflags v2.13.2
+    Checking http-body-util v0.1.5
+    Checking cpufeatures v0.2.17
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Checking base64 v0.22.1
+    Checking log v0.4.34
+    Checking crypto-common v0.1.7
+    Checking block-buffer v0.10.4
+    Checking digest v0.10.7
+    Checking icu_provider v2.3.1
+    Checking rustls-webpki v0.103.15
+    Checking sha2 v0.10.9
+    Checking icu_properties v2.3.0
+    Checking icu_normalizer v2.3.0
+    Checking rustls v0.23.45
+    Checking serde v1.0.229
+    Checking serde_json v1.0.151
+    Checking serde_urlencoded v0.7.1
+    Checking idna_adapter v1.2.2
+    Checking idna v1.1.0
+    Checking url v2.5.8
+    Checking hyper v1.12.0
+    Checking tower v0.5.3
+    Checking tower-http v0.6.11
+    Checking tokio-rustls v0.26.6
+    Checking hyper-util v0.1.21
+    Checking hyper-rustls v0.27.10
+    Checking reqwest v0.12.28
+    Finished `dev` profile [unoptimized] target(s) in 3.91s

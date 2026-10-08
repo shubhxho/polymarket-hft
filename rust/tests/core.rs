@@ -56,7 +56,7 @@ fn sweep_uses_actual_depth_and_fee_then_depletes() {
     assert_eq!(fill.fee_micro, 27_400);
     assert_eq!(fill.worst_price_micro, 460000);
     assert_eq!(e.position("t"), 30);
-    assert_eq!(e.cash, 986_272_600);
+    assert_eq!(e.cash_micro(), 986_272_600);
     assert!(e.apply(trade(Side::Buy, 40, 550000, 1002)).is_err());
     assert_eq!(e.position("t"), 30);
 }
@@ -102,7 +102,7 @@ fn sell_cannot_short_and_releases_city_budget() {
         .unwrap();
     assert_eq!(fill.shares, 6);
     assert_eq!(e.position("t"), 0);
-    assert!(e.realized_pnl < 0);
+    assert!(e.realized_pnl_micro() < 0);
     assert!(e.apply(trade(Side::Buy, 50, 550000, 1004)).is_ok());
 }
 #[test]
@@ -262,12 +262,18 @@ fn json_schema_strict_and_replay_deterministic() {
     assert_eq!(replay(), replay());
 }
 
-#[cfg(feature = "mlx")]
+#[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
 #[test]
 fn native_mlx_quantization_matches_constant_reference() {
     for bits in [2, 4, 8] {
         let q = polymarket_hft::mlx::MlxLinear::new(&[0.5; 64], bits).unwrap();
         assert!((q.dot(&[1.0; 64]).unwrap() - 32.0).abs() < 1e-4);
+        assert!(
+            q.dot_batch(&[1.0; 128])
+                .unwrap()
+                .iter()
+                .all(|v| (*v - 32.0).abs() < 1e-4)
+        );
     }
 }
 

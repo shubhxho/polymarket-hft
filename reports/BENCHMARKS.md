@@ -1,51 +1,52 @@
-# Rust HFT benchmark report
+# Benchmarks
 
-Local synthetic microbenchmarks on Apple Silicon (`aarch64`, macos, rustc 1.97.1 (8bab26f4f 2026-07-14)). Release profile: fat LTO, one codegen unit. The Rust runner uses 2,000 warm-up calls and 20,000 measured calls per CPU case. Each sample includes its own wall-clock timer; CPU affinity and scheduler isolation are not controlled.
+Rust 0.3.0, Apple ARM64, synthetic-v2. Default backend: native MLX disabled.
 
-| Case | p50 ns | p95 ns | p99 ns | Samples |
-|---|---:|---:|---:|---:|
-| timer_floor | 0 | 42 | 42 | 20000 |
-| book_snapshot | 417 | 500 | 500 | 20000 |
-| book_update | 41 | 42 | 42 | 20000 |
-| book_top | 41 | 42 | 42 | 20000 |
-| book_top_full_scan_reference | 500 | 625 | 833 | 20000 |
-| depth_sweep | 41 | 42 | 42 | 20000 |
-| weather_high | 42 | 125 | 125 | 20000 |
-| weather_low | 42 | 42 | 84 | 20000 |
-| json_decode | 334 | 459 | 584 | 20000 |
-| engine_setup_and_fill | 1250 | 1667 | 2667 | 20000 |
-| risk_stale_reject | 42 | 42 | 83 | 20000 |
-| dense_f32_dot_1024 | 500 | 542 | 875 | 20000 |
-| cpu_q2_dot_1024 | 1000 | 1250 | 1250 | 20000 |
-| cpu_q4_dot_1024 | 1000 | 1250 | 4625 | 20000 |
-| cpu_q8_dot_1024 | 1000 | 1209 | 4708 | 20000 |
+![p95 benchmark latency, logarithmic scale](latency.svg)
 
-Cached best-price access is compared with a full-array scan reference in the same executable. Values near the timer floor cannot support precise speed ratios. `engine_setup_and_fill` includes engine creation, allocations, market registration, snapshot construction and JSON decoding; it is not live tick-to-trade latency.
+The chart uses a log scale; exact values are labeled. Sub-timer operations, including zero medians, are below measurement resolution. These are local synthetic operation timings, not live tick-to-trade latency or fund returns.
 
-| CPU quantization | Storage bytes | Dense bytes | Absolute dot error |
-|---|---:|---:|---:|
-| 2-bit | 384 | 4096 | 0.056878 |
-| 4-bit | 640 | 4096 | 0.149744 |
-| 8-bit | 1152 | 4096 | 0.042338 |
+| Operation | Warmups | Samples | p50 ns | p95 ns | p99 ns |
+|---|---:|---:|---:|---:|---:|
+| timer_floor | 2000 | 20000 | 0 | 42 | 42 |
+| book_snapshot | 2000 | 20000 | 208 | 209 | 250 |
+| book_update | 2000 | 20000 | 0 | 42 | 42 |
+| book_top | 2000 | 20000 | 0 | 42 | 42 |
+| book_top_full_scan_reference | 2000 | 20000 | 292 | 334 | 375 |
+| depth_sweep | 2000 | 20000 | 0 | 42 | 42 |
+| weather_high | 2000 | 20000 | 42 | 42 | 42 |
+| weather_low | 2000 | 20000 | 41 | 42 | 42 |
+| json_decode | 2000 | 20000 | 209 | 291 | 292 |
+| engine_setup_and_fill | 2000 | 20000 | 917 | 1166 | 1250 |
+| risk_stale_reject | 2000 | 20000 | 41 | 42 | 42 |
+| dense_f32_dot_1024 | 2000 | 20000 | 458 | 583 | 584 |
+| news_validate_fingerprint | 2000 | 20000 | 834 | 1083 | 1125 |
+| jev_request_build_six_questions | 2000 | 20000 | 1000 | 1083 | 1125 |
+| jev_recorded_response_gate | 2000 | 20000 | 167 | 167 | 208 |
+| journal_halt_append_fsync | 100 | 100 | 3946584 | 4246583 | 10094583 |
+| journal_recover_200_events | 100 | 100 | 260125 | 268875 | 275500 |
+| book_top_btree_reference | 2000 | 20000 | 0 | 42 | 42 |
+| cpu_q2_dot_1024 | 2000 | 20000 | 1000 | 1000 | 1042 |
+| cpu_q4_dot_1024 | 2000 | 20000 | 1000 | 1125 | 1167 |
+| cpu_q8_dot_1024 | 2000 | 20000 | 1125 | 1209 | 1250 |
 
-Quantization is measured on a synthetic 1,024-weight vector and reports one dot-product error. This is not a trained model evaluation. The CPU packed reference kernels reduce storage but must be compared with dense inference on both accuracy and latency. Lowest precision is not automatically the best choice. MLX results are absent: the native dependency's upstream source download was blocked by DNS failure. No MLX acceleration claim is established.
+## Native MLX CPU, optimized release
 
-## Reproduce
+These operations include input creation, evaluation and readback. Batch rows process 32 vectors per call. Results measure kernels, not trained-model quality.
 
-```sh
-make check
-make bench
-make replay
-make codegen
-# On a provisioned Apple Silicon host with upstream MLX source access:
-make mlx-check
-make mlx-bench
-```
+| Operation | Warmups | Samples | p50 ns | p95 ns | p99 ns |
+|---|---:|---:|---:|---:|---:|
+| mlx_q2_dot_1024_including_transfer_and_eval | 2000 | 2000 | 8417 | 9458 | 9958 |
+| mlx_q2_batch32_including_transfer_and_eval | 2000 | 2000 | 42500 | 48458 | 53125 |
+| mlx_q4_dot_1024_including_transfer_and_eval | 2000 | 2000 | 6708 | 9000 | 12167 |
+| mlx_q4_batch32_including_transfer_and_eval | 2000 | 2000 | 19875 | 22708 | 35375 |
+| mlx_q8_dot_1024_including_transfer_and_eval | 2000 | 2000 | 6167 | 8166 | 9333 |
+| mlx_q8_batch32_including_transfer_and_eval | 2000 | 2000 | 22458 | 24042 | 27375 |
 
-See `rust/src/bin/bench.rs` for fixtures and timing boundaries, `Cargo.lock` for pinned Rust dependencies, and `reports/benchmark-after.json` for raw results. Offline builds require a populated Cargo cache. The older `benchmark-before.json` records the initial full-array implementation from this session; its source revision was not separately committed, so use the included full-scan reference for reproducible comparisons.
+[Native MLX CPU release raw results](benchmark-mlx-cpu.json).
 
-## Scope
+Quantization accuracy and storage are in [raw JSON](benchmark-after.json). Journal rows include fsync and are measured separately from in-memory operations. Packed kernels save storage but are slower than dense f32 on this fixture. BTree lookup and cached top both reach the timer floor; no credible speed ratio can be inferred.
 
-There is no HRT reference dataset or proprietary benchmark here. These measurements establish neither HRT competitiveness, state-of-the-art performance, profitable alpha nor the best available execution rate. Network latency, authenticated orders, live fills, fee schedules, gas, historical forecasts, held-out outcomes and portfolio drawdown were not benchmarked. Base-only policy blocks current live Polymarket settlement because the published exchange contracts use Polygon.
+Native MLX CPU release results are separately measured above. [Debug results](benchmark-mlx-cpu-debug.json) are retained as correctness-oriented evidence and are not comparable to release timings. Metal GPU is unmeasured because the host lacks the Metal compiler. Jev routing uses recorded synthetic responses; no real API latency, accuracy or cost was measured.
 
-Sources: [Polymarket contracts](https://docs.polymarket.com/resources/contracts), [Base network](https://docs.base.org/get-started/connect-to-base), [MLX quantized matrix multiplication](https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.quantized_matmul.html).
+See [methodology](../docs/RESEARCH.md), [reference systems](COMPARISONS.md), [readiness](READINESS.md), and [check output](checks.txt). Reproduce with make bench and make report. CPU pinning, historical queue/latency modeling, real fills and HRT comparisons are absent.

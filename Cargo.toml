@@ -2,6 +2,16 @@
 members = ["rust"]
 resolver = "3"
 
+[patch.crates-io]
+# The upstream wrapper otherwise enables mlx-sys/metal even in CPU-only builds.
+mlx-rs = { path = "vendor/mlx-rs" }
+
+[profile.dev]
+debug = 0
+
+[profile.test]
+debug = 0
+
 [profile.release]
 lto = "fat"
 codegen-units = 1

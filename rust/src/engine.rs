@@ -7,7 +7,7 @@ use crate::{
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, VecDeque};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub chain_id: u64,
@@ -38,9 +38,15 @@ impl Default for Config {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize, Serialize)]
 #[serde(tag = "type", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Event {
+    Rebalance {
+        token: String,
+        fair_micro: u32,
+        target_shares: u32,
+        time_ms: u64,
+    },
     Weather {
         tokens: Vec<String>,
         buckets: Vec<Bucket>,
@@ -109,10 +115,11 @@ pub struct Fill {
 }
 
 pub struct Engine {
-    pub config: Config,
+    config: Config,
     markets: BTreeMap<String, Market>,
-    pub cash: u64,
-    pub realized_pnl: i128,
+    city_cost: BTreeMap<String, u64>,
+    cash: u64,
+    realized_pnl: i128,
     halted: Option<String>,
     attempts: VecDeque<u64>,
     last_time: u64,
@@ -120,10 +127,41 @@ pub struct Engine {
 
 // Conservative flat bps of notional for replay; use verified per-market schedules for live.
 pub fn fee(notional: u64, bps: u32) -> u64 {
-    (notional * u64::from(bps)).div_ceil(10_000)
+    (u128::from(notional) * u128::from(bps))
+        .div_ceil(10_000)
+        .min(u128::from(u64::MAX)) as u64
 }
 
 impl Engine {
+    pub fn cash_micro(&self) -> u64 {
+        self.cash
+    }
+    pub fn realized_pnl_micro(&self) -> i128 {
+        self.realized_pnl
+    }
+    pub fn config(&self) -> &Config {
+        &self.config
+    }
+    pub fn liquidation_equity_micro(&self, now: u64) -> u64 {
+        let mut equity = u128::from(self.cash);
+        for market in self.markets.values() {
+            if market.position == 0 || !market.book.ready(now, self.config.max_book_age_ms) {
+                continue;
+            }
+            let mut remaining = market.position;
+            for level in market.book.levels(Side::Sell) {
+                let n = remaining.min(level.shares);
+                let unit = u64::from(level.price)
+                    .saturating_sub(fee(u64::from(level.price), market.fee_bps));
+                equity += u128::from(n) * u128::from(unit);
+                remaining -= n;
+                if remaining == 0 {
+                    break;
+                }
+            }
+        }
+        equity.min(u128::from(u64::MAX)) as u64
+    }
     pub fn new(config: Config) -> Result<Self> {
         if config.chain_id != CHAIN_ID {
             return Err("Base_only: chain_id_must_be_8453".into());
@@ -144,6 +182,7 @@ impl Engine {
             cash: config.cash_micro,
             config,
             markets: BTreeMap::new(),
+            city_cost: BTreeMap::new(),
             realized_pnl: 0,
             halted: None,
             attempts: VecDeque::new(),
@@ -155,6 +194,37 @@ impl Engine {
     }
     pub fn apply(&mut self, event: Event) -> Result<Option<Fill>> {
         match event {
+            Event::Rebalance {
+                token,
+                fair_micro,
+                target_shares,
+                time_ms,
+            } => {
+                if !self.markets.contains_key(&token) {
+                    return Err("unknown_market".into());
+                }
+                if target_shares > self.config.max_position {
+                    return Err("target_exceeds_position_limit".into());
+                }
+                let position = self.position(&token);
+                if position == target_shares {
+                    return Ok(None);
+                }
+                let side = if target_shares > position {
+                    Side::Buy
+                } else {
+                    Side::Sell
+                };
+                return self
+                    .trade(
+                        &token,
+                        side,
+                        fair_micro,
+                        target_shares.abs_diff(position),
+                        time_ms,
+                    )
+                    .map(Some);
+            }
             Event::Weather {
                 tokens,
                 buckets,
@@ -283,15 +353,29 @@ impl Engine {
         now: u64,
     ) -> Result<Fill> {
         if let Some(reason) = &self.halted {
-            return Err(format!("halted:{reason}"));
+            if reason == "daily_loss" {
+                if side == Side::Buy {
+                    return Err("daily_loss".into());
+                }
+            } else {
+                return Err(format!("halted:{reason}"));
+            }
         }
         if fair > PRICE_SCALE || requested == 0 || now < self.last_time {
             return Err("invalid_trade_or_time".into());
         }
         self.last_time = now;
-        if self.realized_pnl <= -i128::from(self.config.max_loss_micro) {
+        if self.realized_pnl <= -i128::from(self.config.max_loss_micro)
+            || self
+                .config
+                .cash_micro
+                .saturating_sub(self.liquidation_equity_micro(now))
+                >= self.config.max_loss_micro
+        {
             self.halted = Some("daily_loss".into());
-            return Err("daily_loss".into());
+            if side == Side::Buy {
+                return Err("daily_loss".into());
+            }
         }
         while self.attempts.front().is_some_and(|&t| now - t >= 1000) {
             self.attempts.pop_front();
@@ -303,12 +387,11 @@ impl Engine {
         if !market.book.ready(now, self.config.max_book_age_ms) {
             return Err("stale_or_unsynchronized_book".into());
         }
-        let city_cost: u64 = self
-            .markets
-            .values()
-            .filter(|m| m.city == market.city)
-            .map(|m| m.cost)
-            .sum();
+        let city_cost = self
+            .city_cost
+            .get(&market.city)
+            .copied()
+            .unwrap_or_default();
         let budget = if side == Side::Buy {
             self.config
                 .max_order_micro
@@ -364,12 +447,15 @@ impl Engine {
             self.cash -= total + fees;
             market.cost += total + fees;
             market.position += quantity;
+            *self.city_cost.entry(market.city.clone()).or_default() += total + fees;
         } else {
             let basis = ((u128::from(market.cost) * u128::from(quantity))
                 / u128::from(market.position)) as u64;
+            let cash = self.cash.checked_add(total - fees).ok_or("cash_overflow")?;
             market.cost -= basis;
             market.position -= quantity;
-            self.cash = self.cash.checked_add(total - fees).ok_or("cash_overflow")?;
+            self.cash = cash;
+            *self.city_cost.get_mut(&market.city).unwrap() -= basis;
             self.realized_pnl += i128::from(total) - i128::from(fees) - i128::from(basis);
         }
         market.book.consume(side, &fills);

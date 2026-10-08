@@ -2,10 +2,12 @@
 
 pub mod book;
 pub mod engine;
-#[cfg(feature = "mlx")]
+#[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
 pub mod mlx;
 pub mod model;
+pub mod news;
 pub mod quant;
+pub mod storage;
 pub mod base {
     include!(concat!(env!("OUT_DIR"), "/base.rs"));
 }

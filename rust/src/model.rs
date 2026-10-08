@@ -1,6 +1,49 @@
 use crate::Result;
 use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Serialize)]
+pub struct BinaryScores {
+    pub samples: usize,
+    pub brier: f64,
+    pub log_loss: f64,
+    pub calibration_error: f64,
+}
+/// Proper scores for caller-supplied held-out forecasts. Does not establish model quality.
+pub fn binary_scores(forecasts: &[f64], outcomes: &[bool]) -> Result<BinaryScores> {
+    if forecasts.is_empty()
+        || forecasts.len() != outcomes.len()
+        || forecasts
+            .iter()
+            .any(|p| !p.is_finite() || !(0.0..=1.0).contains(p))
+    {
+        return Err("invalid_evaluation_data".into());
+    }
+    let (mut brier, mut loss) = (0.0, 0.0);
+    let mut bins = [(0usize, 0.0f64, 0.0f64); 10];
+    for (&p, &y) in forecasts.iter().zip(outcomes) {
+        let y = f64::from(y);
+        brier += (p - y).powi(2);
+        let clipped = p.clamp(1e-15, 1.0 - 1e-15);
+        loss -= y * clipped.ln() + (1.0 - y) * (1.0 - clipped).ln();
+        let i = ((p * 10.0) as usize).min(9);
+        bins[i].0 += 1;
+        bins[i].1 += p;
+        bins[i].2 += y;
+    }
+    let n = forecasts.len() as f64;
+    let ece = bins
+        .iter()
+        .filter(|b| b.0 > 0)
+        .map(|b| (b.1 - b.2).abs() / n)
+        .sum();
+    Ok(BinaryScores {
+        samples: forecasts.len(),
+        brier: brier / n,
+        log_loss: loss / n,
+        calibration_error: ece,
+    })
+}
+
 #[derive(Clone, Copy, Deserialize, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Metric {

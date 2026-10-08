@@ -1,13 +1,17 @@
 {
   "arch": "aarch64",
-  "fixture": "synthetic-v1",
+  "fixture": "synthetic-v2",
   "limitations": [
     "Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning",
     "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured",
-    "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim"
+    "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim",
+    "Jev gates use a recorded synthetic response; network/model quality is not measured",
+    "Journal samples use fsync without macOS F_FULLFSYNC; power-loss guarantees depend on the filesystem"
   ],
+  "mlx_backend": "disabled",
   "mlx_enabled": false,
   "os": "macos",
+  "package_version": "0.3.0",
   "quantization": [
     {
       "absolute_dot_error": 0.056878089904785156,
@@ -40,135 +44,210 @@
       "p95_ns": 42,
       "p99_ns": 42,
       "samples": 20000,
-      "samples_per_second_with_timer": 20452511.8241084
+      "samples_per_second_with_timer": 29847004.256182805,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 17667,
+      "max_ns": 334,
       "name": "book_snapshot",
-      "p50_ns": 417,
-      "p95_ns": 500,
-      "p99_ns": 500,
+      "p50_ns": 208,
+      "p95_ns": 209,
+      "p99_ns": 250,
       "samples": 20000,
-      "samples_per_second_with_timer": 2191500.550011851
+      "samples_per_second_with_timer": 4756619.251893194,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 4000,
+      "max_ns": 125,
       "name": "book_update",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 27884280.237016384,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 83,
+      "name": "book_top",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 29400955.53105476,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 2334,
+      "name": "book_top_full_scan_reference",
+      "p50_ns": 292,
+      "p95_ns": 334,
+      "p99_ns": 375,
+      "samples": 20000,
+      "samples_per_second_with_timer": 3060502.3049407983,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 83,
+      "name": "depth_sweep",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 28917404.662931502,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 1292,
+      "name": "weather_high",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 18613308.51558865,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 9208,
+      "name": "weather_low",
       "p50_ns": 41,
       "p95_ns": 42,
       "p99_ns": 42,
       "samples": 20000,
-      "samples_per_second_with_timer": 17307281.259762388
+      "samples_per_second_with_timer": 20431617.928744733,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 17959,
+      "name": "json_decode",
+      "p50_ns": 209,
+      "p95_ns": 291,
+      "p99_ns": 292,
+      "samples": 20000,
+      "samples_per_second_with_timer": 3947660.3401462054,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 35208,
+      "name": "engine_setup_and_fill",
+      "p50_ns": 917,
+      "p95_ns": 1166,
+      "p99_ns": 1250,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1007305.0771499996,
+      "warmup_calls": 2000
     },
     {
       "max_ns": 84,
-      "name": "book_top",
+      "name": "risk_stale_reject",
       "p50_ns": 41,
       "p95_ns": 42,
       "p99_ns": 42,
       "samples": 20000,
-      "samples_per_second_with_timer": 20004160.865460016
+      "samples_per_second_with_timer": 21630390.698932,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 29208,
-      "name": "book_top_full_scan_reference",
-      "p50_ns": 500,
-      "p95_ns": 625,
-      "p99_ns": 833,
+      "max_ns": 18125,
+      "name": "dense_f32_dot_1024",
+      "p50_ns": 458,
+      "p95_ns": 583,
+      "p99_ns": 584,
       "samples": 20000,
-      "samples_per_second_with_timer": 1789915.9536014406
+      "samples_per_second_with_timer": 2021725.2574439673,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 3417,
-      "name": "depth_sweep",
-      "p50_ns": 41,
-      "p95_ns": 42,
-      "p99_ns": 42,
+      "max_ns": 23083,
+      "name": "news_validate_fingerprint",
+      "p50_ns": 834,
+      "p95_ns": 1083,
+      "p99_ns": 1125,
       "samples": 20000,
-      "samples_per_second_with_timer": 18499248.468030985
+      "samples_per_second_with_timer": 1101786.7510473724,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 199125,
-      "name": "weather_high",
-      "p50_ns": 42,
-      "p95_ns": 125,
-      "p99_ns": 125,
+      "max_ns": 17208,
+      "name": "jev_request_build_six_questions",
+      "p50_ns": 1000,
+      "p95_ns": 1083,
+      "p99_ns": 1125,
       "samples": 20000,
-      "samples_per_second_with_timer": 8816235.273581004
+      "samples_per_second_with_timer": 961315.0482238887,
+      "warmup_calls": 2000
     },
     {
       "max_ns": 4542,
-      "name": "weather_low",
-      "p50_ns": 42,
+      "name": "jev_recorded_response_gate",
+      "p50_ns": 167,
+      "p95_ns": 167,
+      "p99_ns": 208,
+      "samples": 20000,
+      "samples_per_second_with_timer": 5591473.0036694035,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10094583,
+      "name": "journal_halt_append_fsync",
+      "p50_ns": 3946584,
+      "p95_ns": 4246583,
+      "p99_ns": 10094583,
+      "samples": 100,
+      "samples_per_second_with_timer": 259.00062258051656,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 275500,
+      "name": "journal_recover_200_events",
+      "p50_ns": 260125,
+      "p95_ns": 268875,
+      "p99_ns": 275500,
+      "samples": 100,
+      "samples_per_second_with_timer": 3850.034829340084,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 1708,
+      "name": "book_top_btree_reference",
+      "p50_ns": 0,
       "p95_ns": 42,
-      "p99_ns": 84,
+      "p99_ns": 42,
       "samples": 20000,
-      "samples_per_second_with_timer": 13454803.297503192
+      "samples_per_second_with_timer": 28552746.91701715,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 21750,
-      "name": "json_decode",
-      "p50_ns": 334,
-      "p95_ns": 459,
-      "p99_ns": 584,
-      "samples": 20000,
-      "samples_per_second_with_timer": 2423862.832632756
-    },
-    {
-      "max_ns": 38000,
-      "name": "engine_setup_and_fill",
-      "p50_ns": 1250,
-      "p95_ns": 1667,
-      "p99_ns": 2667,
-      "samples": 20000,
-      "samples_per_second_with_timer": 703365.7599015963
-    },
-    {
-      "max_ns": 6583,
-      "name": "risk_stale_reject",
-      "p50_ns": 42,
-      "p95_ns": 42,
-      "p99_ns": 83,
-      "samples": 20000,
-      "samples_per_second_with_timer": 16000000.0
-    },
-    {
-      "max_ns": 15292,
-      "name": "dense_f32_dot_1024",
-      "p50_ns": 500,
-      "p95_ns": 542,
-      "p99_ns": 875,
-      "samples": 20000,
-      "samples_per_second_with_timer": 1886117.8987778993
-    },
-    {
-      "max_ns": 42000,
+      "max_ns": 6375,
       "name": "cpu_q2_dot_1024",
       "p50_ns": 1000,
-      "p95_ns": 1250,
-      "p99_ns": 1250,
+      "p95_ns": 1000,
+      "p99_ns": 1042,
       "samples": 20000,
-      "samples_per_second_with_timer": 948065.7633401266
+      "samples_per_second_with_timer": 988471.9459305845,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 33792,
+      "max_ns": 6292,
       "name": "cpu_q4_dot_1024",
       "p50_ns": 1000,
-      "p95_ns": 1250,
-      "p99_ns": 4625,
+      "p95_ns": 1125,
+      "p99_ns": 1167,
       "samples": 20000,
-      "samples_per_second_with_timer": 839984.6467606266
+      "samples_per_second_with_timer": 960405.2756598439,
+      "warmup_calls": 2000
     },
     {
-      "max_ns": 26750,
+      "max_ns": 5916,
       "name": "cpu_q8_dot_1024",
-      "p50_ns": 1000,
+      "p50_ns": 1125,
       "p95_ns": 1209,
-      "p99_ns": 4708,
+      "p99_ns": 1250,
       "samples": 20000,
-      "samples_per_second_with_timer": 852527.0564380584
+      "samples_per_second_with_timer": 906050.1635579104,
+      "warmup_calls": 2000
     }
   ],
   "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
-  "schema_version": 1
+  "schema_version": 2
 }

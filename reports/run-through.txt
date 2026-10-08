@@ -1,0 +1,38 @@
+{"chain":"Base","chain_id":8453,"live":false,"reason":"No verified Base Polymarket exchange deployment; settlement unavailable under Base-only policy","rpc":"https://mainnet.base.org"}
+{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.749221913726538,0.250778086273462]}
+{"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":8453}
+{"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":8453}
+{"line":7,"rejected":"stale_or_unsynchronized_book"}
+{"line":8,"rejected":"Base_only: market_chain_mismatch"}
+{"summary":{"cash_micro":1007130800,"chain_id":8453,"events":8,"fills":2,"paper":true,"realized_pnl_micro":"7130800","rejects":3}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":8453}
+{"summary":{"cash_micro":995491000,"chain_id":8453,"events":3,"fills":1,"paper":true,"realized_pnl_micro":"0","rejects":0}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":8453}
+{"token":"weather-yes","side":"sell","shares":10,"notional_micro":3000000,"fee_micro":6000,"vwap_micro":300000,"worst_price_micro":300000,"cash_micro":998485000,"time_ms":1101,"paper":true,"chain_id":8453}
+{"summary":{"cash_micro":998485000,"chain_id":8453,"events":5,"fills":2,"paper":true,"realized_pnl_micro":"-1515000","rejects":0}}
+{"event":1,"fill":null}
+{"event":2,"fill":null}
+{"event":3,"fill":{"cash_micro":986272600,"chain_id":8453,"fee_micro":27400,"notional_micro":13700000,"paper":true,"shares":30,"side":"buy","time_ms":1001,"token":"weather-yes","vwap_micro":456666,"worst_price_micro":460000}}
+{"event":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"event":5,"fill":null}
+{"event":6,"fill":{"cash_micro":1007130800,"chain_id":8453,"fee_micro":41800,"notional_micro":20900000,"paper":true,"shares":30,"side":"sell","time_ms":1101,"token":"weather-yes","vwap_micro":696666,"worst_price_micro":690000}}
+{"event":7,"rejected":"stale_or_unsynchronized_book"}
+{"event":8,"rejected":"Base_only: market_chain_mismatch"}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":8,"realized_pnl_micro":"7130800","recovered_events":0,"recovered_tail_bytes":0}}
+{"event":1,"recovered":true}
+{"event":2,"recovered":true}
+{"event":3,"recovered":true}
+{"event":4,"recovered":true}
+{"event":5,"recovered":true}
+{"event":6,"recovered":true}
+{"event":7,"recovered":true}
+{"event":8,"recovered":true}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":0,"realized_pnl_micro":"7130800","recovered_events":8,"recovered_tail_bytes":0}}
+{"cash_micro":1007130800,"chain_id":8453,"events":8,"realized_pnl_micro":"7130800","recovered_tail_bytes":0}
+{"decision":{"declared_source_only":true,"fingerprint":"ee3c40fef77e6e53bad082dec514992525f80fd8b6c23c296c88365decd9edab","id":"noaa-demo-1","model":"fixture-jev-not-live","reason":"typed_semantic_route_only","received_ms":2000,"route":"watch"},"service_error":null}
+{"decision":{"declared_source_only":true,"fingerprint":"648069f77d9cbc13bfc97baa682d3c75760daff41a6f31829fbaa7afc12efcd7","id":"noaa-demo-2","model":null,"reason":"model_unavailable","received_ms":2200,"route":"review"},"service_error":null}
+{"id":"noaa-demo-1","rejected":"stale_future_or_reversed_news_time"}
+{"id":"noaa-demo-2","rejected":"duplicate_news"}
+Base-only live execution unavailable: no verified Base Polymarket exchange deployment
+PASS: replay, weather, Base, reversal, durable restart, news dedup, live refusal

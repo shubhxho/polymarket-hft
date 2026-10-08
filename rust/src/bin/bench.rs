@@ -2,13 +2,16 @@ use polymarket_hft::{
     book::{Book, Level, Side},
     engine::{Config, Engine, Event},
     model::{Bucket, Metric, probabilities},
+    news::{JevResponse, NewsItem, NewsPipeline, evaluate, request},
     quant::Quantized,
+    storage::Journal,
 };
 use serde_json::{Value, json};
 use std::{hint::black_box, time::Instant};
 
 fn measure(name: &str, n: usize, mut f: impl FnMut()) -> Value {
-    for _ in 0..2000 {
+    let warmup = n.min(2000);
+    for _ in 0..warmup {
         f();
     }
     let mut samples = Vec::with_capacity(n);
@@ -20,7 +23,7 @@ fn measure(name: &str, n: usize, mut f: impl FnMut()) -> Value {
     }
     let elapsed = wall.elapsed().as_secs_f64();
     samples.sort_unstable();
-    json!({"name": name, "samples": n, "p50_ns": samples[n/2], "p95_ns": samples[n*95/100], "p99_ns": samples[n*99/100], "max_ns": samples[n-1], "samples_per_second_with_timer": n as f64 / elapsed})
+    json!({"name": name, "samples": n, "warmup_calls":warmup, "p50_ns": samples[n/2], "p95_ns": samples[n*95/100], "p99_ns": samples[n*99/100], "max_ns": samples[n-1], "samples_per_second_with_timer": n as f64 / elapsed})
 }
 fn setup() -> Engine {
     let mut e = Engine::new(Config::default()).unwrap();
@@ -149,13 +152,58 @@ fn main() {
         );
     }));
     let mut accuracy = Vec::new();
+    let item: serde_json::Value = serde_json::from_str(
+        include_str!("../../../fixtures/news.jsonl")
+            .lines()
+            .next()
+            .unwrap(),
+    )
+    .unwrap();
+    let news: NewsItem = serde_json::from_value(item["item"].clone()).unwrap();
+    let response: JevResponse = serde_json::from_value(item["response"].clone()).unwrap();
+    results.push(measure("news_validate_fingerprint", n, || {
+        black_box(NewsPipeline::default().validate(black_box(&news)).unwrap());
+    }));
+    results.push(measure("jev_request_build_six_questions", n, || {
+        black_box(request(black_box(&news), "jev-latest"));
+    }));
+    results.push(measure("jev_recorded_response_gate", n, || {
+        black_box(evaluate(black_box(&response)).unwrap());
+    }));
+    let journal_path =
+        std::env::temp_dir().join(format!("hft-bench-{}.journal", std::process::id()));
+    assert!(!journal_path.exists(), "benchmark journal already exists");
+    let mut journal = Journal::open(&journal_path, None).unwrap();
+    results.push(measure("journal_halt_append_fsync", 100, || {
+        black_box(
+            journal
+                .apply(Event::Halt {
+                    reason: "benchmark".into(),
+                })
+                .unwrap()
+                .unwrap(),
+        );
+    }));
+    drop(journal);
+    results.push(measure("journal_recover_200_events", 100, || {
+        black_box(Journal::open(&journal_path, None).unwrap());
+    }));
+    std::fs::remove_file(&journal_path).unwrap();
+    let ordered_bids = std::collections::BTreeMap::from([(400000u32, 100u32)]);
+    let ordered_asks = std::collections::BTreeMap::from([(450000u32, 100u32)]);
+    results.push(measure("book_top_btree_reference", n, || {
+        black_box((
+            black_box(&ordered_bids).last_key_value(),
+            black_box(&ordered_asks).first_key_value(),
+        ));
+    }));
     for bits in [2, 4, 8] {
         let q = Quantized::new(&weights, bits, 64).unwrap();
         results.push(measure(&format!("cpu_q{bits}_dot_1024"), n, || {
             black_box(q.dot(black_box(&input)).unwrap());
         }));
         accuracy.push(json!({"backend":"cpu_reference", "bits":bits, "absolute_dot_error": (q.dot(&input).unwrap()-reference).abs(), "storage_bytes":q.storage_bytes(), "dense_bytes": weights.len()*4}));
-        #[cfg(feature = "mlx")]
+        #[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
         {
             let q = polymarket_hft::mlx::MlxLinear::new(&weights, i32::from(bits)).unwrap();
             results.push(measure(
@@ -166,6 +214,14 @@ fn main() {
                 },
             ));
             accuracy.push(json!({"backend":"mlx", "bits":bits, "absolute_dot_error":(q.dot(&input).unwrap()-reference).abs()}));
+            let batch = input.repeat(32);
+            results.push(measure(
+                &format!("mlx_q{bits}_batch32_including_transfer_and_eval"),
+                2000,
+                || {
+                    black_box(q.dot_batch(black_box(&batch)).unwrap());
+                },
+            ));
         }
     }
     let rustc = std::process::Command::new("rustc")
@@ -173,5 +229,5 @@ fn main() {
         .output()
         .ok()
         .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_owned());
-    println!("{}", serde_json::to_string_pretty(&json!({"schema_version":1,"fixture":"synthetic-v1", "arch":std::env::consts::ARCH,"os":std::env::consts::OS,"rustc":rustc,"release":!cfg!(debug_assertions),"mlx_enabled":cfg!(feature="mlx"),"results":results,"quantization":accuracy,"limitations":["Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning", "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured", "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim"]})).unwrap());
+    println!("{}", serde_json::to_string_pretty(&json!({"schema_version":2,"package_version":env!("CARGO_PKG_VERSION"),"fixture":"synthetic-v2", "arch":std::env::consts::ARCH,"os":std::env::consts::OS,"rustc":rustc,"release":!cfg!(debug_assertions),"mlx_enabled":cfg!(any(feature="mlx", feature="mlx-cpu")),"mlx_backend":if cfg!(feature="mlx"){"metal"}else if cfg!(feature="mlx-cpu"){"native_cpu"}else{"disabled"},"results":results,"quantization":accuracy,"limitations":["Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning", "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured", "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim", "Jev gates use a recorded synthetic response; network/model quality is not measured", "Journal samples use fsync without macOS F_FULLFSYNC; power-loss guarantees depend on the filesystem"]})).unwrap());
 }
