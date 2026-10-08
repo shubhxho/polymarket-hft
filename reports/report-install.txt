@@ -1,0 +1,19 @@
+cargo run --release --locked --offline --bin hft-report
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `release` profile [optimized] target(s) in 2.13s
+     Running `target/release/hft-report`
+Generated reports/BENCHMARKS.md and reports/latency.svg
+cargo install --path rust --locked --offline --root .local
+  Installing polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+warning: patch `mlx-rs v0.32.0 (/private/tmp/polymarket-hft-publish/vendor/mlx-rs)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Finished `release` profile [optimized] target(s) in 0.11s
+   Replacing /private/tmp/polymarket-hft-publish/.local/bin/hft
+   Replacing /private/tmp/polymarket-hft-publish/.local/bin/hft-bench
+   Replacing /private/tmp/polymarket-hft-publish/.local/bin/hft-compare
+   Replacing /private/tmp/polymarket-hft-publish/.local/bin/hft-report
+    Replaced package `polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)` with `polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)` (executables `hft`, `hft-bench`, `hft-compare`, `hft-report`)
+warning: be sure to add `/private/tmp/polymarket-hft-publish/.local/bin` to your PATH to be able to run the installed binaries

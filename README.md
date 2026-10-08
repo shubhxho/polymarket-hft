@@ -17,6 +17,7 @@ make replay
 make fair
 make base
 make bench
+make compare
 make report
 make codegen
 make install
@@ -70,5 +71,9 @@ Rust packed affine 2-, 4- and 8-bit reference kernels measure storage and numeri
 ## Results and remaining gates
 
 See [benchmark report](reports/BENCHMARKS.md), [raw results](reports/benchmark-after.json), and [readiness status](reports/READINESS.md). These are local synthetic measurements, not HRT comparisons, fund returns or live tick-to-trade latency.
+
+The [measured comparison report](reports/MEASURED_COMPARISONS.md) checks identical outputs and publishes five-round batched comparisons against explicit full-scan and BTree lookup references. It reports both wins and mixed results, without claiming whole-system competitor outperformance.
+
+The [Hugging Face dataset](https://huggingface.co/datasets/shubhxho/polymarket-hft-benchmarks) publishes the raw batches, charts, native CPU results and reproducible source. make report exports the CSV in Rust; make package prepares the publication bundle.
 
 The former Python prototype is preserved under `legacy/python/` for reference. Its live gateway is disabled under the Base-only policy. It is not part of the Rust runtime or current validation surface.

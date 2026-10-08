@@ -1,0 +1,3 @@
+xcrun -f metal
+xcrun: error: unable to find utility "metal", not a developer tool or in PATH
+make: *** [mlx-check] Error 72

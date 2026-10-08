@@ -38,6 +38,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )?;
     }
     svg.push_str("</g></svg>\n");
+    md.push_str("\n## Storage versus dense f32\n\nPacked affine reference weights include scales, biases and packing overhead. This is storage for the synthetic vector, not model-memory or accuracy superiority.\n\n| Bits | Packed bytes | Dense bytes | Storage reduction | Absolute dot error |\n|---|---:|---:|---:|---:|\n");
+    for q in report["quantization"]
+        .as_array()
+        .ok_or("missing quantization rows")?
+    {
+        let packed = q["storage_bytes"].as_u64().ok_or("missing packed bytes")?;
+        let dense = q["dense_bytes"].as_u64().ok_or("missing dense bytes")?;
+        if dense == 0 {
+            return Err("zero dense bytes".into());
+        }
+        let reduction = 100.0 * (1.0 - packed as f64 / dense as f64);
+        writeln!(
+            md,
+            "| {} | {packed} | {dense} | {reduction:.2}% | {} |",
+            q["bits"], q["absolute_dot_error"]
+        )?;
+    }
+    md.push_str("\n[Equal-output batched comparisons](MEASURED_COMPARISONS.md) report matched-round full-scan/BTree lookup results, including mixed cases.\n");
     if let Ok(raw) = fs::read_to_string("reports/benchmark-mlx-cpu.json") {
         let native: Value = serde_json::from_str(&raw)?;
         if native["release"] != true || native["mlx_backend"] != "native_cpu" {
@@ -63,6 +81,42 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     md.push_str("\nQuantization accuracy and storage are in [raw JSON](benchmark-after.json). Journal rows include fsync and are measured separately from in-memory operations. Packed kernels save storage but are slower than dense f32 on this fixture. BTree lookup and cached top both reach the timer floor; no credible speed ratio can be inferred.\n\nNative MLX CPU release results are separately measured above. [Debug results](benchmark-mlx-cpu-debug.json) are retained as correctness-oriented evidence and are not comparable to release timings. Metal GPU is unmeasured because the host lacks the Metal compiler. Jev routing uses recorded synthetic responses; no real API latency, accuracy or cost was measured.\n\nSee [methodology](../docs/RESEARCH.md), [reference systems](COMPARISONS.md), [readiness](READINESS.md), and [check output](checks.txt). Reproduce with make bench and make report. CPU pinning, historical queue/latency modeling, real fills and HRT comparisons are absent.\n");
     fs::write("reports/BENCHMARKS.md", md)?;
     fs::write("reports/latency.svg", svg)?;
+    if let Ok(raw) = fs::read_to_string("reports/comparison.json") {
+        let comparison: Value = serde_json::from_str(&raw)?;
+        let mut csv = String::from(
+            "levels_per_side,round,backend,sample_index,batch_size,batch_ns,amortized_ns_per_lookup\n",
+        );
+        for work in comparison["workloads"]
+            .as_array()
+            .ok_or("missing workloads")?
+        {
+            for round in work["rounds"].as_array().ok_or("missing rounds")? {
+                for backend in ["cached", "full_scan", "btree"] {
+                    let row = &round[backend];
+                    let batch = row["batch_size"]
+                        .as_u64()
+                        .filter(|&n| n > 0)
+                        .ok_or("invalid batch size")?;
+                    for (i, ns) in row["raw_batch_ns"]
+                        .as_array()
+                        .ok_or("missing samples")?
+                        .iter()
+                        .enumerate()
+                    {
+                        let ns = ns.as_u64().ok_or("invalid time")?;
+                        writeln!(
+                            csv,
+                            "{},{},{backend},{i},{batch},{ns},{}",
+                            work["levels_per_side"],
+                            round["round"],
+                            ns as f64 / batch as f64
+                        )?;
+                    }
+                }
+            }
+        }
+        fs::write("reports/lookup-samples.csv", csv)?;
+    }
     println!("Generated reports/BENCHMARKS.md and reports/latency.svg");
     Ok(())
 }

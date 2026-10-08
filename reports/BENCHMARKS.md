@@ -9,26 +9,38 @@ The chart uses a log scale; exact values are labeled. Sub-timer operations, incl
 | Operation | Warmups | Samples | p50 ns | p95 ns | p99 ns |
 |---|---:|---:|---:|---:|---:|
 | timer_floor | 2000 | 20000 | 0 | 42 | 42 |
-| book_snapshot | 2000 | 20000 | 208 | 209 | 250 |
-| book_update | 2000 | 20000 | 0 | 42 | 42 |
-| book_top | 2000 | 20000 | 0 | 42 | 42 |
-| book_top_full_scan_reference | 2000 | 20000 | 292 | 334 | 375 |
-| depth_sweep | 2000 | 20000 | 0 | 42 | 42 |
-| weather_high | 2000 | 20000 | 42 | 42 | 42 |
-| weather_low | 2000 | 20000 | 41 | 42 | 42 |
-| json_decode | 2000 | 20000 | 209 | 291 | 292 |
-| engine_setup_and_fill | 2000 | 20000 | 917 | 1166 | 1250 |
+| book_snapshot | 2000 | 20000 | 417 | 417 | 500 |
+| book_update | 2000 | 20000 | 41 | 42 | 42 |
+| book_top | 2000 | 20000 | 41 | 42 | 42 |
+| book_top_full_scan_reference | 2000 | 20000 | 500 | 792 | 834 |
+| depth_sweep | 2000 | 20000 | 42 | 42 | 42 |
+| weather_high | 2000 | 20000 | 83 | 84 | 125 |
+| weather_low | 2000 | 20000 | 42 | 84 | 84 |
+| json_decode | 2000 | 20000 | 417 | 500 | 542 |
+| engine_setup_and_fill | 2000 | 20000 | 1250 | 1667 | 1709 |
 | risk_stale_reject | 2000 | 20000 | 41 | 42 | 42 |
-| dense_f32_dot_1024 | 2000 | 20000 | 458 | 583 | 584 |
-| news_validate_fingerprint | 2000 | 20000 | 834 | 1083 | 1125 |
-| jev_request_build_six_questions | 2000 | 20000 | 1000 | 1083 | 1125 |
-| jev_recorded_response_gate | 2000 | 20000 | 167 | 167 | 208 |
-| journal_halt_append_fsync | 100 | 100 | 3946584 | 4246583 | 10094583 |
-| journal_recover_200_events | 100 | 100 | 260125 | 268875 | 275500 |
+| dense_f32_dot_1024 | 2000 | 20000 | 500 | 500 | 542 |
+| news_validate_fingerprint | 2000 | 20000 | 833 | 875 | 917 |
+| jev_request_build_six_questions | 2000 | 20000 | 1000 | 1084 | 1125 |
+| jev_recorded_response_gate | 2000 | 20000 | 166 | 167 | 167 |
+| journal_halt_append_fsync | 100 | 100 | 3928250 | 4197875 | 5086666 |
+| journal_recover_200_events | 100 | 100 | 322833 | 426334 | 452000 |
 | book_top_btree_reference | 2000 | 20000 | 0 | 42 | 42 |
-| cpu_q2_dot_1024 | 2000 | 20000 | 1000 | 1000 | 1042 |
-| cpu_q4_dot_1024 | 2000 | 20000 | 1000 | 1125 | 1167 |
-| cpu_q8_dot_1024 | 2000 | 20000 | 1125 | 1209 | 1250 |
+| cpu_q2_dot_1024 | 2000 | 20000 | 959 | 1000 | 1042 |
+| cpu_q4_dot_1024 | 2000 | 20000 | 959 | 1000 | 1041 |
+| cpu_q8_dot_1024 | 2000 | 20000 | 959 | 1000 | 1042 |
+
+## Storage versus dense f32
+
+Packed affine reference weights include scales, biases and packing overhead. This is storage for the synthetic vector, not model-memory or accuracy superiority.
+
+| Bits | Packed bytes | Dense bytes | Storage reduction | Absolute dot error |
+|---|---:|---:|---:|---:|
+| 2 | 384 | 4096 | 90.62% | 0.05687808990478515 |
+| 4 | 640 | 4096 | 84.38% | 0.14974403381347656 |
+| 8 | 1152 | 4096 | 71.88% | 0.04233837127685547 |
+
+[Equal-output batched comparisons](MEASURED_COMPARISONS.md) report matched-round full-scan/BTree lookup results, including mixed cases.
 
 ## Native MLX CPU, optimized release
 
@@ -36,12 +48,12 @@ These operations include input creation, evaluation and readback. Batch rows pro
 
 | Operation | Warmups | Samples | p50 ns | p95 ns | p99 ns |
 |---|---:|---:|---:|---:|---:|
-| mlx_q2_dot_1024_including_transfer_and_eval | 2000 | 2000 | 8417 | 9458 | 9958 |
-| mlx_q2_batch32_including_transfer_and_eval | 2000 | 2000 | 42500 | 48458 | 53125 |
-| mlx_q4_dot_1024_including_transfer_and_eval | 2000 | 2000 | 6708 | 9000 | 12167 |
-| mlx_q4_batch32_including_transfer_and_eval | 2000 | 2000 | 19875 | 22708 | 35375 |
-| mlx_q8_dot_1024_including_transfer_and_eval | 2000 | 2000 | 6167 | 8166 | 9333 |
-| mlx_q8_batch32_including_transfer_and_eval | 2000 | 2000 | 22458 | 24042 | 27375 |
+| mlx_q2_dot_1024_including_transfer_and_eval | 2000 | 2000 | 7417 | 9500 | 11708 |
+| mlx_q2_batch32_including_transfer_and_eval | 2000 | 2000 | 41375 | 50084 | 54167 |
+| mlx_q4_dot_1024_including_transfer_and_eval | 2000 | 2000 | 7500 | 8917 | 11917 |
+| mlx_q4_batch32_including_transfer_and_eval | 2000 | 2000 | 21125 | 25167 | 28500 |
+| mlx_q8_dot_1024_including_transfer_and_eval | 2000 | 2000 | 7459 | 9084 | 14500 |
+| mlx_q8_batch32_including_transfer_and_eval | 2000 | 2000 | 20292 | 68750 | 108958 |
 
 [Native MLX CPU release raw results](benchmark-mlx-cpu.json).
 

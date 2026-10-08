@@ -1,0 +1,9 @@
+cargo run --release --locked --offline --bin hft-compare
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `release` profile [optimized] target(s) in 4.06s
+     Running `target/release/hft-compare`
+Generated equal-output comparison report, chart and raw samples
+cargo run --release --locked --offline --bin hft-report
+    Finished `release` profile [optimized] target(s) in 0.05s
+     Running `target/release/hft-report`
+Generated reports/BENCHMARKS.md and reports/latency.svg

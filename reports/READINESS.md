@@ -18,6 +18,7 @@ Version 0.3.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 | Durable journal | Write-ahead replay, lock/config gates, prefix idempotence, tail recovery and corruption refusal tested |
 | Drawdown/reversal | Conservative liquidation loss gate and inventory exits tested |
 | Documented CLI workflows | Evidence in run-through.txt |
+| Batched local comparisons | Three book depths, equal outputs, five rounds, raw samples and chart |
 | Historical out-of-sample strategy evaluation | Missing historical observations, books, outcomes and venue fees |
 | HRT comparison | No accessible proprietary benchmark/reference supplied |
 | Public benchmark publication | [Published Gist](https://gist.github.com/shubhxho/1b15d2cd4c0dc4568bb311f627e6db0b); raw results and reproducible source included |

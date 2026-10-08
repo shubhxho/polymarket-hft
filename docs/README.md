@@ -8,6 +8,7 @@ Version 0.3.0: Rust paper execution, Base mainnet only.
 - [Research and evaluation](RESEARCH.md)
 - [Benchmark tables and chart](../reports/BENCHMARKS.md)
 - [Reference systems](../reports/COMPARISONS.md)
+- [Measured comparisons and scope](../reports/MEASURED_COMPARISONS.md)
 - [Readiness gates](../reports/READINESS.md)
 
 All checked market, news and model-response fixtures are synthetic. No live orders are submitted.

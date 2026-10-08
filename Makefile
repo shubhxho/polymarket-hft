@@ -1,4 +1,4 @@
-.PHONY: check bench replay fair base mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
+.PHONY: check bench compare package replay fair base mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
 
 check:
 	cargo fmt --all -- --check
@@ -7,6 +7,12 @@ check:
 
 bench:
 	cargo run --release --locked --offline --bin hft-bench > reports/benchmark-after.json
+
+compare:
+	cargo run --release --locked --offline --bin hft-compare
+
+package:
+	sh scripts/package-benchmarks.sh
 
 report:
 	cargo run --release --locked --offline --bin hft-report

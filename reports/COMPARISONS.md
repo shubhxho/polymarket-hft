@@ -11,6 +11,8 @@ Primary-source references reviewed for architecture and evaluation coverage. No 
 
 Local references measure BTree and full-scan top lookup only. They do not compare funds or trading returns.
 
+See [measured comparisons](MEASURED_COMPARISONS.md) for five rounds of equal-output batched lookups and [environment](ENVIRONMENT.md) for toolchain and host limitations. Full-scan/BTree results refer to local reference implementations, not code from the projects listed above.
+
 Jev integration follows the [TypeSafe API](https://docs.typesafe.ai/api), [Noul primitive](https://docs.typesafe.ai/primitives/noul) and [evidence cookbook](https://docs.typesafe.ai/cookbooks/citation_check). Gates use synthetic responses; live quality and cost remain unmeasured.
 
 [Polymarket's contract reference](https://docs.polymarket.com/resources/contracts) documents Polygon contracts. Synthetic Base-tagged fixtures do not imply a Base exchange deployment.

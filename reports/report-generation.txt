@@ -1,4 +1,3 @@
-   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
-    Finished `release` profile [optimized] target(s) in 2.15s
-     Running `target/release/hft-report`
+    Finished `dev` profile [unoptimized] target(s) in 0.08s
+     Running `target/debug/hft-report`
 Generated reports/BENCHMARKS.md and reports/latency.svg
