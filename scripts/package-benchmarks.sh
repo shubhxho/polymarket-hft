@@ -24,12 +24,19 @@ make check
 make run-through
 make signals evaluate polygon-plan hardware
 make compare bench
-make mlx-cpu-check mlx-cpu-bench
 make report codegen install
+make weather-simulations
+make release-gif
+# Optional native backend checks, with at least 1 GiB free:
+make mlx-cpu-check mlx-cpu-bench
 ```
 
 Raw CSV is exported by the Rust hft-report binary. Native MLX needs CMake
 and a C++ compiler; Metal validation needs full Xcode with the Metal compiler.
 All fixtures are synthetic. Read docs/README.md and reports/READINESS.md.
+Compact is the correctness default. HFT_PROFILE=release selects optimized
+measurements; current compact timings are separate from historical release
+reports. Weather results are synthetic portfolios, not expected returns.
+The GIF encoder requires ffmpeg. See reports/WEATHER_VALIDATION.md for gates.
 EOF
 echo "Packaged benchmark publication at $destination"

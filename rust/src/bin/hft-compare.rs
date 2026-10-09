@@ -30,8 +30,12 @@ fn timed(mut f: impl FnMut() -> u64) -> Value {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     if cfg!(debug_assertions) {
-        return Err("comparison requires --release".into());
+        eprintln!("Compact correctness run: timings do not establish optimized performance.");
     }
+    let directory = std::path::PathBuf::from(
+        std::env::var("HFT_REPORT_DIR").unwrap_or_else(|_| "reports".into()),
+    );
+    fs::create_dir_all(&directory)?;
     let mut workloads = Vec::new();
     let mut claims = String::new();
     let mut markdown = String::from(
@@ -180,15 +184,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     svg.push_str("</g></svg>\n");
     markdown.push_str("\n## What we measured faster\n\n");
-    markdown.push_str(&claims);
+    if cfg!(debug_assertions) {
+        markdown.push_str("Compact correctness profile. Timings are diagnostic; no optimized performance claim is established.\n");
+    } else {
+        markdown.push_str(&claims);
+    }
     markdown.push_str("\n![Measured reference comparison](comparison.svg)\n\nRatios greater than one mean cached lookup was faster in that round. Ranges are observed round-to-round variation, not statistical confidence intervals. These are amortized batch values, not individual lookup latency percentiles. Setup, snapshots, updates, matching, feed/network latency and durable writes are excluded. Cached metadata avoids searching; maintaining that cache has a separate cost. No CPU pinning or hardware performance counters were used.\n\nNo claim is made that we beat hftbacktest, Barter, the Polymarket client or HRT: no comparable whole-system implementation/data was run. Packed quantization storage reductions are reported separately; smaller weights do not imply faster or more accurate trading.\n\nReproduce: make compare. Raw samples: [comparison.json](comparison.json). References: [COMPARISONS.md](COMPARISONS.md).\n");
-    let metadata = json!({"schema_version":1,"fixture":"equal-output-book-top-v1","release":true,"arch":std::env::consts::ARCH,"os":std::env::consts::OS,"markets":MARKETS,"workloads":workloads,"backends":["cached","full_scan","btree"],"scope":"Synthetic batched top lookup only; no competitor engine or HRT comparison"});
+    let metadata = json!({"schema_version":1,"fixture":"equal-output-book-top-v1","release":!cfg!(debug_assertions),"arch":std::env::consts::ARCH,"os":std::env::consts::OS,"markets":MARKETS,"workloads":workloads,"backends":["cached","full_scan","btree"],"scope":"Synthetic batched top lookup only; no competitor engine or HRT comparison"});
     fs::write(
-        "reports/comparison.json",
+        directory.join("comparison.json"),
         serde_json::to_string_pretty(&metadata)?,
     )?;
-    fs::write("reports/MEASURED_COMPARISONS.md", markdown)?;
-    fs::write("reports/comparison.svg", svg)?;
+    fs::write(directory.join("MEASURED_COMPARISONS.md"), markdown)?;
+    fs::write(directory.join("comparison.svg"), svg)?;
     println!("Generated equal-output comparison report, chart and raw samples");
     Ok(())
 }

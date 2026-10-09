@@ -26,16 +26,19 @@ impl MlxLinear {
         if ![2, 4, 8].contains(&bits)
             || weights.is_empty()
             || !weights.len().is_multiple_of(64)
-            || weights.len() > i32::MAX as usize
+            || weights.len() > 16 * 1024 * 1024
             || weights.iter().any(|x| !x.is_finite())
         {
             return Err("invalid_mlx_weights".into());
         }
-        let dense = Array::from_slice(weights, &[1, weights.len() as i32]);
+
         let device = if gpu { Device::gpu() } else { Device::cpu() };
         let stream = Stream::try_default_on_device(&device).map_err(|e| e.to_string())?;
-        let (weights_q, scales, biases) =
-            with_stream(&stream, || quantize(&dense, 64, bits)).map_err(|e| e.to_string())?;
+        let (weights_q, scales, biases) = with_stream(&stream, || {
+            let dense = Array::from_slice(weights, &[1, weights.len() as i32]);
+            quantize(&dense, 64, bits)
+        })
+        .map_err(|e| e.to_string())?;
         weights_q.eval().map_err(|e| e.to_string())?;
         scales.eval().map_err(|e| e.to_string())?;
         biases.eval().map_err(|e| e.to_string())?;
@@ -52,7 +55,7 @@ impl MlxLinear {
     pub fn from_quantized(q: &crate::quant::Quantized, gpu: bool) -> Result<Self> {
         if q.group() != 64
             || !q.len().is_multiple_of(64)
-            || q.len() > i32::MAX as usize
+            || q.len() > 16 * 1024 * 1024
             || (gpu && !cfg!(feature = "mlx"))
         {
             return Err("invalid_mlx_packed_layout_or_device".into());
@@ -64,9 +67,13 @@ impl MlxLinear {
             .collect();
         let device = if gpu { Device::gpu() } else { Device::cpu() };
         let stream = Stream::try_default_on_device(&device).map_err(|e| e.to_string())?;
-        let weights = Array::from_slice(&words, &[1, words.len() as i32]);
-        let scales = Array::from_slice(scales, &[1, scales.len() as i32]);
-        let biases = Array::from_slice(biases, &[1, biases.len() as i32]);
+        let (weights, scales, biases) = with_stream(&stream, || {
+            (
+                Array::from_slice(&words, &[1, words.len() as i32]),
+                Array::from_slice(scales, &[1, scales.len() as i32]),
+                Array::from_slice(biases, &[1, biases.len() as i32]),
+            )
+        });
         weights.eval().map_err(|e| e.to_string())?;
         scales.eval().map_err(|e| e.to_string())?;
         biases.eval().map_err(|e| e.to_string())?;
@@ -83,8 +90,8 @@ impl MlxLinear {
         if input.len() != self.width || input.iter().any(|x| !x.is_finite()) {
             return Err("invalid_mlx_input".into());
         }
-        let x = Array::from_slice(input, &[1, self.width as i32]);
         let output = with_stream(&self.stream, || {
+            let x = Array::from_slice(input, &[1, self.width as i32]);
             quantized_matmul(
                 &x,
                 &self.weights,
@@ -97,7 +104,10 @@ impl MlxLinear {
         })
         .map_err(|e| e.to_string())?;
         output.eval().map_err(|e| e.to_string())?;
-        let value = output.item_exact::<f32>();
+        if output.shape() != [1, 1] {
+            return Err("mlx_output_shape".into());
+        }
+        let value = output.try_item_exact::<f32>().map_err(|e| e.to_string())?;
         if !value.is_finite() {
             return Err("mlx_inference_overflow".into());
         }
@@ -107,14 +117,15 @@ impl MlxLinear {
     pub fn dot_batch(&self, input: &[f32]) -> Result<Vec<f32>> {
         if input.is_empty()
             || !input.len().is_multiple_of(self.width)
-            || input.len() / self.width > i32::MAX as usize
+            || input.len() / self.width > 256
+            || input.len() > 16 * 1024 * 1024
             || input.iter().any(|x| !x.is_finite())
         {
             return Err("invalid_mlx_batch".into());
         }
         let batch = input.len() / self.width;
-        let x = Array::from_slice(input, &[batch as i32, self.width as i32]);
         let output = with_stream(&self.stream, || {
+            let x = Array::from_slice(input, &[batch as i32, self.width as i32]);
             quantized_matmul(
                 &x,
                 &self.weights,
@@ -127,7 +138,13 @@ impl MlxLinear {
         })
         .map_err(|e| e.to_string())?;
         output.eval().map_err(|e| e.to_string())?;
-        let values = output.as_slice::<f32>().to_vec();
+        if output.shape() != [batch as i32, 1] {
+            return Err("mlx_output_shape".into());
+        }
+        let values = output
+            .try_as_slice::<f32>()
+            .map_err(|e| e.to_string())?
+            .to_vec();
         if values.iter().any(|x| !x.is_finite()) {
             return Err("mlx_inference_overflow".into());
         }

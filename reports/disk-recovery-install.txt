@@ -1,0 +1,8 @@
+sh scripts/disk-preflight.sh
+HFT_PROFILE=compact sh scripts/install.sh
+    Finished `compact` profile [optimized] target(s) in 0.25s
+Installed compact CPU binaries.
+cargo run --profile compact --locked --offline --bin hft-release
+    Finished `compact` profile [optimized] target(s) in 0.04s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-release`
+Rendered reports/weather-release.gif from measured synthetic outcomes

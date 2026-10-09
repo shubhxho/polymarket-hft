@@ -19,3 +19,5 @@ All checked market, news and model-response fixtures are synthetic. No live orde
 - [Polygon order planning and execution gates](POLYGON_EXECUTION.md)
 
 Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](SIMULATIONS.md).
+
+- [Weather portfolios, data generation and disk recovery](WEATHER_PORTFOLIOS.md)

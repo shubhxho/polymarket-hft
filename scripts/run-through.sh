@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-profile=${HFT_PROFILE:-release}
+profile=${HFT_PROFILE:-compact}
 case "$profile" in release|compact) ;; *) echo "Unsupported HFT_PROFILE" >&2; exit 1;; esac
 if [ -n "${HFT_BIN_DIR:-}" ]; then
   case "$HFT_BIN_DIR" in /*) ;; *) echo "HFT_BIN_DIR must be absolute" >&2; exit 1;; esac
@@ -67,6 +67,7 @@ cli="$bin_dir/hft"
   fi
   cat "$work_dir/live.txt"
   echo "PASS: replay, weather, Polygon, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal"
-} > reports/run-through.txt
+} > reports/run-through.txt.tmp
+mv reports/run-through.txt.tmp reports/run-through.txt
 cat reports/run-through.txt
 echo "Temporary evidence retained at $work_dir"

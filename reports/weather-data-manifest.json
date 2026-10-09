@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "records": 30720,
+  "days": 20,
+  "seeds": 16,
+  "queue_capacity": 64,
+  "forecasts_sha256": "2fe3251e2100e135034d3a819a983c2bdc385a490e226be473edbebfc74d2358",
+  "resolutions_sha256": "dd6efd2c2329f4cff83ec096d358f19ea5573c7653dc825923572d81c5d028e1"
+}

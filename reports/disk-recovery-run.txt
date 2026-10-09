@@ -1,0 +1,333 @@
+sh scripts/disk-preflight.sh
+cargo fmt --all -- --check
+cargo test --profile compact --locked --offline
+   Compiling polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 22.95s
+     Running unittests src/lib.rs (/private/tmp/polymarket-hft-target/compact/deps/polymarket_hft-e692b65f5fc973c2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/private/tmp/polymarket-hft-target/compact/deps/hft-a533a4d4fe2b2419)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bench.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_bench-c33af17c494840d0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-compare.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_compare-cd8c63e6dcfd879e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-evaluate.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_evaluate-e8db85a17b19ae72)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-hardware.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_hardware-6c5b67f972d37d5b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-infer.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_infer-5c01208554fdda14)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-pack.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_pack-812d2034532fc493)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-polymarket.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_polymarket-21d629bd20ba3750)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-release.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_release-7ab29c1a3a512e8e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-report.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_report-ac503b4512ec34c4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-signals.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_signals-f289bbc3d009629d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-simulations.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_simulations-9ac03dcfd68d9b38)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-weather.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_weather-9165c213e177ee02)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (/private/tmp/polymarket-hft-target/compact/deps/core-a281535c5a1fed21)
+
+running 14 tests
+test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
+test malformed_update_disables_execution_until_snapshot ... ok
+test sequence_gap_requires_snapshot_and_crossed_update_is_atomic ... ok
+test polygon_only_on_config_and_market ... ok
+test quantization_memory_and_error_bound ... ok
+test loss_kill_switch_and_rate_limit ... ok
+test sell_cannot_short_and_releases_city_budget ... ok
+test cash_order_city_and_inventory_caps_include_fees ... ok
+test stale_future_and_reversed_clocks_reject ... ok
+test json_schema_strict_and_replay_deterministic ... ok
+test sweep_uses_actual_depth_and_fee_then_depletes ... ok
+test weather_high_low_final_observation_and_mass ... ok
+test weather_signal_runs_through_execution_risk ... ok
+test randomized_book_matches_ordered_reference ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/cuda.rs (/private/tmp/polymarket-hft-target/compact/deps/cuda-ba68635a233c1693)
+
+running 2 tests
+test cuda_matches_packed_cpu_across_bits_groups_widths_and_batches ... ignored, requires HFT_CUDA_HELPER, nvcc-built helper and an NVIDIA GPU
+test cuda_bridge_checks_helper_status_output_shape_and_finite_values ... ok
+
+test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.93s
+
+     Running tests/math_signals.rs (/private/tmp/polymarket-hft-target/compact/deps/math_signals-80901a24cff871ca)
+
+running 8 tests
+test binary_math_exact_and_extreme_budget_checked ... ok
+test truncated_normal_matches_half_normal_reference ... ok
+test uncertain_signals_and_budget_cannot_create_orders ... ok
+test weather_reference_grid_preserves_support_and_mass ... ok
+test paired_scores_use_identical_records_and_report_provenance_limits ... ok
+test paired_evaluation_rejects_leakage_duplicates_and_invalid_probabilities ... ok
+test signals_fail_closed_for_chain_time_and_missing_evidence ... ok
+test signal_budget_candidate_and_engine_contract ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/pipeline.rs (/private/tmp/polymarket-hft-target/compact/deps/pipeline-5e823dd525e30767)
+
+running 10 tests
+test binary_scoring_is_finite_and_rejects_bad_data ... ok
+test source_time_and_content_dedup_gates ... ok
+test bad_model_outputs_fail_and_contradiction_overrides_watch ... ok
+test legacy_base_journal_rejects_without_rewriting_history ... ok
+test writer_lock_and_config_drift_reject ... ok
+test dedup_survives_restart_and_missing_model_routes_review ... ok
+test journaled_news_halt_recovers_and_blocks_orders ... ok
+test torn_final_record_recovers_but_complete_corruption_fails ... ok
+test drawdown_halts_new_risk_and_allows_inventory_exit ... ok
+test durable_state_recovers_without_double_fills ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/simulations.rs (/private/tmp/polymarket-hft-target/compact/deps/simulations-582e372501f83286)
+
+running 2 tests
+test stress_work_is_bounded ... ok
+test stress_is_deterministic_and_reports_real_failures_and_loss ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/transport.rs (/private/tmp/polymarket-hft-target/compact/deps/transport-a68d768734306e6e)
+
+running 11 tests
+test fee_and_fractional_kelly_round_down_and_bound ... ok
+test fixed_encoding_roundtrips_and_rejects_noncanonical_frames ... ok
+test bounded_lines_handle_small_chunks_crlf_blank_and_eof ... ok
+test loaded_cpu_model_batches_without_reprobes ... ok
+test asset_id_uint256_and_backend_readiness ... ok
+test output_errors_are_returned_and_batch_finish_flushes ... ok
+test polygon_planning_domains_amounts_sizing_and_fail_closed ... ok
+test venue_book_normalization_uses_best_tick_and_conservative_whole_depth ... ok
+test grouped_kernel_matches_decoded_dense_reference ... ok
+test venue_decimal_is_exact_and_refuses_rounding_or_overflow ... ok
+test quantized_weights_corruption_shape_padding_and_numeric_checks ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/weather.rs (/private/tmp/polymarket-hft-target/compact/deps/weather-25ea46b558db722a)
+
+running 2 tests
+test weather_bounds_and_missing_outcomes_fail ... ok
+test all_weather_contracts_share_ten_thousand_and_settle_without_future_data ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests polymarket_hft
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+cargo clippy --profile compact --locked --offline --all-targets -- -D warnings
+    Checking polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 3.17s
+HFT_PROFILE=compact sh scripts/run-through.sh
+    Finished `compact` profile [optimized] target(s) in 0.14s
+{"chain":"Polygon","chain_id":137,"live":false,"reason":"Polygon paper mode; signing, authenticated submission and reconciliation unavailable","rpc":"https://polygon-rpc.com"}
+{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.6922549006727781,0.307745099327222]}
+{"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":137}
+{"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":137}
+{"line":7,"rejected":"stale_or_unsynchronized_book"}
+{"summary":{"cash_micro":1007130800,"chain_id":137,"events":8,"fills":2,"paper":true,"realized_pnl_micro":"7130800","rejects":2}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":137}
+{"summary":{"cash_micro":995491000,"chain_id":137,"events":3,"fills":1,"paper":true,"realized_pnl_micro":"0","rejects":0}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":137}
+{"token":"weather-yes","side":"sell","shares":10,"notional_micro":3000000,"fee_micro":6000,"vwap_micro":300000,"worst_price_micro":300000,"cash_micro":998485000,"time_ms":1101,"paper":true,"chain_id":137}
+{"summary":{"cash_micro":998485000,"chain_id":137,"events":5,"fills":2,"paper":true,"realized_pnl_micro":"-1515000","rejects":0}}
+{"schema_version":1,"id":"synthetic-signal-1","token":"weather-yes","chain_id":137,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"buy_candidate","conservative_probability_micro":600000,"math":{"probability_micro":600000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":149100,"full_kelly_fraction_micro":271535},"capped_fraction_micro":50000,"budget_micro":25000000,"shares":20,"total_cost_micro":9018000,"suggested_event":{"type":"trade","token":"weather-yes","side":"buy","fair_micro":600000,"shares":20,"time_ms":1100},"research_only":true,"declared_evidence_only":true}
+{"schema_version":1,"id":"synthetic-signal-no-edge","token":"weather-yes","chain_id":137,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"no_edge","conservative_probability_micro":400000,"math":{"probability_micro":400000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":-50900,"full_kelly_fraction_micro":0},"capped_fraction_micro":0,"budget_micro":0,"shares":0,"total_cost_micro":0,"suggested_event":null,"research_only":true,"declared_evidence_only":true}
+{
+  "candidate_model": "synthetic-provided-forecasts",
+  "reference_model": "constant-0.5-synthetic-reference",
+  "dataset_id": "synthetic-scoring-demo-v1",
+  "split": "heldout",
+  "synthetic": true,
+  "candidate": {
+    "samples": 4,
+    "brier": 0.065,
+    "log_loss": 0.2899092476264711,
+    "calibration_error": 0.25
+  },
+  "reference": {
+    "samples": 4,
+    "brier": 0.25,
+    "log_loss": 0.6931471805599453,
+    "calibration_error": 0.0
+  },
+  "candidate_minus_reference_brier": -0.185,
+  "candidate_minus_reference_log_loss": -0.4032379329334742,
+  "mean_brier_difference_standard_error": 0.014433756729740649,
+  "candidate_lower_on_both_scores": true,
+  "model_inference_measured": false,
+  "provenance_verified": false
+}
+{
+  "os": "macos",
+  "arch": "aarch64",
+  "apple_silicon": true,
+  "nvidia_runtime_detected": false,
+  "cuda_helper_ready": false,
+  "mlx_cpu_compiled": false,
+  "mlx_metal_compiled": false,
+  "selected": "cpu"
+}
+{
+  "chain_id": 137,
+  "asset_id": "123",
+  "protocol": "v2",
+  "domain_name": "Polymarket CTF Exchange",
+  "domain_version": "3",
+  "verifying_contract": "0xe3333700cA9d93003F00f0F71f8515005F6c00Aa",
+  "side": "BUY",
+  "order_type": "FOK",
+  "maker_amount": "9000000",
+  "taker_amount": "20000000",
+  "price_micro": 450000,
+  "shares": 20,
+  "math": {
+    "probability_micro": 600000,
+    "price_micro": 450000,
+    "fee_micro": 17325,
+    "effective_cost_micro": 467325,
+    "expected_edge_micro": 132675,
+    "full_kelly_fraction_micro": 249073
+  },
+  "reserved_cost_micro": 9346500,
+  "expires_ms": 2900,
+  "model_id": "synthetic-fixture",
+  "evidence_ref": "fixtures/polygon-plan.json",
+  "submission_enabled": false,
+  "metadata_authenticated": false
+}
+{"bits":2,"checksum":"sha256","dense_bytes":256,"encoded_bytes":80,"format":"HQT1","group":64,"packed_storage_bytes":24,"trained_model":false,"weights":64}
+{"backend":"cpu","includes_setup_and_transfer":true,"trained_model":false,"values":[-1.142857313156128,-1.142857313156128]}
+submission unavailable: signer, authenticated execution, live reconciliation and approved operating limits are not configured
+{"event":1,"fill":null}
+{"event":2,"fill":null}
+{"event":3,"fill":{"cash_micro":986272600,"chain_id":137,"fee_micro":27400,"notional_micro":13700000,"paper":true,"shares":30,"side":"buy","time_ms":1001,"token":"weather-yes","vwap_micro":456666,"worst_price_micro":460000}}
+{"event":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"event":5,"fill":null}
+{"event":6,"fill":{"cash_micro":1007130800,"chain_id":137,"fee_micro":41800,"notional_micro":20900000,"paper":true,"shares":30,"side":"sell","time_ms":1101,"token":"weather-yes","vwap_micro":696666,"worst_price_micro":690000}}
+{"event":7,"rejected":"stale_or_unsynchronized_book"}
+{"event":8,"fill":null}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":8,"realized_pnl_micro":"7130800","recovered_events":0,"recovered_tail_bytes":0}}
+{"event":1,"recovered":true}
+{"event":2,"recovered":true}
+{"event":3,"recovered":true}
+{"event":4,"recovered":true}
+{"event":5,"recovered":true}
+{"event":6,"recovered":true}
+{"event":7,"recovered":true}
+{"event":8,"recovered":true}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":0,"realized_pnl_micro":"7130800","recovered_events":8,"recovered_tail_bytes":0}}
+{"cash_micro":1007130800,"chain_id":137,"events":8,"realized_pnl_micro":"7130800","recovered_tail_bytes":0}
+{"decision":{"declared_source_only":true,"fingerprint":"ee3c40fef77e6e53bad082dec514992525f80fd8b6c23c296c88365decd9edab","id":"noaa-demo-1","model":"fixture-jev-not-live","reason":"typed_semantic_route_only","received_ms":2000,"route":"watch"},"service_error":null}
+{"decision":{"declared_source_only":true,"fingerprint":"648069f77d9cbc13bfc97baa682d3c75760daff41a6f31829fbaa7afc12efcd7","id":"noaa-demo-2","model":null,"reason":"model_unavailable","received_ms":2200,"route":"review"},"service_error":null}
+{"id":"noaa-demo-1","rejected":"stale_future_or_reversed_news_time"}
+{"id":"noaa-demo-2","rejected":"duplicate_news"}
+Polygon live execution unavailable: signer, authenticated execution, reconciliation and operating limits are not configured
+PASS: replay, weather, Polygon, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal
+Temporary evidence retained at /var/folders/ss/26l4n3y93ps20qrcs1z_dm6r0000gn/T//hft-run-through.R6JuVP
+cargo run --profile compact --locked --offline --bin hft -- replay fixtures/smoke.jsonl
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft replay fixtures/smoke.jsonl`
+{"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":137}
+{"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":137}
+{"line":7,"rejected":"stale_or_unsynchronized_book"}
+{"summary":{"cash_micro":1007130800,"chain_id":137,"events":8,"fills":2,"paper":true,"realized_pnl_micro":"7130800","rejects":2}}
+cargo run --profile compact --locked --offline --bin hft -- fair fixtures/forecast.json
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft fair fixtures/forecast.json`
+{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.6922549006727781,0.307745099327222]}
+cargo run --profile compact --locked --offline --bin hft -- polygon
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft polygon`
+{"chain":"Polygon","chain_id":137,"live":false,"reason":"Polygon paper mode; signing, authenticated submission and reconciliation unavailable","rpc":"https://polygon-rpc.com"}
+cargo run --profile compact --locked --offline --bin hft-bench > reports/benchmark-current-compact.json.tmp
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-bench`
+mv reports/benchmark-current-compact.json.tmp reports/benchmark-current-compact.json
+mkdir -p reports/current-compact
+HFT_REPORT_DIR=reports/current-compact cargo run --profile compact --locked --offline --bin hft-compare
+    Finished `compact` profile [optimized] target(s) in 0.06s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-compare`
+Compact correctness run: timings do not establish optimized performance.
+Generated equal-output comparison report, chart and raw samples
+cargo run --profile compact --locked --offline --bin hft-report
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-report`
+Generated reports/BENCHMARKS.md and reports/latency.svg
+cargo rustc -p polymarket-hft --profile compact --locked --offline --lib -- --emit=llvm-ir,asm
+   Compiling polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 7.76s
+HFT_PROFILE=compact sh scripts/install.sh
+Build stopped: 126 MiB free; at least 128 MiB required. Installed .local/bin CLIs can run without Cargo. Free storage before retrying.
+make: *** [install] Error 1

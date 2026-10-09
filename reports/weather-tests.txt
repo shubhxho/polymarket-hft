@@ -1,0 +1,10 @@
+   Compiling polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 15.43s
+     Running tests/weather.rs (/private/tmp/polymarket-hft-target/compact/deps/weather-bbc3a24fe833c79c)
+
+running 2 tests
+test weather_bounds_and_missing_outcomes_fail ... ok
+test all_weather_contracts_share_ten_thousand_and_settle_without_future_data ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+

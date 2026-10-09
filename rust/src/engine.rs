@@ -122,6 +122,7 @@ pub struct Engine {
     realized_pnl: i128,
     halted: Option<String>,
     attempts: VecDeque<u64>,
+    scratch_fills: Vec<Level>,
     last_time: u64,
 }
 
@@ -186,6 +187,7 @@ impl Engine {
             realized_pnl: 0,
             halted: None,
             attempts: VecDeque::new(),
+            scratch_fills: Vec::with_capacity(crate::polygon::BOOK_LEVELS),
             last_time: 0,
         })
     }
@@ -405,7 +407,7 @@ impl Engine {
         } else {
             market.position
         });
-        let mut fills = Vec::new();
+        self.scratch_fills.clear();
         let (mut total, mut fees, mut quantity) = (0u64, 0u64, 0u32);
         for level in market.book.levels(side) {
             let unit_fee = fee(u64::from(level.price), market.fee_bps);
@@ -429,7 +431,7 @@ impl Engine {
             total += u64::from(n) * u64::from(level.price);
             fees += u64::from(n) * unit_fee;
             quantity += n;
-            fills.push(Level {
+            self.scratch_fills.push(Level {
                 price: level.price,
                 shares: n,
             });
@@ -458,7 +460,7 @@ impl Engine {
             *self.city_cost.get_mut(&market.city).unwrap() -= basis;
             self.realized_pnl += i128::from(total) - i128::from(fees) - i128::from(basis);
         }
-        market.book.consume(side, &fills);
+        market.book.consume(side, &self.scratch_fills);
         Ok(Fill {
             token: token.into(),
             side,
@@ -466,7 +468,7 @@ impl Engine {
             notional_micro: total,
             fee_micro: fees,
             vwap_micro: (total / u64::from(quantity)) as u32,
-            worst_price_micro: fills.last().unwrap().price,
+            worst_price_micro: self.scratch_fills.last().unwrap().price,
             cash_micro: self.cash,
             time_ms: now,
             paper: true,

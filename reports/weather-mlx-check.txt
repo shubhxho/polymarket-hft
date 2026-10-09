@@ -1,0 +1,3 @@
+HFT_MIN_FREE_MB=1024 sh scripts/disk-preflight.sh
+Build stopped: 235 MiB free; at least 1024 MiB required. Installed .local/bin CLIs can run without Cargo. Free storage before retrying.
+make: *** [native-preflight] Error 1

@@ -256,3 +256,26 @@ fn venue_book_normalization_uses_best_tick_and_conservative_whole_depth() {
     unknown["asks"][0]["price"] = serde_json::json!("0.551");
     assert!(venue::normalize_book(&unknown, 70000, true).is_err());
 }
+
+#[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
+#[test]
+fn direct_mlx_rejects_bad_batches_and_nonfinite_readbacks() {
+    use polymarket_hft::mlx::MlxLinear;
+    assert!(MlxLinear::new_on_device(&[], 2, false).is_err());
+    assert!(MlxLinear::new_on_device(&[f32::NAN; 64], 2, false).is_err());
+    let model = MlxLinear::new_on_device(&[1.; 64], 4, false).unwrap();
+    for data in [
+        vec![],
+        vec![0.; 63],
+        vec![f32::INFINITY; 64],
+        vec![0.; 64 * 257],
+    ] {
+        assert!(model.dot_batch(&data).is_err());
+    }
+    assert!(model.dot(&[f32::MAX; 64]).is_err());
+    assert!(model.dot_batch(&[f32::MAX; 64]).is_err());
+    assert_eq!(
+        model.dot_batch(&vec![1.; 64 * 256]).unwrap(),
+        vec![64.; 256]
+    );
+}

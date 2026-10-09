@@ -1,0 +1,4 @@
+sh scripts/disk-preflight.sh
+cargo rustc -p polymarket-hft --profile compact --locked --offline --lib -- --emit=llvm-ir,asm
+   Compiling polymarket-hft v0.4.0 (/Users/shubh/Documents/polymarket-hft/rust)
+    Finished `compact` profile [optimized] target(s) in 5.56s

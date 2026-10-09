@@ -76,3 +76,7 @@ Project: [GitHub](https://github.com/shubhxho/polymarket-hft). Public mirrors: [
 The Rust pipeline now includes bounded reusable I/O, fixed 40-byte local updates, corruption-checked HQT1 weights, explicit fractional Kelly and an opt-in Polygon unsigned planner. CUDA source is experimental and unmeasured. Neither Polymarket nor Robinhood authenticated trading is implemented. See docs/TRANSPORT_AND_BACKENDS.md and docs/POLYGON_EXECUTION.md.
 
 The simulation extension adds 336 deterministic synthetic paths and 672,000 engine invariant checks. Losses are retained, including a negative normal/aggressive median; no profitability claim follows. See reports/SIMULATIONS.md and docs/SIMULATIONS.md. Current CPU test gate: 46 passed, one NVIDIA-only test ignored. CUDA waiting/stream changes remain GPU-unverified.
+
+## $10,000 synthetic weather portfolios
+
+Six scenarios, 96 independent seeded portfolios, 30,720 contracts and 153,600 bucket evaluations. Normal median P&L was -$117.71; forecast bias median was -$1,041.56. No profitability is established. [Full methods and all outcomes](docs/WEATHER_PORTFOLIOS.md), [raw report](reports/weather-10000.json), [animated release evidence](reports/weather-release.gif). Generator source is bundled; synthetic forecasts/resolutions can be regenerated deterministically. Native MLX checks for this update were blocked by disk preflight. CUDA and live execution remain unvalidated.

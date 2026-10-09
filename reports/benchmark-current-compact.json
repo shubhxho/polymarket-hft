@@ -1,0 +1,333 @@
+{
+  "arch": "aarch64",
+  "fixture": "synthetic-v2",
+  "limitations": [
+    "Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning",
+    "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured",
+    "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim",
+    "Jev gates use a recorded synthetic response; network/model quality is not measured",
+    "Journal samples use fsync without macOS F_FULLFSYNC; power-loss guarantees depend on the filesystem"
+  ],
+  "mlx_backend": "disabled",
+  "mlx_enabled": false,
+  "os": "macos",
+  "package_version": "0.4.0",
+  "quantization": [
+    {
+      "absolute_dot_error": 0.056878089904785156,
+      "backend": "cpu_reference",
+      "bits": 2,
+      "dense_bytes": 4096,
+      "storage_bytes": 384
+    },
+    {
+      "absolute_dot_error": 0.14974403381347656,
+      "backend": "cpu_reference",
+      "bits": 4,
+      "dense_bytes": 4096,
+      "storage_bytes": 640
+    },
+    {
+      "absolute_dot_error": 0.04233837127685547,
+      "backend": "cpu_reference",
+      "bits": 8,
+      "dense_bytes": 4096,
+      "storage_bytes": 1152
+    }
+  ],
+  "release": false,
+  "results": [
+    {
+      "max_ns": 6583,
+      "name": "timer_floor",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 19028735.29316621,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 13625,
+      "name": "book_snapshot",
+      "p50_ns": 792,
+      "p95_ns": 958,
+      "p99_ns": 1000,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1168548.5166737267,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 292,
+      "name": "book_update",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 18001800.180018,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 84,
+      "name": "book_top",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 19282516.831226878,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 8958,
+      "name": "book_top_full_scan_reference",
+      "p50_ns": 667,
+      "p95_ns": 792,
+      "p99_ns": 834,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1387323.3330443075,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 125,
+      "name": "depth_sweep",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 14031395.24686486,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 15917,
+      "name": "weather_high",
+      "p50_ns": 84,
+      "p95_ns": 125,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 7148282.178438994,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 12708,
+      "name": "weather_low",
+      "p50_ns": 84,
+      "p95_ns": 125,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 7512676.702851474,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6542,
+      "name": "level_frame_encode_40_bytes",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 13714674.42734377,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6833,
+      "name": "level_frame_decode_40_bytes",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 15531459.359218583,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 7958,
+      "name": "json_decode",
+      "p50_ns": 458,
+      "p95_ns": 500,
+      "p99_ns": 542,
+      "samples": 20000,
+      "samples_per_second_with_timer": 2036227.9569415164,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 14375,
+      "name": "engine_setup_and_fill",
+      "p50_ns": 1583,
+      "p95_ns": 1917,
+      "p99_ns": 2083,
+      "samples": 20000,
+      "samples_per_second_with_timer": 598844.2246579679,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 4917,
+      "name": "risk_stale_reject",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 17033352.155187465,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6333,
+      "name": "dense_f32_dot_1024",
+      "p50_ns": 583,
+      "p95_ns": 625,
+      "p99_ns": 625,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1668056.7139282734,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 5167,
+      "name": "signal_generate_checked_candidate",
+      "p50_ns": 125,
+      "p95_ns": 125,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 7902536.437607696,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 83,
+      "name": "binary_quote_exact_fee_edge_kelly",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 27952480.782669462,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 5500,
+      "name": "score_four_supplied_forecast_pairs",
+      "p50_ns": 250,
+      "p95_ns": 250,
+      "p99_ns": 292,
+      "samples": 20000,
+      "samples_per_second_with_timer": 3628776.1952281594,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 13834,
+      "name": "news_validate_fingerprint",
+      "p50_ns": 1208,
+      "p95_ns": 1291,
+      "p99_ns": 1333,
+      "samples": 20000,
+      "samples_per_second_with_timer": 794011.816960267,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 11083,
+      "name": "jev_request_build_six_questions",
+      "p50_ns": 1625,
+      "p95_ns": 1708,
+      "p99_ns": 1750,
+      "samples": 20000,
+      "samples_per_second_with_timer": 593747.8411699588,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 9083,
+      "name": "jev_recorded_response_gate",
+      "p50_ns": 208,
+      "p95_ns": 209,
+      "p99_ns": 250,
+      "samples": 20000,
+      "samples_per_second_with_timer": 4355874.986387891,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 5056667,
+      "name": "journal_halt_append_fsync",
+      "p50_ns": 3931584,
+      "p95_ns": 4255875,
+      "p99_ns": 5056667,
+      "samples": 100,
+      "samples_per_second_with_timer": 268.78011481281266,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 462959,
+      "name": "journal_recover_200_events",
+      "p50_ns": 363625,
+      "p95_ns": 429250,
+      "p99_ns": 462959,
+      "samples": 100,
+      "samples_per_second_with_timer": 2807.1389698569133,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 5459,
+      "name": "book_top_btree_reference",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 28429282.160625443,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6709,
+      "name": "cpu_q2_dot_1024",
+      "p50_ns": 1083,
+      "p95_ns": 1125,
+      "p99_ns": 1125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 914280.4898257725,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 11084,
+      "name": "q2_decode_1024_sha256",
+      "p50_ns": 875,
+      "p95_ns": 917,
+      "p99_ns": 959,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1085393.3194041192,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 7125,
+      "name": "cpu_q4_dot_1024",
+      "p50_ns": 1166,
+      "p95_ns": 1208,
+      "p99_ns": 1209,
+      "samples": 20000,
+      "samples_per_second_with_timer": 837579.4072391904,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 11583,
+      "name": "q4_decode_1024_sha256",
+      "p50_ns": 1333,
+      "p95_ns": 1375,
+      "p99_ns": 1417,
+      "samples": 20000,
+      "samples_per_second_with_timer": 720388.6410271705,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 8958,
+      "name": "cpu_q8_dot_1024",
+      "p50_ns": 1125,
+      "p95_ns": 1167,
+      "p99_ns": 1209,
+      "samples": 20000,
+      "samples_per_second_with_timer": 853560.9495865564,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 11541,
+      "name": "q8_decode_1024_sha256",
+      "p50_ns": 2250,
+      "p95_ns": 2333,
+      "p99_ns": 2334,
+      "samples": 20000,
+      "samples_per_second_with_timer": 436035.024513344,
+      "warmup_calls": 2000
+    }
+  ],
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "schema_version": 2
+}

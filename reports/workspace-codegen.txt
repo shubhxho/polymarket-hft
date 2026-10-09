@@ -1,0 +1,12 @@
+sh scripts/disk-preflight.sh
+cargo rustc -p polymarket-hft --profile compact --locked --offline --lib -- --emit=llvm-ir,asm
+   Compiling polymarket-hft v0.4.0 (/Users/shubh/Documents/polymarket-hft/rust)
+rustc-LLVM ERROR: IO failure on output stream: No space left on device
+error: could not compile `polymarket-hft` (lib)
+
+Caused by:
+  failed to create file `/private/tmp/polymarket-hft-target/compact/.fingerprint/polymarket-hft-0b4de4f78aa24aa7/output-lib-polymarket_hft`
+
+Caused by:
+  failed to parse process output: `/Users/shubh/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rustc --crate-name polymarket_hft --edition=2024 rust/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=1 -C embed-bitcode=no -C codegen-units=16 -C debug-assertions=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("mlx", "mlx-cpu"))' -C metadata=6fa737879a82a26d -C extra-filename=-0b4de4f78aa24aa7 --out-dir /private/tmp/polymarket-hft-target/compact/deps -C strip=debuginfo -L dependency=/private/tmp/polymarket-hft-target/compact/deps --extern reqwest=/private/tmp/polymarket-hft-target/compact/deps/libreqwest-f966ca0155f53143.rmeta --extern serde=/private/tmp/polymarket-hft-target/compact/deps/libserde-8d947db3c3527961.rmeta --extern serde_json=/private/tmp/polymarket-hft-target/compact/deps/libserde_json-bbcc8d922801663c.rmeta --extern sha2=/private/tmp/polymarket-hft-target/compact/deps/libsha2-c94e2b04ad8fbb7f.rmeta --emit=llvm-ir,asm -L native=/private/tmp/polymarket-hft-target/compact/build/ring-814fbc4f300d3423/out` (exit status: 101)
+make: *** [codegen] Error 101
