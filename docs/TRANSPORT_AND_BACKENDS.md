@@ -39,3 +39,11 @@ Use `cargo build --profile compact --locked --offline` or `make compact-check` f
 This Mac has a local ignored `.cargo/config.toml` pointing both working copies to `/private/tmp/polymarket-hft-target`, with one build job. It is a machine setting, excluded from the published source. Cargo recreates that directory when needed. `run-through.sh` resolves Cargo's target directory through metadata, so shared caches and `CARGO_TARGET_DIR` overrides work. Other machines can set their own target directory. Avoid simultaneous builds of multiple profiles when free storage is limited. Cleanup removes generated target files, preserving source, fixtures and journals; validated CLIs can run from `.local/bin` without rebuilding.
 
 The MLX toolchain disables C/C++ example executables, tests and framework benchmark targets that are not runtime dependencies. This avoids building large demo binaries in both Cargo panic profiles. `HFT_FEATURES=mlx-cpu make run-through` verifies the native CPU CLI workflow.
+
+To rerun the CLI workflow using already installed binaries without allocating a new release build, run:
+
+```sh
+HFT_BIN_DIR="$PWD/.local/bin" make run-through
+```
+
+This explicitly skips compilation. Install binaries from the source revision being evaluated before using this mode; the script checks that all seven executables exist. The default workflow still compiles the current source.

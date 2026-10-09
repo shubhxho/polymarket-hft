@@ -1,0 +1,19 @@
+   Compiling polymarket-hft v0.3.0 (/Users/shubh/Documents/polymarket-hft/rust)
+    Finished `compact` profile [optimized] target(s) in 11.29s
+     Running tests/transport.rs (/private/tmp/polymarket-hft-target/compact/deps/transport-011c22fd3cc6b922)
+
+running 11 tests
+test fee_and_fractional_kelly_round_down_and_bound ... ok
+test asset_id_uint256_and_backend_readiness ... ok
+test fixed_encoding_roundtrips_and_rejects_noncanonical_frames ... ok
+test bounded_lines_handle_small_chunks_crlf_blank_and_eof ... ok
+test loaded_cpu_model_batches_without_reprobes ... ok
+test grouped_kernel_matches_decoded_dense_reference ... ok
+test polygon_planning_domains_amounts_sizing_and_fail_closed ... ok
+test venue_book_normalization_uses_best_tick_and_conservative_whole_depth ... ok
+test output_errors_are_returned_and_batch_finish_flushes ... ok
+test venue_decimal_is_exact_and_refuses_rounding_or_overflow ... ok
+test quantized_weights_corruption_shape_padding_and_numeric_checks ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

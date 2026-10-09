@@ -1,0 +1,12 @@
+{
+  "asset_id": "32338220190071351435772801779725302244575775216413325951443816017994629993401",
+  "protocol": "ctf",
+  "chain_id": 137,
+  "tick_micro": 1000,
+  "min_shares": 5,
+  "ask_micro": 29000,
+  "available_shares": 31146,
+  "taker_fee_rate_micro": 0,
+  "observed_ms": 1791530756443,
+  "accepting_orders": false
+}
