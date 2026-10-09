@@ -1,10 +1,12 @@
-# Polymarket HFT research engine — Rust, Base only
+# Polymarket HFT research engine — Rust, Base paper engine and Polygon planning
 
 Version 0.3.0. Read the [documentation index](docs/README.md), [architecture diagrams](docs/ARCHITECTURE.md) and [operations guide](docs/OPERATIONS.md).
 
 The active engine, weather model, risk controls, replay CLI, code generation and benchmark runner are Rust. It is a paper research engine. It does **not** submit orders, sign transactions, manage a real fund, or establish profitable trading performance.
 
-Base mainnet (8453) is the sole accepted chain. Polymarket's [published exchange contracts](https://docs.polymarket.com/resources/contracts) are on Polygon (137). A Base-only policy therefore blocks live Polymarket settlement. Relabeling markets does not move their contracts to Base. The fixtures are synthetic Base-tagged paper markets, not Base Polymarket deployments.
+Base mainnet (8453) remains the paper engine’s chain. A separate opt-in Polygon planner accepts chain 137 and never rewrites Base journal events. Polymarket's [published exchange contracts](https://docs.polymarket.com/resources/contracts) are on Polygon (137). The paper engine does not perform Polymarket settlement. Relabeling markets does not move their contracts to Base. The fixtures are synthetic Base-tagged paper markets, not Base Polymarket deployments.
+
+See [buffering, encoding and backend guide](docs/TRANSPORT_AND_BACKENDS.md) for HQT1 packed weights, reusable inference, hardware detection and the experimental CUDA port. [Polygon order plans](docs/POLYGON_EXECUTION.md) add protocol-specific signing metadata and conservative fee/Kelly sizing; actual signing and submission remain unavailable.
 
 ## Run
 

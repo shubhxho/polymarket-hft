@@ -1,0 +1,8 @@
+sh scripts/provision-mlx.sh
+Pinned MLX sources ready in /private/tmp/polymarket-hft-publish/.cache/mlx
+CMAKE_TOOLCHAIN_FILE=/private/tmp/polymarket-hft-publish/.cache/mlx/toolchain.cmake cargo test --locked --offline --features mlx-cpu
+   Compiling mlx-rs v0.32.0 (/private/tmp/polymarket-hft-publish/vendor/mlx-rs)
+error: failed to build archive at `/private/tmp/polymarket-hft-publish/target/debug/deps/libmlx_rs-90b08590d2e00fee.rlib`: No space left on device (os error 28)
+
+error: could not compile `mlx-rs` (lib) due to 1 previous error
+make: *** [mlx-cpu-check] Error 101

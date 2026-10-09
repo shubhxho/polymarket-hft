@@ -1,0 +1,8 @@
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `release` profile [optimized] target(s) in 1m 07s
+     Running tests/transport.rs (/private/tmp/polymarket-hft-target/release/deps/transport-44605157b2440f29)
+
+running 1 test
+test loaded_mlx_cpu_model_reuses_weights_and_matches_packed_reference ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s

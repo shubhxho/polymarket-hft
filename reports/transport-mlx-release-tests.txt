@@ -1,0 +1,251 @@
+sh scripts/provision-mlx.sh
+Pinned MLX sources ready in /private/tmp/polymarket-hft-publish/.cache/mlx
+CMAKE_TOOLCHAIN_FILE=/private/tmp/polymarket-hft-publish/.cache/mlx/toolchain.cmake cargo test --release --locked --offline --features mlx-cpu
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `release` profile [optimized] target(s) in 1m 10s
+     Running unittests src/lib.rs (/private/tmp/polymarket-hft-target/release/deps/polymarket_hft-4327dd474e2d09c1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/private/tmp/polymarket-hft-target/release/deps/hft-230f85c824e71d7d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bench.rs (/private/tmp/polymarket-hft-target/release/deps/hft_bench-b26b9e8ba557797b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-compare.rs (/private/tmp/polymarket-hft-target/release/deps/hft_compare-5b1d997eb5570b10)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-evaluate.rs (/private/tmp/polymarket-hft-target/release/deps/hft_evaluate-53495d286c53ed4b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-hardware.rs (/private/tmp/polymarket-hft-target/release/deps/hft_hardware-53fdabd5f0779eaa)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-infer.rs (/private/tmp/polymarket-hft-target/release/deps/hft_infer-c0b1333496be4836)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-pack.rs (/private/tmp/polymarket-hft-target/release/deps/hft_pack-c62a1571fe105569)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-polymarket.rs (/private/tmp/polymarket-hft-target/release/deps/hft_polymarket-5bab445107c53a37)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-report.rs (/private/tmp/polymarket-hft-target/release/deps/hft_report-884ca342df9bbad1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-signals.rs (/private/tmp/polymarket-hft-target/release/deps/hft_signals-fac5055faab68a5c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (/private/tmp/polymarket-hft-target/release/deps/core-9cb2d13e43ac83ab)
+
+running 15 tests
+test quantization_memory_and_error_bound ... ok
+test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
+test malformed_update_disables_execution_until_snapshot ... ok
+test sell_cannot_short_and_releases_city_budget ... ok
+test base_only_on_config_and_market ... ok
+test json_schema_strict_and_replay_deterministic ... ok
+test loss_kill_switch_and_rate_limit ... ok
+test cash_order_city_and_inventory_caps_include_fees ... ok
+test sequence_gap_requires_snapshot_and_crossed_update_is_atomic ... ok
+test stale_future_and_reversed_clocks_reject ... ok
+test sweep_uses_actual_depth_and_fee_then_depletes ... ok
+test weather_high_low_final_observation_and_mass ... ok
+test weather_signal_runs_through_execution_risk ... ok
+test native_mlx_quantization_matches_constant_reference ... ok
+test randomized_book_matches_ordered_reference ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/math_signals.rs (/private/tmp/polymarket-hft-target/release/deps/math_signals-337166e2427e1801)
+
+running 8 tests
+test binary_math_exact_and_extreme_budget_checked ... ok
+test paired_evaluation_rejects_leakage_duplicates_and_invalid_probabilities ... ok
+test paired_scores_use_identical_records_and_report_provenance_limits ... ok
+test uncertain_signals_and_budget_cannot_create_orders ... ok
+test truncated_normal_matches_half_normal_reference ... ok
+test signals_fail_closed_for_chain_time_and_missing_evidence ... ok
+test weather_reference_grid_preserves_support_and_mass ... ok
+test signal_budget_candidate_and_engine_contract ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/pipeline.rs (/private/tmp/polymarket-hft-target/release/deps/pipeline-3b9c2dc04d5cef17)
+
+running 9 tests
+test binary_scoring_is_finite_and_rejects_bad_data ... ok
+test source_time_and_content_dedup_gates ... ok
+test bad_model_outputs_fail_and_contradiction_overrides_watch ... ok
+test journaled_news_halt_recovers_and_blocks_orders ... ok
+test writer_lock_and_config_drift_reject ... ok
+test dedup_survives_restart_and_missing_model_routes_review ... ok
+test drawdown_halts_new_risk_and_allows_inventory_exit ... ok
+test torn_final_record_recovers_but_complete_corruption_fails ... ok
+test durable_state_recovers_without_double_fills ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/transport.rs (/private/tmp/polymarket-hft-target/release/deps/transport-44605157b2440f29)
+
+running 12 tests
+test fee_and_fractional_kelly_round_down_and_bound ... ok
+test bounded_lines_handle_small_chunks_crlf_blank_and_eof ... ok
+test asset_id_uint256_and_backend_readiness ... ok
+test fixed_encoding_roundtrips_and_rejects_noncanonical_frames ... ok
+test loaded_cpu_model_batches_without_reprobes ... ok
+test output_errors_are_returned_and_batch_finish_flushes ... ok
+test grouped_kernel_matches_decoded_dense_reference ... ok
+test polygon_planning_domains_amounts_sizing_and_fail_closed ... ok
+test venue_book_normalization_uses_best_tick_and_conservative_whole_depth ... ok
+test venue_decimal_is_exact_and_refuses_rounding_or_overflow ... ok
+test quantized_weights_corruption_shape_padding_and_numeric_checks ... ok
+test loaded_mlx_cpu_model_reuses_weights_and_matches_packed_reference ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests polymarket_hft
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+CMAKE_TOOLCHAIN_FILE=/private/tmp/polymarket-hft-publish/.cache/mlx/toolchain.cmake cargo clippy --release --locked --offline --all-targets --features mlx-cpu -- -D warnings
+    Checking libc v0.2.190
+    Checking zerofrom v0.1.8
+    Checking stable_deref_trait v1.2.1
+    Checking yoke v0.8.3
+    Checking zerovec v0.11.8
+   Compiling polymarket-hft v0.3.0 (/private/tmp/polymarket-hft-publish/rust)
+    Checking smallvec v1.16.2
+    Checking cfg-if v1.0.5
+    Checking bytes v1.12.1
+    Checking pin-project-lite v0.2.17
+    Checking itoa v1.0.18
+    Checking futures-core v0.3.34
+    Checking tinystr v0.8.4
+    Checking writeable v0.6.4
+    Checking litemap v0.8.3
+    Checking icu_locale_core v2.3.0
+    Checking potential_utf v0.1.6
+    Checking zerotrie v0.2.5
+    Checking socket2 v0.6.5
+    Checking mio v1.2.4
+    Checking utf8_iter v1.0.4
+    Checking icu_collections v2.3.0
+    Checking tokio v1.53.2
+    Checking icu_provider v2.3.1
+    Checking http v1.5.0
+    Checking once_cell v1.21.4
+    Checking memchr v2.8.3
+    Checking futures-sink v0.3.34
+    Checking percent-encoding v2.3.2
+    Checking zeroize v1.9.1
+    Checking rustls-pki-types v1.15.1
+    Checking http-body v1.1.0
+    Checking getrandom v0.2.17
+    Checking icu_normalizer_data v2.3.0
+    Checking icu_properties_data v2.3.0
+    Checking slab v0.4.12
+    Checking futures-task v0.3.34
+    Checking futures-io v0.3.34
+    Checking untrusted v0.9.0
+    Checking ring v0.17.14
+    Checking futures-util v0.3.34
+    Checking icu_properties v2.3.0
+    Checking icu_normalizer v2.3.0
+    Checking tower-service v0.3.3
+    Checking typenum v1.20.1
+    Checking try-lock v0.2.5
+    Checking want v0.3.2
+    Checking generic-array v0.14.7
+    Checking idna_adapter v1.2.2
+    Checking rustls-webpki v0.103.15
+    Checking form_urlencoded v1.2.2
+    Checking tracing-core v0.1.36
+    Checking httparse v1.10.1
+    Checking serde_core v1.0.229
+    Checking atomic-waker v1.1.2
+    Checking subtle v2.6.1
+    Checking rustls v0.23.45
+    Checking hyper v1.12.0
+    Checking tracing v0.1.44
+    Checking idna v1.1.0
+    Checking futures-channel v0.3.34
+    Checking sync_wrapper v1.0.2
+    Checking base64 v0.23.1
+    Checking ipnet v2.12.2
+    Checking tower-layer v0.3.3
+    Checking scopeguard v1.2.0
+    Checking lock_api v0.4.14
+    Checking tower v0.5.3
+    Checking hyper-util v0.1.21
+    Checking url v2.5.8
+    Checking tokio-rustls v0.26.6
+    Checking serde v1.0.229
+    Checking block-buffer v0.10.4
+    Checking crypto-common v0.1.7
+    Checking webpki-roots v1.0.9
+    Checking parking_lot_core v0.9.12
+    Checking zerocopy v0.8.61
+    Checking num-traits v0.2.19
+    Checking zmij v1.0.23
+    Checking either v1.19.0
+    Checking bitflags v2.13.2
+    Checking ryu v1.0.23
+    Checking serde_urlencoded v0.7.1
+    Checking tower-http v0.6.11
+    Checking itertools v0.14.0
+    Checking serde_json v1.0.151
+    Checking num-complex v0.4.6
+    Checking half v2.7.1
+    Checking parking_lot v0.12.5
+    Checking hyper-rustls v0.27.10
+    Checking digest v0.10.7
+    Checking http-body-util v0.1.5
+    Checking thiserror v2.0.21
+    Checking num_enum v0.7.6
+    Checking mach-sys v0.5.4
+    Checking mlx-sys v0.6.0
+    Checking strum v0.28.0
+    Checking cpufeatures v0.2.17
+    Checking log v0.4.34
+    Checking base64 v0.22.1
+    Checking dyn-clone v1.0.20
+    Checking mlx-rs v0.32.0 (/private/tmp/polymarket-hft-publish/vendor/mlx-rs)
+    Checking reqwest v0.12.28
+    Checking sha2 v0.10.9
+    Finished `release` profile [optimized] target(s) in 40.03s

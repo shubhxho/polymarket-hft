@@ -14,3 +14,6 @@ Version 0.3.0: Rust paper execution, Base mainnet only.
 - [Readiness gates](../reports/READINESS.md)
 
 All checked market, news and model-response fixtures are synthetic. No live orders are submitted.
+
+- [Transport, packed weights and GPU backends](TRANSPORT_AND_BACKENDS.md)
+- [Polygon order planning and execution gates](POLYGON_EXECUTION.md)

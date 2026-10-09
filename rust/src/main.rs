@@ -1,5 +1,6 @@
 use polymarket_hft::{
     Result, base,
+    buffer::Lines,
     engine::{Config, Engine, Event},
     model::{Bucket, Metric, probabilities},
     news::{JevClient, JevResponse, NewsItem},
@@ -8,7 +9,7 @@ use polymarket_hft::{
 use serde::Deserialize;
 use std::{
     fs::File,
-    io::{self, BufRead, BufReader, Read},
+    io::{self, BufRead, BufReader},
 };
 
 #[derive(Deserialize)]
@@ -34,19 +35,10 @@ fn lines(path: &str, mut consume: impl FnMut(usize, &str) -> Result<()>) -> Resu
         Box::new(BufReader::new(File::open(path).map_err(|e| e.to_string())?))
     };
     let mut index = 0;
-    loop {
-        let mut bytes = Vec::new();
-        let n = (&mut reader)
-            .take(1_048_577)
-            .read_until(b'\n', &mut bytes)
-            .map_err(|e| e.to_string())?;
-        if n == 0 {
-            break;
-        }
-        if n > 1_048_576 {
-            return Err("input_line_too_large".into());
-        }
-        let line = std::str::from_utf8(&bytes).map_err(|_| "input_not_utf8")?;
+    let mut input = Lines::new(&mut reader, 1_048_576).map_err(|e| e.to_string())?;
+    while let Some((physical, bytes)) = input.next_line().map_err(|e| e.to_string())? {
+        let line =
+            std::str::from_utf8(bytes).map_err(|_| format!("line {physical}: input_not_utf8"))?;
         if line.trim().is_empty() {
             continue;
         }
@@ -107,34 +99,17 @@ fn run() -> Result<()> {
                 Config::default()
             };
             let mut engine = Engine::new(config)?;
-            let input: Box<dyn BufRead> = if args[1] == "-" {
-                Box::new(BufReader::new(io::stdin()))
-            } else {
-                Box::new(BufReader::new(
-                    File::open(&args[1]).map_err(|e| e.to_string())?,
-                ))
-            };
-            let (mut events, mut fills, mut rejects) = (0u64, 0u64, 0u64);
-            for (n, line) in input.lines().enumerate() {
-                let line = line.map_err(|e| e.to_string())?;
-                if line.trim().is_empty() {
-                    continue;
-                }
-                let event: Event =
-                    serde_json::from_str(&line).map_err(|e| format!("line {}: {e}", n + 1))?;
-                events += 1;
+            let (mut events,mut fills,mut rejects)=(0u64,0u64,0u64);
+            lines(&args[1],|n,line| {
+                let event:Event=serde_json::from_str(line).map_err(|e|format!("line {}: {e}",n+1))?;
+                events+=1;
                 match engine.apply(event) {
-                    Ok(Some(fill)) => {
-                        fills += 1;
-                        println!("{}", serde_json::to_string(&fill).unwrap());
-                    }
-                    Ok(None) => (),
-                    Err(reason) => {
-                        rejects += 1;
-                        println!("{}", serde_json::json!({"line": n + 1, "rejected": reason}));
-                    }
+                    Ok(Some(fill))=>{fills+=1;println!("{}",serde_json::to_string(&fill).map_err(|e|e.to_string())?);}
+                    Ok(None)=>(),
+                    Err(reason)=>{rejects+=1;println!("{}",serde_json::json!({"line":n+1,"rejected":reason}));}
                 }
-            }
+                Ok(())
+            })?;
             println!(
                 "{}",
                 serde_json::json!({"summary": {"events": events, "fills": fills, "rejects": rejects, "cash_micro": engine.cash_micro(), "realized_pnl_micro": engine.realized_pnl_micro().to_string(), "paper": true, "chain_id": base::CHAIN_ID}})

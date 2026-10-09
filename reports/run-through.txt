@@ -38,6 +38,47 @@
   "model_inference_measured": false,
   "provenance_verified": false
 }
+{
+  "os": "macos",
+  "arch": "aarch64",
+  "apple_silicon": true,
+  "nvidia_runtime_detected": false,
+  "cuda_helper_ready": false,
+  "mlx_cpu_compiled": true,
+  "mlx_metal_compiled": false,
+  "selected": "mlx_cpu"
+}
+{
+  "chain_id": 137,
+  "asset_id": "123",
+  "protocol": "v2",
+  "domain_name": "Polymarket CTF Exchange",
+  "domain_version": "3",
+  "verifying_contract": "0xe3333700cA9d93003F00f0F71f8515005F6c00Aa",
+  "side": "BUY",
+  "order_type": "FOK",
+  "maker_amount": "9000000",
+  "taker_amount": "20000000",
+  "price_micro": 450000,
+  "shares": 20,
+  "math": {
+    "probability_micro": 600000,
+    "price_micro": 450000,
+    "fee_micro": 17325,
+    "effective_cost_micro": 467325,
+    "expected_edge_micro": 132675,
+    "full_kelly_fraction_micro": 249073
+  },
+  "reserved_cost_micro": 9346500,
+  "expires_ms": 2900,
+  "model_id": "synthetic-fixture",
+  "evidence_ref": "fixtures/polygon-plan.json",
+  "submission_enabled": false,
+  "metadata_authenticated": false
+}
+{"bits":2,"checksum":"sha256","dense_bytes":256,"encoded_bytes":80,"format":"HQT1","group":64,"packed_storage_bytes":24,"trained_model":false,"weights":64}
+{"backend":"cpu","includes_setup_and_transfer":true,"trained_model":false,"values":[-1.142857313156128,-1.142857313156128]}
+submission unavailable: signer, authenticated execution, live reconciliation and approved operating limits are not configured
 {"event":1,"fill":null}
 {"event":2,"fill":null}
 {"event":3,"fill":{"cash_micro":986272600,"chain_id":8453,"fee_micro":27400,"notional_micro":13700000,"paper":true,"shares":30,"side":"buy","time_ms":1001,"token":"weather-yes","vwap_micro":456666,"worst_price_micro":460000}}
@@ -62,4 +103,4 @@
 {"id":"noaa-demo-1","rejected":"stale_future_or_reversed_news_time"}
 {"id":"noaa-demo-2","rejected":"duplicate_news"}
 Base-only live execution unavailable: no verified Base Polymarket exchange deployment
-PASS: replay, weather, Base, reversal, signals, paired scoring, durable restart, news dedup, live refusal
+PASS: replay, weather, Base, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal

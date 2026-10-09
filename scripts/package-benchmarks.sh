@@ -6,7 +6,7 @@ mkdir -p "$destination/data"
 cp publishing/DATASET_CARD.md "$destination/README.md"
 cp -R docs reports "$destination/"
 cp reports/lookup-samples.csv "$destination/data/"
-tar -czf "$destination/source.tar.gz" README.md Cargo.toml Cargo.lock Makefile .gitignore .gitattributes docs rust schema fixtures scripts vendor reports publishing
+tar -czf "$destination/source.tar.gz" README.md Cargo.toml Cargo.lock Makefile .gitignore .gitattributes docs rust schema fixtures scripts vendor reports publishing cuda
 archive_hash=$(shasum -a 256 "$destination/source.tar.gz" | cut -d ' ' -f 1)
 base64 < "$destination/source.tar.gz" > "$destination/source.tar.gz.base64"
 printf '# Reproduce version 0.3.0\n\nSource archive SHA-256: %s.\n\n' "$archive_hash" > "$destination/REPRODUCE.md"
@@ -22,7 +22,7 @@ Extract into an empty directory and run:
 cargo fetch --locked
 make check
 make run-through
-make signals evaluate
+make signals evaluate polygon-plan hardware
 make compare bench
 make mlx-cpu-check mlx-cpu-bench
 make report codegen install

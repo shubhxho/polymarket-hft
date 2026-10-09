@@ -1,0 +1,10 @@
+{
+  "os": "macos",
+  "arch": "aarch64",
+  "apple_silicon": true,
+  "nvidia_runtime_detected": false,
+  "cuda_helper_ready": false,
+  "mlx_cpu_compiled": true,
+  "mlx_metal_compiled": false,
+  "selected": "mlx_cpu"
+}

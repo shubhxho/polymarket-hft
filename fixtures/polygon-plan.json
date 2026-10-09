@@ -1,0 +1,35 @@
+{
+  "market": {
+    "asset_id": "123",
+    "protocol": "v2",
+    "chain_id": 137,
+    "tick_micro": 10000,
+    "min_shares": 5,
+    "ask_micro": 450000,
+    "available_shares": 100,
+    "taker_fee_rate_micro": 70000,
+    "observed_ms": 1000,
+    "accepting_orders": true
+  },
+  "policy": {
+    "polygon_enabled": true,
+    "allowed_assets": [
+      "123"
+    ],
+    "capital_micro": 1000000000,
+    "max_order_micro": 25000000,
+    "max_fraction_micro": 50000,
+    "kelly_multiplier_micro": 500000,
+    "max_shares": 20,
+    "min_edge_micro": 10000,
+    "max_age_ms": 2000
+  },
+  "forecast": {
+    "probability_micro": 650000,
+    "uncertainty_micro": 50000,
+    "model_id": "synthetic-fixture",
+    "evidence_ref": "fixtures/polygon-plan.json",
+    "forecast_ms": 900
+  },
+  "now_ms": 1100
+}

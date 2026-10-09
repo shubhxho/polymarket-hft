@@ -1,0 +1,95 @@
+[
+  {
+    "pack": {
+      "bits": 2,
+      "checksum": "sha256",
+      "dense_bytes": 256,
+      "encoded_bytes": 80,
+      "format": "HQT1",
+      "group": 64,
+      "packed_storage_bytes": 24,
+      "trained_model": false,
+      "weights": 64
+    },
+    "cpu": {
+      "backend": "cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.142857313156128,
+        -1.142857313156128
+      ]
+    },
+    "auto": {
+      "backend": "mlx_cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.1428580284118652,
+        -1.1428580284118652
+      ]
+    }
+  },
+  {
+    "pack": {
+      "bits": 4,
+      "checksum": "sha256",
+      "dense_bytes": 256,
+      "encoded_bytes": 96,
+      "format": "HQT1",
+      "group": 64,
+      "packed_storage_bytes": 40,
+      "trained_model": false,
+      "weights": 64
+    },
+    "cpu": {
+      "backend": "cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.6761906147003174,
+        -1.6761906147003174
+      ]
+    },
+    "auto": {
+      "backend": "mlx_cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.6761908531188965,
+        -1.6761908531188965
+      ]
+    }
+  },
+  {
+    "pack": {
+      "bits": 8,
+      "checksum": "sha256",
+      "dense_bytes": 256,
+      "encoded_bytes": 128,
+      "format": "HQT1",
+      "group": 64,
+      "packed_storage_bytes": 72,
+      "trained_model": false,
+      "weights": 64
+    },
+    "cpu": {
+      "backend": "cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.846498727798462,
+        -1.846498727798462
+      ]
+    },
+    "auto": {
+      "backend": "mlx_cpu",
+      "includes_setup_and_transfer": true,
+      "trained_model": false,
+      "values": [
+        -1.846498966217041,
+        -1.846498966217041
+      ]
+    }
+  }
+]

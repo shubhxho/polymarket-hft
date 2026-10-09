@@ -16,6 +16,7 @@ All values below are in integer millionths. A share resolves to 1,000,000 on suc
 - Effective cost q = a + ceil(a × fee_bps / 10,000).
 - Expected edge per share = p − q.
 - Positive-edge full Kelly fraction = floor((p − q) × 1,000,000 / (1,000,000 − q)).
+- Optional kelly_multiplier_micro applies fractional Kelly before the cap, with downward rounding; omitted values retain full Kelly for compatibility.
 - Cash fraction is capped by max_fraction_micro, then floored using u128 intermediates.
 - Order budget is capped by max_order_micro. Whole shares are floored and capped by max_shares.
 

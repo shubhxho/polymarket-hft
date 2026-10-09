@@ -16,14 +16,13 @@ pub struct MlxLinear {
     bits: i32,
 }
 impl MlxLinear {
-    fn device() -> Device {
-        if cfg!(feature = "mlx") {
-            Device::gpu()
-        } else {
-            Device::cpu()
-        }
-    }
     pub fn new(weights: &[f32], bits: i32) -> Result<Self> {
+        Self::new_on_device(weights, bits, cfg!(feature = "mlx"))
+    }
+    pub fn new_on_device(weights: &[f32], bits: i32, gpu: bool) -> Result<Self> {
+        if gpu && !cfg!(feature = "mlx") {
+            return Err("mlx_metal_not_compiled".into());
+        }
         if ![2, 4, 8].contains(&bits)
             || weights.is_empty()
             || !weights.len().is_multiple_of(64)
@@ -33,7 +32,8 @@ impl MlxLinear {
             return Err("invalid_mlx_weights".into());
         }
         let dense = Array::from_slice(weights, &[1, weights.len() as i32]);
-        let stream = Stream::try_default_on_device(&Self::device()).map_err(|e| e.to_string())?;
+        let device = if gpu { Device::gpu() } else { Device::cpu() };
+        let stream = Stream::try_default_on_device(&device).map_err(|e| e.to_string())?;
         let (weights_q, scales, biases) =
             with_stream(&stream, || quantize(&dense, 64, bits)).map_err(|e| e.to_string())?;
         weights_q.eval().map_err(|e| e.to_string())?;
@@ -46,6 +46,37 @@ impl MlxLinear {
             biases,
             width: weights.len(),
             bits,
+        })
+    }
+    /// Import exact affine codes/parameters instead of requantizing a decoded model.
+    pub fn from_quantized(q: &crate::quant::Quantized, gpu: bool) -> Result<Self> {
+        if q.group() != 64
+            || !q.len().is_multiple_of(64)
+            || q.len() > i32::MAX as usize
+            || (gpu && !cfg!(feature = "mlx"))
+        {
+            return Err("invalid_mlx_packed_layout_or_device".into());
+        }
+        let (packed, scales, biases) = q.parts();
+        let words: Vec<u32> = packed
+            .chunks_exact(4)
+            .map(|b| u32::from_le_bytes(b.try_into().unwrap()))
+            .collect();
+        let device = if gpu { Device::gpu() } else { Device::cpu() };
+        let stream = Stream::try_default_on_device(&device).map_err(|e| e.to_string())?;
+        let weights = Array::from_slice(&words, &[1, words.len() as i32]);
+        let scales = Array::from_slice(scales, &[1, scales.len() as i32]);
+        let biases = Array::from_slice(biases, &[1, biases.len() as i32]);
+        weights.eval().map_err(|e| e.to_string())?;
+        scales.eval().map_err(|e| e.to_string())?;
+        biases.eval().map_err(|e| e.to_string())?;
+        Ok(Self {
+            stream,
+            weights,
+            scales,
+            biases,
+            width: q.len(),
+            bits: i32::from(q.bits()),
         })
     }
     pub fn dot(&self, input: &[f32]) -> Result<f32> {

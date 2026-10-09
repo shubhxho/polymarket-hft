@@ -117,6 +117,21 @@ fn main() {
     results.push(measure("weather_low", n, || {
         black_box(probabilities(&buckets, Metric::Low, black_box(72.0), 70.0, 1.8, 6.0).unwrap());
     }));
+    let frame = polymarket_hft::encoding::LevelFrame {
+        token_key: 1,
+        side: Side::Buy,
+        price_micro: 450000,
+        shares: 100,
+        sequence: 1,
+        time_ms: 1000,
+    };
+    let frame_bytes = frame.encode().unwrap();
+    results.push(measure("level_frame_encode_40_bytes", n, || {
+        black_box(black_box(&frame).encode().unwrap());
+    }));
+    results.push(measure("level_frame_decode_40_bytes", n, || {
+        black_box(polymarket_hft::encoding::LevelFrame::decode(black_box(&frame_bytes)).unwrap());
+    }));
     let wire = r#"{"type":"trade","token":"t","side":"buy","fair_micro":700000,"shares":20,"time_ms":1001}"#;
     results.push(measure("json_decode", n, || {
         black_box(serde_json::from_str::<Event>(black_box(wire)).unwrap());
@@ -219,6 +234,10 @@ fn main() {
         let q = Quantized::new(&weights, bits, 64).unwrap();
         results.push(measure(&format!("cpu_q{bits}_dot_1024"), n, || {
             black_box(q.dot(black_box(&input)).unwrap());
+        }));
+        let encoded = q.encode();
+        results.push(measure(&format!("q{bits}_decode_1024_sha256"), n, || {
+            black_box(Quantized::decode(black_box(&encoded)).unwrap());
         }));
         accuracy.push(json!({"backend":"cpu_reference", "bits":bits, "absolute_dot_error": (q.dot(&input).unwrap()-reference).abs(), "storage_bytes":q.storage_bytes(), "dense_bytes": weights.len()*4}));
         #[cfg(any(feature = "mlx", feature = "mlx-cpu"))]

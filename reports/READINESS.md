@@ -4,11 +4,16 @@ Version 0.3.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 
 | Gate | Status |
 |---|---|
-| Base-only chain enforcement | Tested; non-8453 configuration and markets reject |
-| Rust correctness suite | 31 default tests; 32 native CPU tests including scalar/batch q2/q4/q8 |
-| Formatting and Clippy | Passed with warnings denied |
+| Base paper chain enforcement | Tested; non-8453 configuration and markets reject |
+| Rust correctness suite | 42 default tests; 44 native CPU tests including scalar/batch and retained loaded MLX weights |
+| Formatting and Clippy | Passed with warnings denied in release, native MLX CPU release and compact builds |
+| Disk recovery | Failed workspace/duplicate release artifacts cleared; shared local cache and compact build verified in the workspace |
 | CPU kernel and engine benchmarks | Completed; synthetic fixture and raw JSON included |
 | Native MLX CPU | Tests and Clippy passed; optimized release and debug benchmarks recorded |
+| Packed I/O and buffering | Bounded input, output errors, fixed-frame and packed-weight corruption checks tested |
+| Polygon order planning | Opt-in unsigned BUY/FOK plans; tick/asset/protocol/time/budget gates tested |
+| Read-only Polymarket API | Public API fetched with curl and normalized by Rust; Rust HTTPS transport/continuous feed remains unverified |
+| CUDA | Experimental kernel/bridge source; nvcc unavailable, no CUDA correctness or latency measured |
 | Metal GPU | Unmeasured; host lacks the Metal compiler |
 | News/Jev | Typed fixture gates, time/source rejection, dedup and halt recovery tested |
 | Live Jev | Unverified; no API credentials, accuracy or service latency measurement |
@@ -25,5 +30,7 @@ Version 0.3.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 | HRT comparison | No accessible proprietary benchmark/reference supplied |
 | Public benchmark publication | [Published Gist](https://gist.github.com/shubhxho/1b15d2cd4c0dc4568bb311f627e6db0b); raw results and reproducible source included |
 | Source delivery | Private repository created at `shubhxho/polymarket-hft`; push verification is recorded in the delivery response |
+
+Validation logs: transport-release-tests.txt, transport-mlx-release-tests.txt and compact-check.txt. Installed q2/q4/q8 CPU/MLX equivalence is recorded in installed-packed-inference.json. Earlier native debug runs hit local disk capacity; optimized release validation is reported separately.
 
 Remaining live gates include observed latency/reconnect tests, fill/account reconciliation, resolution audits, held-out calibration and settlement costs. Storage uses fsync, not F_FULLFSYNC; hardware power-loss durability, compaction and distributed leases are unverified. News checks declared URLs without authenticating content. Untrained weather probabilities and synthetic kernel accuracy are not evidence of alpha. Paper fees approximate flat bps and do not establish live best execution.

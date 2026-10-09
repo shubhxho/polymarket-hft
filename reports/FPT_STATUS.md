@@ -6,4 +6,4 @@ FPT names multiple unrelated models/tasks. Publication requires a repository/mod
 
 The Rust paired evaluator is ready to compare supplied forecasts on identical outcomes with strict shape, duplicate-ID, probability and declared timestamp checks. Its synthetic fixture demonstrates scoring arithmetic only. Evidence/provenance verification and actual FPT inference remain outstanding.
 
-The requested “shifti” integration also needs the product/library identifier. No guessed SDK or provider has been connected. Base-only remains active pending clarification of “polygon.”
+The requested “shifti” integration also needs the product/library identifier. No guessed SDK or provider has been connected. The paper engine remains Base-only; a separately enabled Polygon research planner follows the latest migration request. No funds moved or orders submitted.

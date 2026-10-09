@@ -1,0 +1,17 @@
+# Polygon planning and live execution gates
+
+The latest migration request permits adding a Polygon path. It is separate from the Base paper engine and its journal. No bridging, approvals, token deposits, wallet access, signing or live submission was performed.
+
+`make polygon-plan` emits a synthetic, unsigned BUY/FOK plan. Input identifies chain 137, a canonical uint256 outcome asset ID, protocol, tick, minimum size, available ask depth, fee rate and clocks. Explicit policy opts in to Polygon, allows specific assets, caps capital/order/shares and applies fractional Kelly after an uncertainty margin. Future/stale data, invalid tick/ID, closed market, missing evidence, weak edge and insufficient size reject. Depth is supplied metadata, not a verified fill promise.
+
+Current Polymarket documentation distinguishes CTF tokens and V2 position IDs and specifies different signing-domain versions/contracts. The plan maps those fields explicitly and encodes whole-share BUY amounts using integer millionths. It does not change an old market’s asset ID or treat a Base asset as a Polygon asset. Domain constants were checked against the [official order guide](https://docs.polymarket.com/trading/place-orders); refresh them before integrating a signer.
+
+Fees use a conservative per-share ceiling of rate × price × (1 − price), then the exact edge/Kelly calculation. This differs from the paper engine’s flat bps fee. The [official fee guide](https://docs.polymarket.com/trading/fees) describes category-dependent fees and match-time rounding. Rates must be obtained for the actual market. Fees collected as reduced delivered shares or other settlement adjustments require net-share-aware live accounting; the unsigned plan assumes an upfront cash fee and cannot be used as a fill ledger. Fractional Kelly and caps do not model correlated positions, forecast error or price impact.
+
+`hft-polymarket normalize <book.json> <fee-rate-micro>` parses public book decimals exactly without floating point. It maps protocol metadata, selects the lowest valid ask, floors available whole-share depth and rounds minimum size up. Unsupported precision/protocol/ticks and malformed levels reject. Its output defaults accepting_orders to false; book presence is not proof a market accepts orders.
+
+The pooled Rust `MarketClient` retrieves read-only books with TCP_NODELAY, fixed HTTPS origin, bounded responses, timeouts and redirect refusal. `hft-polymarket book <asset-id>` exposes that result without credentials. It does not authenticate metadata or build a continuous reconciled feed. `hft-polymarket submit` refuses because live execution is unavailable.
+
+To finish automatic trading, the missing pieces are: a verified Rust signer/SDK integration for the correct market and wallet type; API authentication; authoritative fresh book/fee data; account and fill reconciliation; persistent idempotent reservations and ambiguous-submit handling; kill/cancel controls; and user-specified per-order capital, total exposure, daily loss and allowed-market limits. A bearer token by itself is insufficient for Polymarket order signing. No private key should be supplied in chat.
+
+Robinhood’s [documented crypto trading API](https://docs.robinhood.com/crypto/trading/) is a separate venue with its own authentication, instruments and accounting. This release does not provide a Robinhood execution adapter or imply its credentials work on Polymarket. Trading funds and investor revenue remain unverified.

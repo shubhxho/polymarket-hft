@@ -71,3 +71,31 @@ codegen:
 
 install:
 	cargo install --path rust --locked --offline --root .local
+
+.PHONY: hardware polygon-plan cuda-build
+hardware:
+	cargo run --release --locked --offline --bin hft-hardware
+
+polygon-plan:
+	cargo run --release --locked --offline --bin hft-polymarket -- plan fixtures/polygon-plan.json > reports/polygon-plan.json
+
+cuda-build:
+	sh scripts/build-cuda.sh
+
+.PHONY: mlx-cpu-release-check
+mlx-cpu-release-check:
+	sh scripts/provision-mlx.sh
+	CMAKE_TOOLCHAIN_FILE=$(CURDIR)/.cache/mlx/toolchain.cmake cargo test --release --locked --offline --features mlx-cpu
+	CMAKE_TOOLCHAIN_FILE=$(CURDIR)/.cache/mlx/toolchain.cmake cargo clippy --release --locked --offline --all-targets --features mlx-cpu -- -D warnings
+
+.PHONY: release-check
+release-check:
+	cargo fmt --all -- --check
+	cargo test --release --locked --offline
+	cargo clippy --release --locked --offline --all-targets -- -D warnings
+
+.PHONY: compact-check
+compact-check:
+	cargo fmt --all -- --check
+	cargo test --profile compact --locked --offline
+	cargo clippy --profile compact --locked --offline --all-targets -- -D warnings

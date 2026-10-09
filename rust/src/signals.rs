@@ -4,7 +4,7 @@ use crate::{
     base::{CHAIN_ID, PRICE_SCALE},
     book::Side,
     engine::Event,
-    math::{BinaryQuote, binary_quote, fraction_budget},
+    math::{BinaryQuote, binary_quote, fraction_budget, fractional_kelly},
 };
 use serde::{Deserialize, Serialize};
 
@@ -21,6 +21,8 @@ pub struct SignalRequest {
     pub ask_price_micro: u32,
     pub fee_bps: u32,
     pub capital_micro: u64,
+    #[serde(default = "full_kelly")]
+    pub kelly_multiplier_micro: u32,
     pub max_fraction_micro: u32,
     pub max_order_micro: u64,
     pub max_shares: u32,
@@ -59,6 +61,10 @@ pub struct Signal {
     pub declared_evidence_only: bool,
 }
 
+fn full_kelly() -> u32 {
+    PRICE_SCALE
+}
+
 pub fn generate(r: &SignalRequest) -> Result<Signal> {
     if r.chain_id != CHAIN_ID {
         return Err("Base_only: signal_chain_mismatch".into());
@@ -89,7 +95,11 @@ pub fn generate(r: &SignalRequest) -> Result<Signal> {
         .probability_micro
         .saturating_sub(r.uncertainty_margin_micro);
     let math = binary_quote(probability, r.ask_price_micro, r.fee_bps)?;
-    let fraction = math.full_kelly_fraction_micro.min(r.max_fraction_micro);
+    let fraction = fractional_kelly(
+        math.full_kelly_fraction_micro,
+        r.kelly_multiplier_micro,
+        r.max_fraction_micro,
+    )?;
     let budget = fraction_budget(r.capital_micro, fraction)?.min(r.max_order_micro);
     let shares = (budget / math.effective_cost_micro).min(u64::from(r.max_shares)) as u32;
     let action = if math.expected_edge_micro <= 0

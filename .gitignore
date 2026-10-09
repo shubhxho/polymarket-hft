@@ -14,3 +14,6 @@ target/
 .local/
 .cache/
 *.journal
+
+# Machine-specific shared build cache; never include in source publication.
+.cargo/config.toml
