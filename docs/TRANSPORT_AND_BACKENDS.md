@@ -51,3 +51,5 @@ This explicitly skips compilation. Install binaries from the source revision bei
 Build and run the current source with reduced artifact size using `HFT_PROFILE=compact make run-through`. Compact timings are not interchangeable with release benchmarks.
 
 Loaded CPU batches check shape and finite inputs once, then reuse the internal packed kernel without rescanning each row. Journal replay also reuses its bounded frame buffer across records. Performance changes still require measurements on deployment hardware.
+
+CUDA inference now distinguishes process exit and deadline failures; see [waiting controls](SIMULATIONS.md). Device-grid checks and stream completion handling are present in source and remain GPU-unverified.

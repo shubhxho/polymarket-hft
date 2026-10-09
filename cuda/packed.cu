@@ -36,6 +36,7 @@ __global__ void packed_dot(const uint8_t* __restrict__ w,
     if (lane == 0) y[row] = sum;
   }
 }
+struct Stream { cudaStream_t value; Stream(){check(cudaStreamCreateWithFlags(&value,cudaStreamNonBlocking));} ~Stream(){cudaStreamDestroy(value);} Stream(const Stream&)=delete; };
 struct DeviceBuffer {void* p=nullptr;DeviceBuffer(size_t n){check(cudaMalloc(&p,n));}~DeviceBuffer(){if(p)cudaFree(p);}DeviceBuffer(const DeviceBuffer&)=delete;};
 static uint32_t u32(const uint8_t* b){return uint32_t(b[0])|(uint32_t(b[1])<<8)|(uint32_t(b[2])<<16)|(uint32_t(b[3])<<24);}
 int main(int argc,char** argv){try{
@@ -46,11 +47,13 @@ int main(int argc,char** argv){try{
  if(std::memcmp(q,"HQT1",4)||q[5]||q[6]||q[7])throw std::runtime_error("weights_header");uint32_t bits=q[4],group=u32(q+8),width=u32(q+12),packed=u32(q+16),groups=u32(q+20);
  if((bits!=2&&bits!=4&&bits!=8)||width==0||width>16*1024*1024||group==0||width%group||groups!=width/group||packed!=(uint64_t(width)*bits+7)/8||qbytes!=24+uint64_t(groups)*8+packed+32||uint64_t(width)*rows>16*1024*1024||b.size()!=16+qbytes+uint64_t(width)*rows*4)throw std::runtime_error("weights_shape");
  std::vector<float> scales(groups),biases(groups),x(size_t(width)*rows),y(rows);for(uint32_t i=0;i<groups;i++){std::memcpy(&scales[i],q+24+i*8,4);std::memcpy(&biases[i],q+28+i*8,4);if(!std::isfinite(scales[i])||scales[i]<=0||!std::isfinite(biases[i]))throw std::runtime_error("weights_nonfinite");}std::memcpy(x.data(),b.data()+16+qbytes,x.size()*4);for(float v:x)if(!std::isfinite(v))throw std::runtime_error("input_nonfinite");
- DeviceBuffer dw(packed),ds(groups*4),db(groups*4),dx(x.size()*4),dy(rows*4);check(cudaMemcpy(dw.p,q+24+groups*8,packed,cudaMemcpyHostToDevice));check(cudaMemcpy(ds.p,scales.data(),groups*4,cudaMemcpyHostToDevice));check(cudaMemcpy(db.p,biases.data(),groups*4,cudaMemcpyHostToDevice));check(cudaMemcpy(dx.p,x.data(),x.size()*4,cudaMemcpyHostToDevice));
+ check(cudaSetDevice(0));cudaDeviceProp properties{};check(cudaGetDeviceProperties(&properties,0));if(properties.maxThreadsPerBlock<256||rows>uint32_t(properties.maxGridSize[0]))throw std::runtime_error("launch_coordinates_unsupported");
+ Stream stream;
+ DeviceBuffer dw(packed),ds(groups*4),db(groups*4),dx(x.size()*4),dy(rows*4);check(cudaMemcpyAsync(dw.p,q+24+groups*8,packed,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(ds.p,scales.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(db.p,biases.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(dx.p,x.data(),x.size()*4,cudaMemcpyHostToDevice,stream.value));
  switch(bits) {
- case 2: packed_dot<2><<<rows,256>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
- case 4: packed_dot<4><<<rows,256>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
- case 8: packed_dot<8><<<rows,256>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
-}check(cudaGetLastError());check(cudaMemcpy(y.data(),dy.p,rows*4,cudaMemcpyDeviceToHost));for(float v:y)if(!std::isfinite(v))throw std::runtime_error("output_nonfinite");
+ case 2: packed_dot<2><<<rows,256,0,stream.value>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
+ case 4: packed_dot<4><<<rows,256,0,stream.value>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
+ case 8: packed_dot<8><<<rows,256,0,stream.value>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
+}check(cudaGetLastError());check(cudaMemcpyAsync(y.data(),dy.p,rows*4,cudaMemcpyDeviceToHost,stream.value));check(cudaStreamSynchronize(stream.value));for(float v:y)if(!std::isfinite(v))throw std::runtime_error("output_nonfinite");
  std::ofstream o(argv[2],std::ios::binary|std::ios::trunc);o.write(reinterpret_cast<char*>(y.data()),rows*4);o.flush();if(!o)throw std::runtime_error("output_write");return 0;
  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

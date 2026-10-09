@@ -17,3 +17,5 @@ All checked market, news and model-response fixtures are synthetic. No live orde
 
 - [Transport, packed weights and GPU backends](TRANSPORT_AND_BACKENDS.md)
 - [Polygon order planning and execution gates](POLYGON_EXECUTION.md)
+
+Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](SIMULATIONS.md).

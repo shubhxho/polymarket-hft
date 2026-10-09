@@ -5,7 +5,7 @@ Version 0.4.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 | Gate | Status |
 |---|---|
 | Polygon chain enforcement | Non-137 configurations, markets and signals reject; Base journals reject unchanged |
-| Rust correctness suite | Current compact gate: 44 passed, one GPU test ignored; previous 0.3.0 native MLX release gate: 44 passed |
+| Rust correctness suite | Current compact gate: 46 passed, one GPU test ignored; previous 0.3.0 native MLX release gate: 44 passed |
 | Formatting and Clippy | Passed with warnings denied in release, native MLX CPU release and compact builds |
 | Disk recovery | Failed workspace/duplicate release artifacts cleared; shared local cache and compact build verified in the workspace |
 | CPU kernel and engine benchmarks | Completed; synthetic fixture and raw JSON included |
@@ -34,3 +34,5 @@ Version 0.4.0 delivers a Rust paper/replay engine and benchmark suite. Live fund
 Current validation: polygon-check.txt, polygon-workflow.txt and polygon-installed-workflow.txt. Historical 0.3.0 logs: transport-release-tests.txt, transport-mlx-release-tests.txt and compact-check.txt. Installed q2/q4/q8 CPU/MLX equivalence is recorded in installed-packed-inference.json. Earlier native debug runs hit local disk capacity; optimized release validation is reported separately.
 
 Remaining live gates include observed latency/reconnect tests, fill/account reconciliation, resolution audits, held-out calibration and settlement costs. Storage uses fsync, not F_FULLFSYNC; hardware power-loss durability, compaction and distributed leases are unverified. News checks declared URLs without authenticating content. Untrained weather probabilities and synthetic kernel accuracy are not evidence of alpha. Paper fees approximate flat bps and do not establish live best execution.
+
+Simulation extension: make simulations passed 672,000 checks across 336 synthetic paths; negative P&L retained. make codegen emitted compact LLVM IR/assembly. See SIMULATIONS.md and simulation-codegen.txt.

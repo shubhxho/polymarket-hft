@@ -61,7 +61,7 @@ Version 0.4.0 migration evidence is in [POLYGON_MIGRATION.md](reports/POLYGON_MI
 
 ## Validation and limits
 
-Current Polygon version 0.4.0 passed 44 compact-profile tests; one NVIDIA-only parity test is explicitly ignored. Historical version 0.3.0 passed 42 default and 44 native MLX CPU tests. Formatting, Clippy, replay, reversal, journal restart, news rejection, signal math, paired scoring, code generation and installation were exercised.
+Current Polygon version 0.4.0 passed 46 compact-profile tests; one NVIDIA-only parity test is explicitly ignored. Historical version 0.3.0 passed 42 default and 44 native MLX CPU tests. Formatting, Clippy, replay, reversal, journal restart, news rejection, signal math, paired scoring, code generation and installation were exercised.
 
 The Rust signal interface exports expiring candidates with exact fee/edge math, conservative probabilities and capped sizing. The weather baseline now uses conditional truncated-normal normalization, verified against a half-normal reference. The paired scoring fixture is synthetic and does not establish FPT superiority. See docs/SIGNALS_AND_MATH.md and reports/FPT_STATUS.md.
 
@@ -74,3 +74,5 @@ The current Rust engine, signals and planner enforce Polygon 137; Base inputs an
 Project: [GitHub](https://github.com/shubhxho/polymarket-hft). Public mirrors: [benchmark Gist](https://gist.github.com/shubhxho/1b15d2cd4c0dc4568bb311f627e6db0b).
 
 The Rust pipeline now includes bounded reusable I/O, fixed 40-byte local updates, corruption-checked HQT1 weights, explicit fractional Kelly and an opt-in Polygon unsigned planner. CUDA source is experimental and unmeasured. Neither Polymarket nor Robinhood authenticated trading is implemented. See docs/TRANSPORT_AND_BACKENDS.md and docs/POLYGON_EXECUTION.md.
+
+The simulation extension adds 336 deterministic synthetic paths and 672,000 engine invariant checks. Losses are retained, including a negative normal/aggressive median; no profitability claim follows. See reports/SIMULATIONS.md and docs/SIMULATIONS.md. Current CPU test gate: 46 passed, one NVIDIA-only test ignored. CUDA waiting/stream changes remain GPU-unverified.

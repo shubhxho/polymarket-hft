@@ -1,0 +1,3 @@
+sh scripts/build-cuda.sh
+CUDA unmeasured: nvcc is unavailable
+make: *** [cuda-build] Error 1

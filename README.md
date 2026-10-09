@@ -83,3 +83,5 @@ The [Hugging Face dataset](https://huggingface.co/datasets/shubhxho/polymarket-h
 The former Python prototype is preserved under `legacy/python/` for reference. Its live gateway remains disabled. It is not part of the Rust runtime or current validation surface.
 
 Current Polygon migration and validation: [version 0.4.0 report](reports/POLYGON_MIGRATION.md). Fresh [compact CPU timings](reports/benchmark-polygon-compact.json) are separate from historical release measurements. On this disk-constrained Mac, run `HFT_PROFILE=compact make run-through`; the current installed runtime CLIs were refreshed with compact CPU builds. Native MLX requires a new feature-enabled build.
+
+Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](docs/SIMULATIONS.md).

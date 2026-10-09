@@ -1,0 +1,168 @@
+cargo fmt --all -- --check
+cargo test --profile compact --locked --offline
+   Compiling polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 21.90s
+     Running unittests src/lib.rs (/private/tmp/polymarket-hft-target/compact/deps/polymarket_hft-e692b65f5fc973c2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/private/tmp/polymarket-hft-target/compact/deps/hft-a533a4d4fe2b2419)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bench.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_bench-c33af17c494840d0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-compare.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_compare-cd8c63e6dcfd879e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-evaluate.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_evaluate-e8db85a17b19ae72)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-hardware.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_hardware-6c5b67f972d37d5b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-infer.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_infer-5c01208554fdda14)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-pack.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_pack-812d2034532fc493)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-polymarket.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_polymarket-21d629bd20ba3750)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-report.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_report-ac503b4512ec34c4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-signals.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_signals-f289bbc3d009629d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/hft-simulations.rs (/private/tmp/polymarket-hft-target/compact/deps/hft_simulations-9ac03dcfd68d9b38)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (/private/tmp/polymarket-hft-target/compact/deps/core-3b5b63a5c7500422)
+
+running 14 tests
+test no_silent_tick_clamping_or_duplicate_snapshot_levels ... ok
+test malformed_update_disables_execution_until_snapshot ... ok
+test quantization_memory_and_error_bound ... ok
+test sequence_gap_requires_snapshot_and_crossed_update_is_atomic ... ok
+test sell_cannot_short_and_releases_city_budget ... ok
+test polygon_only_on_config_and_market ... ok
+test loss_kill_switch_and_rate_limit ... ok
+test cash_order_city_and_inventory_caps_include_fees ... ok
+test json_schema_strict_and_replay_deterministic ... ok
+test stale_future_and_reversed_clocks_reject ... ok
+test sweep_uses_actual_depth_and_fee_then_depletes ... ok
+test weather_high_low_final_observation_and_mass ... ok
+test weather_signal_runs_through_execution_risk ... ok
+test randomized_book_matches_ordered_reference ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/cuda.rs (/private/tmp/polymarket-hft-target/compact/deps/cuda-3ce527f89a6b870b)
+
+running 2 tests
+test cuda_matches_packed_cpu_across_bits_groups_widths_and_batches ... ignored, requires HFT_CUDA_HELPER, nvcc-built helper and an NVIDIA GPU
+test cuda_bridge_checks_helper_status_output_shape_and_finite_values ... ok
+
+test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.87s
+
+     Running tests/math_signals.rs (/private/tmp/polymarket-hft-target/compact/deps/math_signals-f28f9d8d40d2c5ed)
+
+running 8 tests
+test binary_math_exact_and_extreme_budget_checked ... ok
+test truncated_normal_matches_half_normal_reference ... ok
+test uncertain_signals_and_budget_cannot_create_orders ... ok
+test signals_fail_closed_for_chain_time_and_missing_evidence ... ok
+test paired_scores_use_identical_records_and_report_provenance_limits ... ok
+test paired_evaluation_rejects_leakage_duplicates_and_invalid_probabilities ... ok
+test weather_reference_grid_preserves_support_and_mass ... ok
+test signal_budget_candidate_and_engine_contract ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/pipeline.rs (/private/tmp/polymarket-hft-target/compact/deps/pipeline-5eb9cad36bf0ee94)
+
+running 10 tests
+test binary_scoring_is_finite_and_rejects_bad_data ... ok
+test bad_model_outputs_fail_and_contradiction_overrides_watch ... ok
+test source_time_and_content_dedup_gates ... ok
+test legacy_base_journal_rejects_without_rewriting_history ... ok
+test writer_lock_and_config_drift_reject ... ok
+test dedup_survives_restart_and_missing_model_routes_review ... ok
+test journaled_news_halt_recovers_and_blocks_orders ... ok
+test torn_final_record_recovers_but_complete_corruption_fails ... ok
+test drawdown_halts_new_risk_and_allows_inventory_exit ... ok
+test durable_state_recovers_without_double_fills ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/simulations.rs (/private/tmp/polymarket-hft-target/compact/deps/simulations-97317477311bc1f8)
+
+running 2 tests
+test stress_work_is_bounded ... ok
+test stress_is_deterministic_and_reports_real_failures_and_loss ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/transport.rs (/private/tmp/polymarket-hft-target/compact/deps/transport-3a2b6ef566d21e78)
+
+running 11 tests
+test fixed_encoding_roundtrips_and_rejects_noncanonical_frames ... ok
+test fee_and_fractional_kelly_round_down_and_bound ... ok
+test asset_id_uint256_and_backend_readiness ... ok
+test bounded_lines_handle_small_chunks_crlf_blank_and_eof ... ok
+test loaded_cpu_model_batches_without_reprobes ... ok
+test output_errors_are_returned_and_batch_finish_flushes ... ok
+test grouped_kernel_matches_decoded_dense_reference ... ok
+test venue_book_normalization_uses_best_tick_and_conservative_whole_depth ... ok
+test venue_decimal_is_exact_and_refuses_rounding_or_overflow ... ok
+test polygon_planning_domains_amounts_sizing_and_fail_closed ... ok
+test quantized_weights_corruption_shape_padding_and_numeric_checks ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests polymarket_hft
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+cargo clippy --profile compact --locked --offline --all-targets -- -D warnings
+    Checking polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 2.91s

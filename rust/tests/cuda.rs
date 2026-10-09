@@ -71,7 +71,12 @@ fn cuda_bridge_checks_helper_status_output_shape_and_finite_values() {
             "printf '\\000\\000\\300\\177' > \"$2\"",
             Some("cuda_output_nonfinite"),
         ),
-        ("exit 1", Some("cuda_helper_failed_or_timed_out")),
+        (
+            "printf '\\000\\000\\370\\101' > \"$2\"",
+            Some("cuda_startup_parity_failed"),
+        ),
+        ("exit 1", Some("cuda_helper_exit_failed")),
+        ("exec sleep 5", Some("cuda_helper_timed_out")),
     ] {
         fs::write(
             &helper,
@@ -81,6 +86,7 @@ fn cuda_bridge_checks_helper_status_output_shape_and_finite_values() {
         fs::set_permissions(&helper, fs::Permissions::from_mode(0o700)).unwrap();
         let output = Command::new(env!("CARGO_BIN_EXE_hft-infer"))
             .env("HFT_CUDA_HELPER", &helper)
+            .env("HFT_CUDA_TIMEOUT_MS", "100")
             .args([weights.to_str().unwrap(), input.to_str().unwrap(), "cuda"])
             .output()
             .unwrap();
@@ -93,5 +99,15 @@ fn cuda_bridge_checks_helper_status_output_shape_and_finite_values() {
             assert_eq!(result["backend"], "cuda");
             assert_eq!(result["values"], serde_json::json!([32.0]));
         }
+    }
+    for value in ["0", "invalid", "30001"] {
+        let output = Command::new(env!("CARGO_BIN_EXE_hft-infer"))
+            .env("HFT_CUDA_HELPER", &helper)
+            .env("HFT_CUDA_TIMEOUT_MS", value)
+            .args([weights.to_str().unwrap(), input.to_str().unwrap(), "cuda"])
+            .output()
+            .unwrap();
+        assert!(!output.status.success());
+        assert!(String::from_utf8_lossy(&output.stderr).contains("invalid_cuda_timeout"));
     }
 }

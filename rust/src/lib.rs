@@ -13,6 +13,7 @@ pub mod model;
 pub mod news;
 pub mod quant;
 pub mod signals;
+pub mod simulation;
 pub mod storage;
 pub mod venue;
 pub mod polygon {

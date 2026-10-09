@@ -64,10 +64,12 @@ durable:
 news:
 	cargo run --release --locked --offline --bin hft -- news fixtures/news.jsonl news.journal
 
-# Inspect LLVM output. Fat LTO and one codegen unit are in Cargo.toml.
+# Compact is the disk-safe default for inspection/stress. Set HFT_PROFILE=release for optimized measurements.
+HFT_PROFILE ?= compact
+# Fat LTO and one codegen unit are in the release profile.
 # Local CPU tuning: RUSTFLAGS='-C target-cpu=native' make codegen.
 codegen:
-	cargo rustc -p polymarket-hft --release --locked --offline --lib -- --emit=llvm-ir,asm
+	cargo rustc -p polymarket-hft --profile $(HFT_PROFILE) --locked --offline --lib -- --emit=llvm-ir,asm
 
 install:
 	cargo install --path rust --locked --offline --root .local
@@ -103,3 +105,9 @@ compact-check:
 .PHONY: cuda-check
 cuda-check: cuda-build
 	HFT_CUDA_HELPER=$(CURDIR)/.local/bin/hft-cuda cargo test --profile compact --locked --offline --test cuda -- --ignored --nocapture
+
+.PHONY: simulations
+simulations: compact-check
+	mkdir -p reports
+	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-simulations -- --report > reports/simulations.json.tmp
+	mv reports/simulations.json.tmp reports/simulations.json

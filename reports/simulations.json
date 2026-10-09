@@ -1,0 +1,6123 @@
+{
+  "schema_version": 1,
+  "package_version": "0.4.0",
+  "chain_id": 137,
+  "synthetic": true,
+  "live_ready": false,
+  "profitability_established": false,
+  "simulation_gate_passed": true,
+  "steps_per_path": 2000,
+  "seeds_per_scenario": 16,
+  "invariant_checks": 672000,
+  "paths": [
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 501,
+      "fees_micro": 24382874,
+      "traded_notional_micro": 12191437000,
+      "pnl_micro": 32840174,
+      "realized_pnl_micro": 31364074,
+      "max_drawdown_micro": 12092096,
+      "ending_position": 52,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1499
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 48,
+      "fees_micro": 2340386,
+      "traded_notional_micro": 1170193000,
+      "pnl_micro": -4775386,
+      "realized_pnl_micro": -4775386,
+      "max_drawdown_micro": 7416092,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1589,
+        "insufficient_edge_liquidity_or_budget": 363
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 510,
+      "fees_micro": 24498244,
+      "traded_notional_micro": 12249122000,
+      "pnl_micro": 10392452,
+      "realized_pnl_micro": 10853084,
+      "max_drawdown_micro": 14987414,
+      "ending_position": 37,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1490
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 45,
+      "fees_micro": 2164074,
+      "traded_notional_micro": 1082037000,
+      "pnl_micro": -5851074,
+      "realized_pnl_micro": -5851074,
+      "max_drawdown_micro": 9218736,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1605,
+        "insufficient_edge_liquidity_or_budget": 350
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 507,
+      "fees_micro": 24615494,
+      "traded_notional_micro": 12307747000,
+      "pnl_micro": 16283586,
+      "realized_pnl_micro": 17709527,
+      "max_drawdown_micro": 15120842,
+      "ending_position": 60,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1493
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 43,
+      "fees_micro": 2076572,
+      "traded_notional_micro": 1038286000,
+      "pnl_micro": -5338572,
+      "realized_pnl_micro": -5338572,
+      "max_drawdown_micro": 10662382,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1615,
+        "insufficient_edge_liquidity_or_budget": 342
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 262,
+      "fees_micro": 12764070,
+      "traded_notional_micro": 6382035000,
+      "pnl_micro": -3489070,
+      "realized_pnl_micro": -3489070,
+      "max_drawdown_micro": 21339132,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 845,
+        "insufficient_edge_liquidity_or_budget": 893
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 501,
+      "fees_micro": 24342212,
+      "traded_notional_micro": 12171106000,
+      "pnl_micro": 24991788,
+      "realized_pnl_micro": 24991788,
+      "max_drawdown_micro": 9875458,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1499
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 506,
+      "fees_micro": 24675434,
+      "traded_notional_micro": 12337717000,
+      "pnl_micro": 29237502,
+      "realized_pnl_micro": 29384894,
+      "max_drawdown_micro": 10302002,
+      "ending_position": 64,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1494
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 505,
+      "fees_micro": 24667948,
+      "traded_notional_micro": 12333974000,
+      "pnl_micro": 33671332,
+      "realized_pnl_micro": 33777889,
+      "max_drawdown_micro": 13914982,
+      "ending_position": 56,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1495
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 12,
+      "fees_micro": 579254,
+      "traded_notional_micro": 289627000,
+      "pnl_micro": -3724254,
+      "realized_pnl_micro": -3724254,
+      "max_drawdown_micro": 7150972,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1716,
+        "insufficient_edge_liquidity_or_budget": 272
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 16,
+      "fees_micro": 777702,
+      "traded_notional_micro": 388851000,
+      "pnl_micro": -2914702,
+      "realized_pnl_micro": -2914702,
+      "max_drawdown_micro": 6473374,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1703,
+        "insufficient_edge_liquidity_or_budget": 281
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 46,
+      "fees_micro": 2261364,
+      "traded_notional_micro": 1130682000,
+      "pnl_micro": -3621364,
+      "realized_pnl_micro": -3621364,
+      "max_drawdown_micro": 9919150,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1594,
+        "insufficient_edge_liquidity_or_budget": 360
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 28,
+      "fees_micro": 1373288,
+      "traded_notional_micro": 686644000,
+      "pnl_micro": -3547288,
+      "realized_pnl_micro": -3547288,
+      "max_drawdown_micro": 6410298,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1659,
+        "insufficient_edge_liquidity_or_budget": 313
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 24,
+      "fees_micro": 1179102,
+      "traded_notional_micro": 589551000,
+      "pnl_micro": -3614102,
+      "realized_pnl_micro": -3614102,
+      "max_drawdown_micro": 7002184,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1674,
+        "insufficient_edge_liquidity_or_budget": 302
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 8,
+      "fees_micro": 383970,
+      "traded_notional_micro": 191985000,
+      "pnl_micro": -3970970,
+      "realized_pnl_micro": -3970970,
+      "max_drawdown_micro": 5452002,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1730,
+        "insufficient_edge_liquidity_or_budget": 262
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "stale_or_unsynchronized_book": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 2000
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 98700,
+      "traded_notional_micro": 49350000,
+      "pnl_micro": -448700,
+      "realized_pnl_micro": -448700,
+      "max_drawdown_micro": 24899700,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1737,
+        "insufficient_edge_liquidity_or_budget": 224,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 97512,
+      "traded_notional_micro": 48756000,
+      "pnl_micro": -1219512,
+      "realized_pnl_micro": -1219512,
+      "max_drawdown_micro": 25601694,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 218,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 195400,
+      "traded_notional_micro": 97700000,
+      "pnl_micro": -95400,
+      "realized_pnl_micro": -95400,
+      "max_drawdown_micro": 50698400,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 193802,
+      "traded_notional_micro": 96901000,
+      "pnl_micro": -194802,
+      "realized_pnl_micro": -194802,
+      "max_drawdown_micro": 51696400,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 193518,
+      "traded_notional_micro": 96759000,
+      "pnl_micro": -238518,
+      "realized_pnl_micro": -238518,
+      "max_drawdown_micro": 50898000,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 197148,
+      "traded_notional_micro": 98574000,
+      "pnl_micro": -323148,
+      "realized_pnl_micro": -323148,
+      "max_drawdown_micro": 51574644,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 98838,
+      "traded_notional_micro": 49419000,
+      "pnl_micro": 54162,
+      "realized_pnl_micro": 54162,
+      "max_drawdown_micro": 24990918,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 218,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 98430,
+      "traded_notional_micro": 49215000,
+      "pnl_micro": 54570,
+      "realized_pnl_micro": 54570,
+      "max_drawdown_micro": 25754388,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 218,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 197356,
+      "traded_notional_micro": 98678000,
+      "pnl_micro": 1353892,
+      "realized_pnl_micro": 967614,
+      "max_drawdown_micro": 51197400,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 198116,
+      "traded_notional_micro": 99058000,
+      "pnl_micro": 718764,
+      "realized_pnl_micro": 659366,
+      "max_drawdown_micro": 50487822,
+      "ending_position": 1,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 191648,
+      "traded_notional_micro": 95824000,
+      "pnl_micro": -727648,
+      "realized_pnl_micro": -727648,
+      "max_drawdown_micro": 50698400,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 97400,
+      "traded_notional_micro": 48700000,
+      "pnl_micro": -397400,
+      "realized_pnl_micro": -397400,
+      "max_drawdown_micro": 25598700,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 218,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 197300,
+      "traded_notional_micro": 98650000,
+      "pnl_micro": 752700,
+      "realized_pnl_micro": 752700,
+      "max_drawdown_micro": 50099600,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 193900,
+      "traded_notional_micro": 96950000,
+      "pnl_micro": -843900,
+      "realized_pnl_micro": -843900,
+      "max_drawdown_micro": 50299200,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4288,
+      "fills": 2,
+      "fees_micro": 96186,
+      "traded_notional_micro": 48093000,
+      "pnl_micro": -1575186,
+      "realized_pnl_micro": -1575186,
+      "max_drawdown_micro": 25805286,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 218,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4288,
+      "fills": 4,
+      "fees_micro": 187290,
+      "traded_notional_micro": 93645000,
+      "pnl_micro": -3644290,
+      "realized_pnl_micro": -3644290,
+      "max_drawdown_micro": 48648102,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1743,
+        "insufficient_edge_liquidity_or_budget": 216,
+        "stale_or_unsynchronized_book": 37
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4288,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 1714,
+        "stale_or_unsynchronized_book": 286
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 5,
+      "fees_micro": 246850,
+      "traded_notional_micro": 123425000,
+      "pnl_micro": 1277426,
+      "realized_pnl_micro": 413189,
+      "max_drawdown_micro": 7922124,
+      "ending_position": 49,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 11,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 4,
+      "fees_micro": 187794,
+      "traded_notional_micro": 93897000,
+      "pnl_micro": -3784794,
+      "realized_pnl_micro": -3784794,
+      "max_drawdown_micro": 8433100,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1385,
+        "insufficient_edge_liquidity_or_budget": 12,
+        "rate_limit": 599
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 5,
+      "fees_micro": 244498,
+      "traded_notional_micro": 122249000,
+      "pnl_micro": -4942722,
+      "realized_pnl_micro": -512549,
+      "max_drawdown_micro": 8713574,
+      "ending_position": 47,
+      "rejects": {
+        "daily_loss": 660,
+        "insufficient_edge_liquidity_or_budget": 11,
+        "rate_limit": 1324
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 5,
+      "fees_micro": 246414,
+      "traded_notional_micro": 123207000,
+      "pnl_micro": 1290646,
+      "realized_pnl_micro": 571502,
+      "max_drawdown_micro": 6604140,
+      "ending_position": 49,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 11,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 268148,
+      "traded_notional_micro": 134074000,
+      "pnl_micro": 4893772,
+      "realized_pnl_micro": 3202958,
+      "max_drawdown_micro": 10119720,
+      "ending_position": 65,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 259706,
+      "traded_notional_micro": 129853000,
+      "pnl_micro": -2173894,
+      "realized_pnl_micro": 1095759,
+      "max_drawdown_micro": 9795824,
+      "ending_position": 58,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 274808,
+      "traded_notional_micro": 137404000,
+      "pnl_micro": -4534808,
+      "realized_pnl_micro": -4534808,
+      "max_drawdown_micro": 10456350,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 869,
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1115
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 258290,
+      "traded_notional_micro": 129145000,
+      "pnl_micro": -2129370,
+      "realized_pnl_micro": -542875,
+      "max_drawdown_micro": 6706876,
+      "ending_position": 55,
+      "rejects": {
+        "daily_loss": 428,
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1556
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 259722,
+      "traded_notional_micro": 129861000,
+      "pnl_micro": 11320590,
+      "realized_pnl_micro": 3815635,
+      "max_drawdown_micro": 5658660,
+      "ending_position": 63,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 250800,
+      "traded_notional_micro": 125400000,
+      "pnl_micro": 3956480,
+      "realized_pnl_micro": 1819332,
+      "max_drawdown_micro": 7934100,
+      "ending_position": 56,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 10,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 5,
+      "fees_micro": 245388,
+      "traded_notional_micro": 122694000,
+      "pnl_micro": 9130852,
+      "realized_pnl_micro": 897599,
+      "max_drawdown_micro": 5187296,
+      "ending_position": 48,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 11,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 4,
+      "fees_micro": 195682,
+      "traded_notional_micro": 97841000,
+      "pnl_micro": 943230,
+      "realized_pnl_micro": 1168840,
+      "max_drawdown_micro": 2963744,
+      "ending_position": 7,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 12,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 5,
+      "fees_micro": 245062,
+      "traded_notional_micro": 122531000,
+      "pnl_micro": 7125838,
+      "realized_pnl_micro": 2256423,
+      "max_drawdown_micro": 5269440,
+      "ending_position": 50,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 11,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 4,
+      "fees_micro": 187650,
+      "traded_notional_micro": 93825000,
+      "pnl_micro": -3962650,
+      "realized_pnl_micro": -3962650,
+      "max_drawdown_micro": 8439088,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1520,
+        "insufficient_edge_liquidity_or_budget": 12,
+        "rate_limit": 464
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 4,
+      "fees_micro": 190986,
+      "traded_notional_micro": 95493000,
+      "pnl_micro": -3563986,
+      "realized_pnl_micro": -3563986,
+      "max_drawdown_micro": 9229504,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1441,
+        "insufficient_edge_liquidity_or_budget": 12,
+        "rate_limit": 543
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 4,
+      "fees_micro": 195200,
+      "traded_notional_micro": 97600000,
+      "pnl_micro": 1569262,
+      "realized_pnl_micro": 1762244,
+      "max_drawdown_micro": 6219130,
+      "ending_position": 3,
+      "rejects": {
+        "daily_loss": 1542,
+        "insufficient_edge_liquidity_or_budget": 12,
+        "rate_limit": 442
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 0,
+      "fees_micro": 0,
+      "traded_notional_micro": 0,
+      "pnl_micro": 0,
+      "realized_pnl_micro": 0,
+      "max_drawdown_micro": 0,
+      "ending_position": 0,
+      "rejects": {
+        "insufficient_edge_liquidity_or_budget": 16,
+        "rate_limit": 1984
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 9,
+      "fees_micro": 405530,
+      "traded_notional_micro": 202765000,
+      "pnl_micro": -4034530,
+      "realized_pnl_micro": -4034530,
+      "max_drawdown_micro": 6736208,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1729,
+        "insufficient_edge_liquidity_or_budget": 262
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 10,
+      "fees_micro": 480928,
+      "traded_notional_micro": 240464000,
+      "pnl_micro": -4592928,
+      "realized_pnl_micro": -4592928,
+      "max_drawdown_micro": 7453816,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1728,
+        "insufficient_edge_liquidity_or_budget": 262
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 9,
+      "fees_micro": 396610,
+      "traded_notional_micro": 198305000,
+      "pnl_micro": -3885610,
+      "realized_pnl_micro": -3885610,
+      "max_drawdown_micro": 5135106,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1734,
+        "insufficient_edge_liquidity_or_budget": 257
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 10,
+      "fees_micro": 488144,
+      "traded_notional_micro": 244072000,
+      "pnl_micro": -2872144,
+      "realized_pnl_micro": -2872144,
+      "max_drawdown_micro": 7312262,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1726,
+        "insufficient_edge_liquidity_or_budget": 264
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 9,
+      "fees_micro": 403072,
+      "traded_notional_micro": 201536000,
+      "pnl_micro": -3399072,
+      "realized_pnl_micro": -3399072,
+      "max_drawdown_micro": 7397874,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1731,
+        "insufficient_edge_liquidity_or_budget": 260
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 9,
+      "fees_micro": 403922,
+      "traded_notional_micro": 201961000,
+      "pnl_micro": -3788922,
+      "realized_pnl_micro": -3788922,
+      "max_drawdown_micro": 5817856,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1732,
+        "insufficient_edge_liquidity_or_budget": 259
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 18,
+      "fees_micro": 879370,
+      "traded_notional_micro": 439685000,
+      "pnl_micro": -5698370,
+      "realized_pnl_micro": -5698370,
+      "max_drawdown_micro": 7094974,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1699,
+        "insufficient_edge_liquidity_or_budget": 283
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 69,
+      "fees_micro": 3204552,
+      "traded_notional_micro": 1602276000,
+      "pnl_micro": -3934552,
+      "realized_pnl_micro": -3934552,
+      "max_drawdown_micro": 9697988,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1533,
+        "insufficient_edge_liquidity_or_budget": 398
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 14,
+      "fees_micro": 680304,
+      "traded_notional_micro": 340152000,
+      "pnl_micro": -6984304,
+      "realized_pnl_micro": -6984304,
+      "max_drawdown_micro": 7094242,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1714,
+        "insufficient_edge_liquidity_or_budget": 272
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 40,
+      "fees_micro": 1798842,
+      "traded_notional_micro": 899421000,
+      "pnl_micro": -1505842,
+      "realized_pnl_micro": -1505842,
+      "max_drawdown_micro": 8579872,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1635,
+        "insufficient_edge_liquidity_or_budget": 325
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 11,
+      "fees_micro": 494172,
+      "traded_notional_micro": 247086000,
+      "pnl_micro": -5442172,
+      "realized_pnl_micro": -5442172,
+      "max_drawdown_micro": 8048268,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1725,
+        "insufficient_edge_liquidity_or_budget": 264
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 7,
+      "fees_micro": 298086,
+      "traded_notional_micro": 149043000,
+      "pnl_micro": -4477086,
+      "realized_pnl_micro": -4477086,
+      "max_drawdown_micro": 6085184,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1737,
+        "insufficient_edge_liquidity_or_budget": 256
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 23,
+      "fees_micro": 1006630,
+      "traded_notional_micro": 503315000,
+      "pnl_micro": -3747630,
+      "realized_pnl_micro": -3747630,
+      "max_drawdown_micro": 6397630,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1687,
+        "insufficient_edge_liquidity_or_budget": 290
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 9,
+      "fees_micro": 397154,
+      "traded_notional_micro": 198577000,
+      "pnl_micro": -4072154,
+      "realized_pnl_micro": -4072154,
+      "max_drawdown_micro": 5605082,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1732,
+        "insufficient_edge_liquidity_or_budget": 259
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 7,
+      "fees_micro": 295940,
+      "traded_notional_micro": 147970000,
+      "pnl_micro": -5441940,
+      "realized_pnl_micro": -5441940,
+      "max_drawdown_micro": 6791682,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1738,
+        "insufficient_edge_liquidity_or_budget": 255
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 6,
+      "fees_micro": 285694,
+      "traded_notional_micro": 142847000,
+      "pnl_micro": -5662694,
+      "realized_pnl_micro": -5662694,
+      "max_drawdown_micro": 5882254,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1736,
+        "insufficient_edge_liquidity_or_budget": 258
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 52,
+      "fees_micro": 983658,
+      "traded_notional_micro": 491829000,
+      "pnl_micro": -5607762,
+      "realized_pnl_micro": -4979945,
+      "max_drawdown_micro": 6562768,
+      "ending_position": 4,
+      "rejects": {
+        "daily_loss": 1581,
+        "insufficient_edge_liquidity_or_budget": 367
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 47,
+      "fees_micro": 870114,
+      "traded_notional_micro": 435057000,
+      "pnl_micro": -5645770,
+      "realized_pnl_micro": -4957157,
+      "max_drawdown_micro": 6553194,
+      "ending_position": 4,
+      "rejects": {
+        "daily_loss": 1596,
+        "insufficient_edge_liquidity_or_budget": 357
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 27,
+      "fees_micro": 511678,
+      "traded_notional_micro": 255839000,
+      "pnl_micro": -5236678,
+      "realized_pnl_micro": -5236678,
+      "max_drawdown_micro": 5676796,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1665,
+        "insufficient_edge_liquidity_or_budget": 308
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 38,
+      "fees_micro": 709214,
+      "traded_notional_micro": 354607000,
+      "pnl_micro": -5091734,
+      "realized_pnl_micro": -4799206,
+      "max_drawdown_micro": 5643812,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1626,
+        "insufficient_edge_liquidity_or_budget": 336
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 45,
+      "fees_micro": 832602,
+      "traded_notional_micro": 416301000,
+      "pnl_micro": -5073466,
+      "realized_pnl_micro": -4955136,
+      "max_drawdown_micro": 5786520,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1608,
+        "insufficient_edge_liquidity_or_budget": 347
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 28,
+      "fees_micro": 490464,
+      "traded_notional_micro": 245232000,
+      "pnl_micro": -4674464,
+      "realized_pnl_micro": -4674464,
+      "max_drawdown_micro": 5215380,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1667,
+        "insufficient_edge_liquidity_or_budget": 305
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 34,
+      "fees_micro": 631482,
+      "traded_notional_micro": 315741000,
+      "pnl_micro": -4556482,
+      "realized_pnl_micro": -4556482,
+      "max_drawdown_micro": 5315462,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1644,
+        "insufficient_edge_liquidity_or_budget": 322
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 88,
+      "fees_micro": 1656920,
+      "traded_notional_micro": 828460000,
+      "pnl_micro": -5042920,
+      "realized_pnl_micro": -5042920,
+      "max_drawdown_micro": 5711392,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1459,
+        "insufficient_edge_liquidity_or_budget": 453
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 41,
+      "fees_micro": 757530,
+      "traded_notional_micro": 378765000,
+      "pnl_micro": -4319758,
+      "realized_pnl_micro": -4405920,
+      "max_drawdown_micro": 5291792,
+      "ending_position": 3,
+      "rejects": {
+        "daily_loss": 1622,
+        "insufficient_edge_liquidity_or_budget": 337
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 96,
+      "fees_micro": 1808890,
+      "traded_notional_micro": 904445000,
+      "pnl_micro": -5263890,
+      "realized_pnl_micro": -5263890,
+      "max_drawdown_micro": 6243774,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1433,
+        "insufficient_edge_liquidity_or_budget": 471
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 40,
+      "fees_micro": 752870,
+      "traded_notional_micro": 376435000,
+      "pnl_micro": -4655940,
+      "realized_pnl_micro": -4714969,
+      "max_drawdown_micro": 5293734,
+      "ending_position": 1,
+      "rejects": {
+        "daily_loss": 1623,
+        "insufficient_edge_liquidity_or_budget": 337
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 36,
+      "fees_micro": 672392,
+      "traded_notional_micro": 336196000,
+      "pnl_micro": -4993782,
+      "realized_pnl_micro": -4737982,
+      "max_drawdown_micro": 5124750,
+      "ending_position": 1,
+      "rejects": {
+        "daily_loss": 1632,
+        "insufficient_edge_liquidity_or_budget": 332
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 34,
+      "fees_micro": 634872,
+      "traded_notional_micro": 317436000,
+      "pnl_micro": -5008836,
+      "realized_pnl_micro": -5030628,
+      "max_drawdown_micro": 5194464,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1638,
+        "insufficient_edge_liquidity_or_budget": 328
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 36,
+      "fees_micro": 674386,
+      "traded_notional_micro": 337193000,
+      "pnl_micro": -5155386,
+      "realized_pnl_micro": -5155386,
+      "max_drawdown_micro": 5221254,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1635,
+        "insufficient_edge_liquidity_or_budget": 329
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 30,
+      "fees_micro": 557518,
+      "traded_notional_micro": 278759000,
+      "pnl_micro": -5721702,
+      "realized_pnl_micro": -5234134,
+      "max_drawdown_micro": 6042538,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1658,
+        "insufficient_edge_liquidity_or_budget": 312
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 17,
+      "fees_micro": 313162,
+      "traded_notional_micro": 156581000,
+      "pnl_micro": -5248162,
+      "realized_pnl_micro": -5248162,
+      "max_drawdown_micro": 5547562,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1700,
+        "insufficient_edge_liquidity_or_budget": 283
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10000,
+      "events": 4002,
+      "fills": 52,
+      "fees_micro": 983658,
+      "traded_notional_micro": 491829000,
+      "pnl_micro": -5607762,
+      "realized_pnl_micro": -4979945,
+      "max_drawdown_micro": 6562768,
+      "ending_position": 4,
+      "rejects": {
+        "daily_loss": 1581,
+        "insufficient_edge_liquidity_or_budget": 367
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10001,
+      "events": 4002,
+      "fills": 47,
+      "fees_micro": 870114,
+      "traded_notional_micro": 435057000,
+      "pnl_micro": -5645770,
+      "realized_pnl_micro": -4957157,
+      "max_drawdown_micro": 6553194,
+      "ending_position": 4,
+      "rejects": {
+        "daily_loss": 1596,
+        "insufficient_edge_liquidity_or_budget": 357
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10002,
+      "events": 4002,
+      "fills": 27,
+      "fees_micro": 511678,
+      "traded_notional_micro": 255839000,
+      "pnl_micro": -5236678,
+      "realized_pnl_micro": -5236678,
+      "max_drawdown_micro": 5676796,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1665,
+        "insufficient_edge_liquidity_or_budget": 308
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10003,
+      "events": 4002,
+      "fills": 38,
+      "fees_micro": 709214,
+      "traded_notional_micro": 354607000,
+      "pnl_micro": -5091734,
+      "realized_pnl_micro": -4799206,
+      "max_drawdown_micro": 5643812,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1626,
+        "insufficient_edge_liquidity_or_budget": 336
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10004,
+      "events": 4002,
+      "fills": 45,
+      "fees_micro": 832602,
+      "traded_notional_micro": 416301000,
+      "pnl_micro": -5073466,
+      "realized_pnl_micro": -4955136,
+      "max_drawdown_micro": 5786520,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1608,
+        "insufficient_edge_liquidity_or_budget": 347
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10005,
+      "events": 4002,
+      "fills": 28,
+      "fees_micro": 490464,
+      "traded_notional_micro": 245232000,
+      "pnl_micro": -4674464,
+      "realized_pnl_micro": -4674464,
+      "max_drawdown_micro": 5215380,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1667,
+        "insufficient_edge_liquidity_or_budget": 305
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10006,
+      "events": 4002,
+      "fills": 34,
+      "fees_micro": 631482,
+      "traded_notional_micro": 315741000,
+      "pnl_micro": -4556482,
+      "realized_pnl_micro": -4556482,
+      "max_drawdown_micro": 5315462,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1644,
+        "insufficient_edge_liquidity_or_budget": 322
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10007,
+      "events": 4002,
+      "fills": 88,
+      "fees_micro": 1656920,
+      "traded_notional_micro": 828460000,
+      "pnl_micro": -5042920,
+      "realized_pnl_micro": -5042920,
+      "max_drawdown_micro": 5711392,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1459,
+        "insufficient_edge_liquidity_or_budget": 453
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10008,
+      "events": 4002,
+      "fills": 41,
+      "fees_micro": 757530,
+      "traded_notional_micro": 378765000,
+      "pnl_micro": -4319758,
+      "realized_pnl_micro": -4405920,
+      "max_drawdown_micro": 5291792,
+      "ending_position": 3,
+      "rejects": {
+        "daily_loss": 1622,
+        "insufficient_edge_liquidity_or_budget": 337
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10009,
+      "events": 4002,
+      "fills": 96,
+      "fees_micro": 1808890,
+      "traded_notional_micro": 904445000,
+      "pnl_micro": -5263890,
+      "realized_pnl_micro": -5263890,
+      "max_drawdown_micro": 6243774,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1433,
+        "insufficient_edge_liquidity_or_budget": 471
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10010,
+      "events": 4002,
+      "fills": 40,
+      "fees_micro": 752870,
+      "traded_notional_micro": 376435000,
+      "pnl_micro": -4655940,
+      "realized_pnl_micro": -4714969,
+      "max_drawdown_micro": 5293734,
+      "ending_position": 1,
+      "rejects": {
+        "daily_loss": 1623,
+        "insufficient_edge_liquidity_or_budget": 337
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10011,
+      "events": 4002,
+      "fills": 36,
+      "fees_micro": 672392,
+      "traded_notional_micro": 336196000,
+      "pnl_micro": -4993782,
+      "realized_pnl_micro": -4737982,
+      "max_drawdown_micro": 5124750,
+      "ending_position": 1,
+      "rejects": {
+        "daily_loss": 1632,
+        "insufficient_edge_liquidity_or_budget": 332
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10012,
+      "events": 4002,
+      "fills": 34,
+      "fees_micro": 634872,
+      "traded_notional_micro": 317436000,
+      "pnl_micro": -5008836,
+      "realized_pnl_micro": -5030628,
+      "max_drawdown_micro": 5194464,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1638,
+        "insufficient_edge_liquidity_or_budget": 328
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10013,
+      "events": 4002,
+      "fills": 36,
+      "fees_micro": 674386,
+      "traded_notional_micro": 337193000,
+      "pnl_micro": -5155386,
+      "realized_pnl_micro": -5155386,
+      "max_drawdown_micro": 5221254,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1635,
+        "insufficient_edge_liquidity_or_budget": 329
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10014,
+      "events": 4002,
+      "fills": 30,
+      "fees_micro": 557518,
+      "traded_notional_micro": 278759000,
+      "pnl_micro": -5721702,
+      "realized_pnl_micro": -5234134,
+      "max_drawdown_micro": 6042538,
+      "ending_position": 2,
+      "rejects": {
+        "daily_loss": 1658,
+        "insufficient_edge_liquidity_or_budget": 312
+      },
+      "invariant_checks": 2000
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "seed": 10015,
+      "events": 4002,
+      "fills": 17,
+      "fees_micro": 313162,
+      "traded_notional_micro": 156581000,
+      "pnl_micro": -5248162,
+      "realized_pnl_micro": -5248162,
+      "max_drawdown_micro": 5547562,
+      "ending_position": 0,
+      "rejects": {
+        "daily_loss": 1700,
+        "insufficient_edge_liquidity_or_budget": 283
+      },
+      "invariant_checks": 2000
+    }
+  ],
+  "summaries": [
+    {
+      "scenario": "normal",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": -3489070,
+      "worst_pnl_micro": -5851074,
+      "best_pnl_micro": 33671332,
+      "profitable_paths": 6,
+      "max_drawdown_micro": 21339132
+    },
+    {
+      "scenario": "normal",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "normal",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "delayed",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "delayed",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "delayed",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "fee_spike",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "thin",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "thin",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "thin",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": -238518,
+      "worst_pnl_micro": -3644290,
+      "best_pnl_micro": 1353892,
+      "profitable_paths": 5,
+      "max_drawdown_micro": 51696400
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "sequence_gaps",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "bursts",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": 1277426,
+      "worst_pnl_micro": -4942722,
+      "best_pnl_micro": 11320590,
+      "profitable_paths": 9,
+      "max_drawdown_micro": 10456350
+    },
+    {
+      "scenario": "bursts",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "bursts",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": 0,
+      "worst_pnl_micro": 0,
+      "best_pnl_micro": 0,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 0
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "aggressive",
+      "paths": 16,
+      "median_pnl_micro": -4034530,
+      "worst_pnl_micro": -6984304,
+      "best_pnl_micro": -1505842,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 9697988
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "conservative",
+      "paths": 16,
+      "median_pnl_micro": -5073466,
+      "worst_pnl_micro": -5721702,
+      "best_pnl_micro": -4319758,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 6562768
+    },
+    {
+      "scenario": "biased_crash",
+      "policy": "strict_edge",
+      "paths": 16,
+      "median_pnl_micro": -5073466,
+      "worst_pnl_micro": -5721702,
+      "best_pnl_micro": -4319758,
+      "profitable_paths": 0,
+      "max_drawdown_micro": 6562768
+    }
+  ],
+  "assumptions": [
+    "Toy bounded random-walk latent price and noisy quote; forecast observes synthetic latent state, never future outcomes",
+    "Fixed policies and separate seed schedule; not historical out-of-sample evidence or calibrated alpha",
+    "Periodic taker exits; no maker queue, market impact, binary resolution, gas, borrow or real network feed",
+    "Flat replay fees; a delayed scenario exceeds book freshness, but does not model a calibrated price-latency relationship",
+    "Remaining inventory is marked conservatively at fresh bid depth; P&L includes charged fees",
+    "Passing means engine accounting and configured limits held; losses are reported and do not fail the correctness gate"
+  ]
+}

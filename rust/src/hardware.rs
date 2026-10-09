@@ -26,29 +26,54 @@ pub struct Hardware {
     pub mlx_metal_compiled: bool,
     pub selected: Backend,
 }
-fn succeeds(mut command: Command) -> bool {
+#[derive(Debug, PartialEq, Eq)]
+enum ProcessOutcome {
+    Success,
+    SpawnFailed,
+    WaitFailed,
+    ExitFailed,
+    TimedOut,
+}
+fn run_bounded(mut command: Command, timeout: Duration) -> ProcessOutcome {
     command
         .stdin(Stdio::null())
         .stdout(Stdio::null())
         .stderr(Stdio::null());
     let Ok(mut child) = command.spawn() else {
-        return false;
+        return ProcessOutcome::SpawnFailed;
     };
     let start = Instant::now();
-    loop {
+    let mut pause = Duration::from_millis(1);
+    let outcome = loop {
         match child.try_wait() {
-            Ok(Some(s)) => return s.success(),
-            Err(_) => break,
+            Ok(Some(status)) => {
+                break if status.success() {
+                    ProcessOutcome::Success
+                } else {
+                    ProcessOutcome::ExitFailed
+                };
+            }
+            Err(_) => break ProcessOutcome::WaitFailed,
             Ok(None) => (),
-        };
-        if start.elapsed() > Duration::from_secs(3) {
-            break;
         }
-        std::thread::sleep(Duration::from_millis(10));
+        let remaining = timeout.saturating_sub(start.elapsed());
+        if remaining.is_zero() {
+            break ProcessOutcome::TimedOut;
+        }
+        std::thread::sleep(pause.min(remaining));
+        pause = (pause * 2).min(Duration::from_millis(4));
+    };
+    if matches!(
+        outcome,
+        ProcessOutcome::TimedOut | ProcessOutcome::WaitFailed
+    ) {
+        let _ = child.kill();
+        let _ = child.wait();
     }
-    let _ = child.kill();
-    let _ = child.wait();
-    false
+    outcome
+}
+fn succeeds(command: Command) -> bool {
+    run_bounded(command, Duration::from_secs(3)) == ProcessOutcome::Success
 }
 pub fn select(apple: bool, cuda_ready: bool, mlx_cpu: bool, mlx_metal: bool) -> Backend {
     if cuda_ready {
@@ -62,12 +87,15 @@ pub fn select(apple: bool, cuda_ready: bool, mlx_cpu: bool, mlx_metal: bool) -> 
     }
 }
 pub fn detect() -> Hardware {
+    let helper = std::env::var_os("HFT_CUDA_HELPER").map(PathBuf::from);
+    detect_with_helper(helper.as_deref())
+}
+fn detect_with_helper(helper: Option<&std::path::Path>) -> Hardware {
     let apple = cfg!(all(target_os = "macos", target_arch = "aarch64"));
     let mut command = Command::new("nvidia-smi");
     command.args(["--query-gpu=name", "--format=csv,noheader"]);
     let nvidia = succeeds(command);
-    let helper = std::env::var_os("HFT_CUDA_HELPER").map(PathBuf::from);
-    let cuda = helper.as_ref().is_some_and(|path| {
+    let cuda = helper.is_some_and(|path| {
         let mut command = Command::new(path);
         command.arg("--probe");
         succeeds(command)
@@ -95,11 +123,12 @@ pub struct LoadedModel {
 }
 impl LoadedModel {
     pub fn new(weights: Quantized, requested: &str) -> Result<Self> {
+        let helper = std::env::var_os("HFT_CUDA_HELPER").map(PathBuf::from);
         // An explicit CPU request needs no hardware probe.
         let backend = if requested == "cpu" {
             Backend::Cpu
         } else {
-            let hw = detect();
+            let hw = detect_with_helper(helper.as_deref());
             match requested {
                 "auto" => hw.selected,
                 "mlx-cpu" if hw.mlx_cpu_compiled => Backend::MlxCpu,
@@ -122,14 +151,23 @@ impl LoadedModel {
         };
         let cuda = if backend == Backend::Cuda {
             Some(CudaModel {
-                helper: std::env::var_os("HFT_CUDA_HELPER")
-                    .map(PathBuf::from)
-                    .ok_or("cuda_helper_missing")?,
+                helper: helper.ok_or("cuda_helper_missing")?,
+                timeout: cuda_timeout()?,
                 encoded: weights.encode(),
             })
         } else {
             None
         };
+        if let Some(model) = &cuda {
+            // A device probe alone does not establish that loaded inference is usable.
+            // This startup smoke gate is additional to the full NVIDIA parity suite.
+            let input = vec![1.0; weights.len()];
+            let expected = weights.dot(&input)?;
+            let actual = model.infer_batch(weights.len(), &input)?;
+            if actual.len() != 1 || (actual[0] - expected).abs() > 1e-4 + 1e-4 * expected.abs() {
+                return Err("cuda_startup_parity_failed".into());
+            }
+        }
         Ok(Self {
             cuda,
             weights,
@@ -182,8 +220,20 @@ impl Drop for Temp {
         let _ = std::fs::remove_dir_all(&self.0);
     }
 }
+fn cuda_timeout() -> Result<Duration> {
+    let millis = match std::env::var("HFT_CUDA_TIMEOUT_MS") {
+        Ok(value) => value.parse::<u64>().map_err(|_| "invalid_cuda_timeout")?,
+        Err(std::env::VarError::NotPresent) => 3000,
+        Err(_) => return Err("invalid_cuda_timeout".into()),
+    };
+    if !(1..=30_000).contains(&millis) {
+        return Err("invalid_cuda_timeout".into());
+    }
+    Ok(Duration::from_millis(millis))
+}
 struct CudaModel {
     helper: PathBuf,
+    timeout: Duration,
     encoded: Vec<u8>,
 }
 impl CudaModel {
@@ -211,8 +261,12 @@ impl CudaModel {
         std::fs::write(&source, payload).map_err(|e| e.to_string())?;
         let mut command = Command::new(&self.helper);
         command.arg(&source).arg(&output);
-        if !succeeds(command) {
-            return Err("cuda_helper_failed_or_timed_out".into());
+        match run_bounded(command, self.timeout) {
+            ProcessOutcome::Success => (),
+            ProcessOutcome::TimedOut => return Err("cuda_helper_timed_out".into()),
+            ProcessOutcome::ExitFailed => return Err("cuda_helper_exit_failed".into()),
+            ProcessOutcome::SpawnFailed => return Err("cuda_helper_spawn_failed".into()),
+            ProcessOutcome::WaitFailed => return Err("cuda_helper_wait_failed".into()),
         }
         let expected = input.len() / width * 4;
         let file = std::fs::File::open(&output).map_err(|e| e.to_string())?;
