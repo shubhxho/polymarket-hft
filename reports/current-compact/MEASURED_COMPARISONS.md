@@ -6,9 +6,9 @@ We compare our cached best-price lookup against explicitly implemented full-scan
 
 | Levels per side | Cached median range ns/lookup | Full scan / cached median ratio range | BTree / cached median ratio range |
 |---|---:|---:|---:|
-| 1 | 2.28–6.84 | 54.26–171.63x | 0.35–1.04x |
-| 16 | 2.20–2.28 | 158.59–165.63x | 1.18–1.22x |
-| 128 | 2.20–2.28 | 158.84–165.24x | 1.18–1.22x |
+| 1 | 2.44–6.92 | 53.21–147.53x | 0.33–0.93x |
+| 16 | 2.44–2.52 | 145.61–148.03x | 1.06–1.13x |
+| 128 | 2.44–2.52 | 142.20–148.03x | 1.10–1.13x |
 
 ## What we measured faster
 

@@ -1,0 +1,14 @@
+{
+  "javascript_syntax": "passed: node --check ui/app.js",
+  "dom_references": "all literal IDs present",
+  "input_labels": "all named and labeled",
+  "browser_rendering": "unverified: no connected browser",
+  "local_tcp_startup": "blocked: sandbox PermissionDenied",
+  "gif": {
+    "width": 640,
+    "height": 300,
+    "frames": 21,
+    "duration_seconds": 42,
+    "source": "Rust terminal renderer using actual daily paper settlements"
+  }
+}

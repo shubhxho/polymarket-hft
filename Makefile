@@ -140,3 +140,11 @@ mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench mlx-cpu-release-check release-ch
 .PHONY: release-gif
 release-gif: disk-preflight
 	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-release
+
+.PHONY: desk
+desk: disk-preflight
+	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-desk
+
+.PHONY: desk-gif
+desk-gif: disk-preflight
+	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-release -- --desk

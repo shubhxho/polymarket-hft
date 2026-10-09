@@ -1,0 +1,4 @@
+   Compiling polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 2.36s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-release --desk`
+Rendered reports/desk-release.gif from measured synthetic outcomes

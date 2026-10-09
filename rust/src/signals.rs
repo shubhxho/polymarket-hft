@@ -3,7 +3,10 @@ use crate::{
     Result,
     book::Side,
     engine::Event,
-    math::{BinaryQuote, binary_quote, fraction_budget, fractional_kelly},
+    math::{
+        BinaryQuote, binary_quote, binary_quote_with_fee, fraction_budget, fractional_kelly,
+        polymarket_fee_bound,
+    },
     polygon::{CHAIN_ID, PRICE_SCALE},
 };
 use serde::{Deserialize, Serialize};
@@ -20,6 +23,9 @@ pub struct SignalRequest {
     pub uncertainty_margin_micro: u32,
     pub ask_price_micro: u32,
     pub fee_bps: u32,
+    /// Actual market rate for the price-dependent Polymarket fee curve.
+    #[serde(default)]
+    pub fee_rate_micro: Option<u32>,
     pub capital_micro: u64,
     #[serde(default = "full_kelly")]
     pub kelly_multiplier_micro: u32,
@@ -52,6 +58,7 @@ pub struct Signal {
     pub action: SignalAction,
     pub conservative_probability_micro: u32,
     pub math: BinaryQuote,
+    pub fee_model: &'static str,
     pub capped_fraction_micro: u32,
     pub budget_micro: u64,
     pub shares: u32,
@@ -94,7 +101,24 @@ pub fn generate(r: &SignalRequest) -> Result<Signal> {
     let probability = r
         .probability_micro
         .saturating_sub(r.uncertainty_margin_micro);
-    let math = binary_quote(probability, r.ask_price_micro, r.fee_bps)?;
+    let (math, fee_model) = if let Some(rate) = r.fee_rate_micro {
+        if r.fee_bps != 0 {
+            return Err("ambiguous_signal_fee_model".into());
+        }
+        (
+            binary_quote_with_fee(
+                probability,
+                r.ask_price_micro,
+                polymarket_fee_bound(r.ask_price_micro, rate, false)?,
+            )?,
+            "polymarket_price_curve_cash_bound",
+        )
+    } else {
+        (
+            binary_quote(probability, r.ask_price_micro, r.fee_bps)?,
+            "flat_bps_replay_assumption",
+        )
+    };
     let fraction = fractional_kelly(
         math.full_kelly_fraction_micro,
         r.kelly_multiplier_micro,
@@ -139,6 +163,7 @@ pub fn generate(r: &SignalRequest) -> Result<Signal> {
         action,
         conservative_probability_micro: probability,
         math: math.clone(),
+        fee_model,
         capped_fraction_micro: fraction,
         budget_micro: budget,
         shares,

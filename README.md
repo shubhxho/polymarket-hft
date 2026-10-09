@@ -12,6 +12,8 @@ Weather research now includes bounded background generation and independent $10,
 
 ## Run
 
+Use `make desk` for the [local research interface](docs/RESEARCH_DESK.md): simulation playback, supplied-data rankings, evidence and optional retained local inference. Open http://127.0.0.1:8787/. No paid API calls are made by the default desk. [Terminal GIF](reports/desk-release.gif).
+
 Rust 1.97.1 was used for validation. Dependencies are pinned in Cargo.lock. Offline commands require those dependencies in the Cargo cache.
 
 ```sh

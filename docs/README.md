@@ -21,3 +21,4 @@ All checked market, news and model-response fixtures are synthetic. No live orde
 Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](SIMULATIONS.md).
 
 - [Weather portfolios, data generation and disk recovery](WEATHER_PORTFOLIOS.md)
+- [Local Rust research desk, incoming data and retained inference](RESEARCH_DESK.md)

@@ -18,6 +18,8 @@ configs:
 
 # Rust paper-engine benchmarks
 
+The [local research desk](docs/RESEARCH_DESK.md) exposes simulation playback, supplied-candidate ranking, benchmark provenance and retained local inference. [Terminal GIF](reports/desk-release.gif). Default operation has no paid API calls. Browser interaction/layout checks are unverified; no browser was connected and local TCP binding was refused by the validation sandbox. CPU API dispatch and packed-model inference were tested through the command-line transport. No company affiliation is claimed.
+
 Reproducible local measurements for the Rust paper engine and optional Polygon research planner. These are synthetic paper-engine and kernel benchmarks, with no live orders, historical alpha evaluation or fund-return claim.
 
 The dataset contains **22,500 raw timing batches** from five rounds of equal-output top-of-book lookup. Three implementations—our cached lookup, a full-array scan and a BTree reference—query the same 64 synthetic books at 1, 16 and 128 levels per side. Each timed batch contains 512 lookups; each backend gets 100 warmup batches and 500 measured batches per round. Backend order rotates.

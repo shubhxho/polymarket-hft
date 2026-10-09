@@ -78,6 +78,11 @@ impl Drop for Frames {
     }
 }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let args: Vec<_> = std::env::args().skip(1).collect();
+    let desk = args == ["--desk"];
+    if !args.is_empty() && !desk {
+        return Err("usage: hft-release [--desk]".into());
+    }
     let path = "reports/weather-10000.json";
     if fs::metadata(path)?.len() > 8 * 1024 * 1024 {
         return Err("weather report too large".into());
@@ -124,16 +129,46 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "PROFITABILITY IS NOT ESTABLISHED".into(),
         ]);
     }
+    if desk {
+        let p = portfolios
+            .iter()
+            .find(|p| p["scenario"] == "normal" && p["seed"] == 0)
+            .ok_or("missing demo portfolio")?;
+        let equity = p["daily_equity_micro"].as_array().ok_or("missing equity")?;
+        slides.clear();
+        for (index, cash) in std::iter::once(10_000_000_000u64)
+            .chain(equity.iter().map(|v| v.as_u64().unwrap_or(0)))
+            .enumerate()
+        {
+            slides.push(vec![
+                "PM / RESEARCH DESK - RUST CORE".into(),
+                "SIMULATION / DATA / EVIDENCE / INFERENCE".into(),
+                "-----------------------------------------".into(),
+                format!("POLYGON 137 / NORMAL / SEED 0 / DAY {index:02}"),
+                format!("SETTLED CASH   $ {:.2}", cash as f64 / 1e6),
+                format!(
+                    "PAPER PNL      $ {:+.2}",
+                    (cash as f64 - 10_000_000_000.) / 1e6
+                ),
+                "FORECAST / FEE CURVE / KELLY / SETTLEMENT".into(),
+                "INPUT: SYNTHETIC / NOT HISTORICAL".into(),
+                "DATA MODE: SUPPLIED CANDIDATES ONLY".into(),
+                "MODEL: OPTIONAL LOCAL PACKED WEIGHTS".into(),
+                "HOSTED API CALLS: 0 / SUBMISSION: OFF".into(),
+                "LOSS INCLUDED / PROFITABILITY UNPROVEN".into(),
+            ]);
+        }
+    }
     for (index, lines) in slides.iter().enumerate() {
         let mut pixels = [12, 18, 28].repeat(W * H);
         for (row, line) in lines.iter().enumerate() {
             text(
                 &mut pixels,
                 line,
-                24 + row * 40,
+                if desk { 18 + row * 23 } else { 24 + row * 40 },
                 if row == 0 {
                     [52, 211, 153]
-                } else if row == 5 {
+                } else if row == if desk { 11 } else { 5 } {
                     [251, 146, 146]
                 } else {
                     [226, 232, 240]
@@ -144,7 +179,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         write!(file, "P6\n{W} {H}\n255\n")?;
         file.write_all(&pixels)?;
     }
-    let temporary = "reports/weather-release.tmp.gif";
+    let output = if desk {
+        "reports/desk-release.gif"
+    } else {
+        "reports/weather-release.gif"
+    };
+    let temporary = if desk {
+        "reports/desk-release.tmp.gif"
+    } else {
+        "reports/weather-release.tmp.gif"
+    };
     let status = Command::new("ffmpeg")
         .args(["-v", "error", "-y", "-framerate", "1/2", "-i"])
         .arg(directory.0.join("frame-%03d.ppm"))
@@ -160,7 +204,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let _ = fs::remove_file(temporary);
         return Err("ffmpeg failed".into());
     }
-    fs::rename(temporary, "reports/weather-release.gif")?;
-    println!("Rendered reports/weather-release.gif from measured synthetic outcomes");
+    fs::rename(temporary, output)?;
+    println!("Rendered {output} from measured synthetic outcomes");
     Ok(())
 }

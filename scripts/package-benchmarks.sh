@@ -5,8 +5,9 @@ destination=${1:-/private/tmp/hft-hub-publication}
 mkdir -p "$destination/data"
 cp publishing/DATASET_CARD.md "$destination/README.md"
 cp -R docs reports "$destination/"
+cp -R ui "$destination/"
 cp reports/lookup-samples.csv "$destination/data/"
-tar -czf "$destination/source.tar.gz" README.md Cargo.toml Cargo.lock Makefile .gitignore .gitattributes docs rust schema fixtures scripts vendor reports publishing cuda
+tar -czf "$destination/source.tar.gz" README.md Cargo.toml Cargo.lock Makefile .gitignore .gitattributes docs rust schema fixtures scripts vendor reports publishing cuda ui
 archive_hash=$(shasum -a 256 "$destination/source.tar.gz" | cut -d ' ' -f 1)
 base64 < "$destination/source.tar.gz" > "$destination/source.tar.gz.base64"
 printf '# Reproduce version 0.4.0\n\nSource archive SHA-256: %s.\n\n' "$archive_hash" > "$destination/REPRODUCE.md"

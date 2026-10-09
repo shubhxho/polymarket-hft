@@ -2,6 +2,7 @@
 
 pub mod book;
 pub mod buffer;
+pub mod desk;
 pub mod encoding;
 pub mod engine;
 pub mod evaluation;

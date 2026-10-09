@@ -1,0 +1,11 @@
+sh scripts/disk-preflight.sh
+cargo run --profile compact --locked --offline --bin hft-bench > reports/benchmark-current-compact.json.tmp
+    Finished `compact` profile [optimized] target(s) in 0.70s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-bench`
+mv reports/benchmark-current-compact.json.tmp reports/benchmark-current-compact.json
+mkdir -p reports/current-compact
+HFT_REPORT_DIR=reports/current-compact cargo run --profile compact --locked --offline --bin hft-compare
+    Finished `compact` profile [optimized] target(s) in 0.05s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-compare`
+Compact correctness run: timings do not establish optimized performance.
+Generated equal-output comparison report, chart and raw samples
