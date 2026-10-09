@@ -8,7 +8,7 @@ The active Rust runtime uses Polygon mainnet (137) for paper execution, signals 
 
 See [buffering, encoding and backend guide](docs/TRANSPORT_AND_BACKENDS.md) for HQT1 packed weights, reusable inference, hardware detection and the experimental CUDA port. [Polygon order plans](docs/POLYGON_EXECUTION.md) add protocol-specific signing metadata and conservative fee/Kelly sizing; actual signing and submission remain unavailable.
 
-Weather research now includes bounded background generation and independent $10,000 paper portfolios. Read [all six scenario outcomes](docs/WEATHER_PORTFOLIOS.md) and [release GIF](reports/weather-release.gif). Default Make builds use the compact correctness profile to reduce disk pressure. Native MLX validation remains blocked by storage in this run.
+Weather research now includes bounded background generation and independent $10,000 paper portfolios. Read [all six scenario outcomes](docs/WEATHER_PORTFOLIOS.md) and [release GIF](reports/weather-release.gif). Default Make builds use the compact correctness profile to reduce disk pressure. Native MLX CPU now passes compact correctness tests; Metal and CUDA remain unvalidated. See [streaming and accelerator evidence](docs/STREAMING.md).
 
 ## Run
 

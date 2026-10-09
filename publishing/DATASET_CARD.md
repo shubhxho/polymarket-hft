@@ -82,3 +82,7 @@ The simulation extension adds 336 deterministic synthetic paths and 672,000 engi
 ## $10,000 synthetic weather portfolios
 
 Six scenarios, 96 independent seeded portfolios, 30,720 contracts and 153,600 bucket evaluations. Normal median P&L was -$117.71; forecast bias median was -$1,041.56. No profitability is established. [Full methods and all outcomes](docs/WEATHER_PORTFOLIOS.md), [raw report](reports/weather-10000.json), [animated release evidence](reports/weather-release.gif). Generator source is bundled; synthetic forecasts/resolutions can be regenerated deterministically. Native MLX checks for this update were blocked by disk preflight. CUDA and live execution remain unvalidated.
+
+## Rust streaming update
+
+[Bounded streams and accelerator evidence](docs/STREAMING.md): 56 CPU tests, 59 native MLX CPU tests and Clippy pass. Equal-output batching reduced in-memory writer calls from 128 to one for the 128-record fixture. This is not a network/HFT speed claim. [Raw stream benchmark](reports/stream-benchmark-compact.json), [compact native CPU benchmark](reports/benchmark-current-mlx-cpu-compact.json). Metal and CUDA remain unvalidated.

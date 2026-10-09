@@ -22,3 +22,5 @@ Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](
 
 - [Weather portfolios, data generation and disk recovery](WEATHER_PORTFOLIOS.md)
 - [Local Rust research desk, incoming data and retained inference](RESEARCH_DESK.md)
+
+- [Bounded Rust streams, equal-output benchmark and current MLX CPU validation](STREAMING.md)

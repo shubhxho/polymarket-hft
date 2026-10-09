@@ -1,0 +1,408 @@
+{
+  "arch": "aarch64",
+  "fixture": "synthetic-v2",
+  "limitations": [
+    "Synthetic single-process wall-clock microbenchmarks with timer overhead; no CPU pinning",
+    "No HRT proprietary reference, network latency, historical alpha, gas or live fills measured",
+    "Quantization accuracy is a synthetic kernel test; no trained model or trading-quality claim",
+    "Jev gates use a recorded synthetic response; network/model quality is not measured",
+    "Journal samples use fsync without macOS F_FULLFSYNC; power-loss guarantees depend on the filesystem"
+  ],
+  "mlx_backend": "native_cpu",
+  "mlx_enabled": true,
+  "os": "macos",
+  "package_version": "0.4.0",
+  "quantization": [
+    {
+      "absolute_dot_error": 0.056878089904785156,
+      "backend": "cpu_reference",
+      "bits": 2,
+      "dense_bytes": 4096,
+      "storage_bytes": 384
+    },
+    {
+      "absolute_dot_error": 14.459741592407227,
+      "backend": "mlx",
+      "bits": 2
+    },
+    {
+      "absolute_dot_error": 0.14974403381347656,
+      "backend": "cpu_reference",
+      "bits": 4,
+      "dense_bytes": 4096,
+      "storage_bytes": 640
+    },
+    {
+      "absolute_dot_error": 1.3209877014160156,
+      "backend": "mlx",
+      "bits": 4
+    },
+    {
+      "absolute_dot_error": 0.04233837127685547,
+      "backend": "cpu_reference",
+      "bits": 8,
+      "dense_bytes": 4096,
+      "storage_bytes": 1152
+    },
+    {
+      "absolute_dot_error": 0.0687265396118164,
+      "backend": "mlx",
+      "bits": 8
+    }
+  ],
+  "release": false,
+  "results": [
+    {
+      "max_ns": 84,
+      "name": "timer_floor",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 13025073.266037121,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 43750,
+      "name": "book_snapshot",
+      "p50_ns": 834,
+      "p95_ns": 1042,
+      "p99_ns": 1084,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1081144.4303006728,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 208,
+      "name": "book_update",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 12167914.790526306,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 84,
+      "name": "book_top",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 13048799.901873024,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 9459,
+      "name": "book_top_full_scan_reference",
+      "p50_ns": 583,
+      "p95_ns": 584,
+      "p99_ns": 667,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1677289.5001677289,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 167,
+      "name": "depth_sweep",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 17318506.382735528,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 1958,
+      "name": "weather_high",
+      "p50_ns": 83,
+      "p95_ns": 84,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 9051309.611359395,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 5333,
+      "name": "weather_low",
+      "p50_ns": 83,
+      "p95_ns": 125,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 8496775.898385357,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 84,
+      "name": "level_frame_encode_40_bytes",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 16241465.110084651,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 84,
+      "name": "level_frame_decode_40_bytes",
+      "p50_ns": 41,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 18862728.380483866,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10417,
+      "name": "json_decode",
+      "p50_ns": 417,
+      "p95_ns": 459,
+      "p99_ns": 500,
+      "samples": 20000,
+      "samples_per_second_with_timer": 2174375.807372917,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 11750,
+      "name": "engine_setup_and_fill",
+      "p50_ns": 1541,
+      "p95_ns": 1791,
+      "p99_ns": 1875,
+      "samples": 20000,
+      "samples_per_second_with_timer": 631685.323176844,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 125,
+      "name": "risk_stale_reject",
+      "p50_ns": 42,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 17992358.64528335,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 7917,
+      "name": "dense_f32_dot_1024",
+      "p50_ns": 542,
+      "p95_ns": 584,
+      "p99_ns": 584,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1721540.7789972026,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 4667,
+      "name": "signal_generate_checked_candidate",
+      "p50_ns": 84,
+      "p95_ns": 125,
+      "p99_ns": 125,
+      "samples": 20000,
+      "samples_per_second_with_timer": 8537737.439814286,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 42,
+      "name": "binary_quote_exact_fee_edge_kelly",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 27877789.347060356,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6292,
+      "name": "score_four_supplied_forecast_pairs",
+      "p50_ns": 250,
+      "p95_ns": 292,
+      "p99_ns": 333,
+      "samples": 20000,
+      "samples_per_second_with_timer": 3540502.283978023,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10917,
+      "name": "news_validate_fingerprint",
+      "p50_ns": 1208,
+      "p95_ns": 1250,
+      "p99_ns": 1292,
+      "samples": 20000,
+      "samples_per_second_with_timer": 814546.4639906724,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 14292,
+      "name": "jev_request_build_six_questions",
+      "p50_ns": 1584,
+      "p95_ns": 1666,
+      "p99_ns": 1708,
+      "samples": 20000,
+      "samples_per_second_with_timer": 614748.5870387945,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 9250,
+      "name": "jev_recorded_response_gate",
+      "p50_ns": 208,
+      "p95_ns": 209,
+      "p99_ns": 250,
+      "samples": 20000,
+      "samples_per_second_with_timer": 4418790.908337707,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 5471417,
+      "name": "journal_halt_append_fsync",
+      "p50_ns": 3964584,
+      "p95_ns": 4254875,
+      "p99_ns": 5471417,
+      "samples": 100,
+      "samples_per_second_with_timer": 268.6674626352204,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 412250,
+      "name": "journal_recover_200_events",
+      "p50_ns": 330666,
+      "p95_ns": 397917,
+      "p99_ns": 412250,
+      "samples": 100,
+      "samples_per_second_with_timer": 3003.468946563902,
+      "warmup_calls": 100
+    },
+    {
+      "max_ns": 42,
+      "name": "book_top_btree_reference",
+      "p50_ns": 0,
+      "p95_ns": 42,
+      "p99_ns": 42,
+      "samples": 20000,
+      "samples_per_second_with_timer": 31502264.225241188,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10125,
+      "name": "cpu_q2_dot_1024",
+      "p50_ns": 1125,
+      "p95_ns": 1167,
+      "p99_ns": 1209,
+      "samples": 20000,
+      "samples_per_second_with_timer": 866609.0256116765,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 9375,
+      "name": "q2_decode_1024_sha256",
+      "p50_ns": 875,
+      "p95_ns": 917,
+      "p99_ns": 958,
+      "samples": 20000,
+      "samples_per_second_with_timer": 1138007.0219585283,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 14666,
+      "name": "mlx_q2_dot_1024_including_transfer_and_eval",
+      "p50_ns": 8625,
+      "p95_ns": 9708,
+      "p99_ns": 11125,
+      "samples": 2000,
+      "samples_per_second_with_timer": 116662.29183072303,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 53292,
+      "name": "mlx_q2_batch32_including_transfer_and_eval",
+      "p50_ns": 41083,
+      "p95_ns": 43209,
+      "p99_ns": 45250,
+      "samples": 2000,
+      "samples_per_second_with_timer": 24107.168417198656,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 6542,
+      "name": "cpu_q4_dot_1024",
+      "p50_ns": 1083,
+      "p95_ns": 1084,
+      "p99_ns": 1167,
+      "samples": 20000,
+      "samples_per_second_with_timer": 917357.5515726948,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10375,
+      "name": "q4_decode_1024_sha256",
+      "p50_ns": 1333,
+      "p95_ns": 1375,
+      "p99_ns": 1417,
+      "samples": 20000,
+      "samples_per_second_with_timer": 742631.7010907403,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 16417,
+      "name": "mlx_q4_dot_1024_including_transfer_and_eval",
+      "p50_ns": 7375,
+      "p95_ns": 9000,
+      "p99_ns": 9875,
+      "samples": 2000,
+      "samples_per_second_with_timer": 135659.1368836641,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 29375,
+      "name": "mlx_q4_batch32_including_transfer_and_eval",
+      "p50_ns": 21000,
+      "p95_ns": 23625,
+      "p99_ns": 25084,
+      "samples": 2000,
+      "samples_per_second_with_timer": 46883.28698725068,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 2709,
+      "name": "cpu_q8_dot_1024",
+      "p50_ns": 1125,
+      "p95_ns": 1167,
+      "p99_ns": 1209,
+      "samples": 20000,
+      "samples_per_second_with_timer": 860532.766161924,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 10458,
+      "name": "q8_decode_1024_sha256",
+      "p50_ns": 2250,
+      "p95_ns": 2292,
+      "p99_ns": 2334,
+      "samples": 20000,
+      "samples_per_second_with_timer": 440137.6195900677,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 20209,
+      "name": "mlx_q8_dot_1024_including_transfer_and_eval",
+      "p50_ns": 7250,
+      "p95_ns": 8667,
+      "p99_ns": 10084,
+      "samples": 2000,
+      "samples_per_second_with_timer": 135370.66179332286,
+      "warmup_calls": 2000
+    },
+    {
+      "max_ns": 30334,
+      "name": "mlx_q8_batch32_including_transfer_and_eval",
+      "p50_ns": 20666,
+      "p95_ns": 23584,
+      "p99_ns": 26375,
+      "samples": 2000,
+      "samples_per_second_with_timer": 47016.37051250782,
+      "warmup_calls": 2000
+    }
+  ],
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "schema_version": 2
+}

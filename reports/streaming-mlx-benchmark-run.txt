@@ -1,0 +1,8 @@
+HFT_MIN_FREE_MB=256 sh scripts/disk-preflight.sh
+sh scripts/provision-mlx.sh
+Pinned MLX sources ready in /private/tmp/polymarket-hft-publish/.cache/mlx
+CMAKE_TOOLCHAIN_FILE=/private/tmp/polymarket-hft-publish/.cache/mlx/toolchain.cmake cargo run --profile compact --locked --offline --features mlx-cpu --bin hft-bench > reports/benchmark-current-mlx-cpu-compact.json.tmp
+    Blocking waiting for file lock on build directory
+    Finished `compact` profile [optimized] target(s) in 2.09s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-bench`
+mv reports/benchmark-current-mlx-cpu-compact.json.tmp reports/benchmark-current-mlx-cpu-compact.json

@@ -1,4 +1,5 @@
 HFT_PROFILE ?= compact
+HFT_NATIVE_MIN_FREE_MB ?= 1024
 export CARGO_BUILD_JOBS ?= 1
 
 .PHONY: check bench compare package signals evaluate replay fair polygon mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
@@ -132,7 +133,7 @@ weather-simulations: compact-check weather-data
 disk-preflight:
 	sh scripts/disk-preflight.sh
 native-preflight:
-	HFT_MIN_FREE_MB=1024 sh scripts/disk-preflight.sh
+	HFT_MIN_FREE_MB=$(HFT_NATIVE_MIN_FREE_MB) sh scripts/disk-preflight.sh
 
 check compact-check run-through replay fair polygon bench compare report codegen install signals evaluate reverse durable news hardware polygon-plan weather-data: disk-preflight
 mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench mlx-cpu-release-check release-check: native-preflight
@@ -148,3 +149,8 @@ desk: disk-preflight
 .PHONY: desk-gif
 desk-gif: disk-preflight
 	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-release -- --desk
+
+.PHONY: stream-bench
+stream-bench: disk-preflight
+	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-stream-bench > reports/stream-benchmark-$(HFT_PROFILE).json.tmp
+	mv reports/stream-benchmark-$(HFT_PROFILE).json.tmp reports/stream-benchmark-$(HFT_PROFILE).json
