@@ -1,6 +1,6 @@
 # Documentation
 
-Version 0.3.0: Rust paper execution, Base mainnet only.
+Version 0.4.0: Rust paper execution, Polygon mainnet only.
 
 - [Architecture and diagrams](ARCHITECTURE.md)
 - [Build, run and recover](OPERATIONS.md)

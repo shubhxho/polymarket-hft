@@ -11,7 +11,7 @@ fn event(line: &str) -> Event {
 fn engine(config: Config) -> Engine {
     let mut e = Engine::new(config).unwrap();
     e.apply(event(
-        r#"{"type":"market","token":"t","city":"nyc","tick":10000,"chain_id":8453,"fee_bps":20}"#,
+        r#"{"type":"market","token":"t","city":"nyc","tick":10000,"chain_id":137,"fee_bps":20}"#,
     ))
     .unwrap();
     e.apply(event(r#"{"type":"snapshot","token":"t","bids":[{"price":400000,"shares":100}],"asks":[{"price":450000,"shares":10},{"price":460000,"shares":20},{"price":600000,"shares":100}],"sequence":1,"time_ms":1000}"#)).unwrap();
@@ -28,10 +28,10 @@ fn trade(side: Side, shares: u32, fair: u32, time: u64) -> Event {
 }
 
 #[test]
-fn base_only_on_config_and_market() {
+fn polygon_only_on_config_and_market() {
     assert!(
         Engine::new(Config {
-            chain_id: 137,
+            chain_id: 8453,
             ..Config::default()
         })
         .is_err()
@@ -39,7 +39,7 @@ fn base_only_on_config_and_market() {
     let mut e = Engine::new(Config::default()).unwrap();
     assert!(
         e.apply(event(
-            r#"{"type":"market","token":"t","city":"nyc","tick":10000,"chain_id":137,"fee_bps":0}"#
+            r#"{"type":"market","token":"t","city":"nyc","tick":10000,"chain_id":8453,"fee_bps":0}"#
         ))
         .is_err()
     );

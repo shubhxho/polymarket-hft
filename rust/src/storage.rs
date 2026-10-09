@@ -79,8 +79,9 @@ impl Journal {
         let mut news = NewsPipeline::default();
         let mut events = Vec::new();
         let mut recovered_tail_bytes = 0;
+        let mut bytes = Vec::new();
         loop {
-            let mut bytes = Vec::new();
+            bytes.clear();
             let n = (&mut reader)
                 .take((MAX_FRAME + 1) as u64)
                 .read_until(b'\n', &mut bytes)

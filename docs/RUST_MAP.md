@@ -1,6 +1,6 @@
 # Rust source map
 
-This polygon-shaped source map describes the Rust modules and research workflow. The paper engine remains Base-only. A separate opt-in Polygon planner prepares research order fields; it does not submit orders or migrate funds.
+This polygon-shaped source map describes the Rust modules and research workflow. The paper engine and opt-in planner share Polygon chain 137. The planner prepares research order fields; it does not submit orders or migrate funds.
 
 ```mermaid
 flowchart LR
@@ -30,7 +30,7 @@ Solid arrows show supported data flow. Dashed arrows require caller-supplied for
 | rust/src/hardware.rs, quant.rs, mlx.rs | Backend readiness, HQT1 weights and loaded inference |
 | rust/src/venue.rs | Separate Polygon unsigned order plans and read-only books |
 | rust/src/math.rs | Checked fee/edge/Kelly and cash-fraction arithmetic |
-| rust/src/signals.rs | Base-only candidate schema, provenance declarations, expiry and caps |
+| rust/src/signals.rs | Polygon-only candidate schema, provenance declarations, expiry and caps |
 | rust/src/model.rs | Truncated-normal baseline and scoring primitives |
 | rust/src/evaluation.rs | Equal-record forecast comparison and leakage/ID gates |
 | rust/src/engine.rs, book.rs | Authoritative paper fill/risk state |

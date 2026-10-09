@@ -1,6 +1,6 @@
 use crate::{
     Result,
-    base::{BOOK_LEVELS, PRICE_SCALE},
+    polygon::{BOOK_LEVELS, PRICE_SCALE},
 };
 use serde::{Deserialize, Serialize};
 const MASK_WORDS: usize = BOOK_LEVELS.div_ceil(64);

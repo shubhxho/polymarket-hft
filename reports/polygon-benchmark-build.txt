@@ -1,0 +1,2 @@
+    Finished `compact` profile [optimized] target(s) in 0.27s
+     Running `/private/tmp/polymarket-hft-target/compact/hft-bench`

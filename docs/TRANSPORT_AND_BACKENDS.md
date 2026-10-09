@@ -18,7 +18,7 @@ cargo run --release --locked --offline --bin hft-pack -- fixtures/weights.json /
 cargo run --release --locked --offline --bin hft-infer -- /tmp/example-unique.hqt fixtures/inference-batch.json auto
 ```
 
-Packing refuses to overwrite a file. Choose a fresh output path. The CLI reports setup-inclusive inference; it is not a latency-sensitive server. In Rust applications, construct `hardware::LoadedModel` once and reuse `infer_batch`. CPU and MLX retain loaded weights; hardware probing stays out of repeated inference. CPU requests skip probing entirely.
+Packing refuses to overwrite a file. Choose a fresh output path. The CLI reports setup-inclusive inference; it is not a latency-sensitive server. In Rust applications, construct `hardware::LoadedModel` once and reuse `infer_batch`. CPU and MLX retain loaded weights; CUDA retains the encoded weight payload and helper path; hardware probing stays out of repeated inference. CPU requests skip probing entirely.
 
 ## Hardware selection
 
@@ -28,9 +28,9 @@ The Metal backend requires a working Metal toolchain/runtime and remains unmeasu
 
 ## Experimental CUDA port
 
-`cuda/packed.cu` implements batched affine packed dot products with one CUDA block per row. Build with `make cuda-build`, then set `HFT_CUDA_HELPER` to the absolute `.local/bin/hft-cuda` path. The helper probes cudaGetDeviceCount, creates device buffers, copies packed weights/inputs, launches the kernel and reads results. The Rust side validates weights/input, bounds batches, limits output, and kills a helper exceeding three seconds.
+`cuda/packed.cu` implements batched affine packed dot products with one CUDA block per row, compile-time 2/4/8-bit dispatch and warp-shuffle reductions. Build with `make cuda-build`, then set `HFT_CUDA_HELPER` to the absolute `.local/bin/hft-cuda` path. The helper probes cudaGetDeviceCount, creates device buffers, copies packed weights/inputs, launches the kernel and reads results. The Rust side validates weights/input, bounds batches, limits output, and kills a helper exceeding three seconds.
 
-This port is **uncompiled and unmeasured on this host** because nvcc and an NVIDIA GPU are absent. It uses process/file transfer per batch, not a resident CUDA service, so it is unsuitable for an HFT hot path. It does not use fast-math. GPU reduction order differs from CPU and requires toleranced correctness tests on NVIDIA hardware before deployment. MLX/Apple and NVIDIA CUDA are separate backends, following [MLX](https://github.com/ml-explore/mlx) and [CUDA runtime device discovery](https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__DEVICE.html).
+This port is **uncompiled and unmeasured on this host** because nvcc and an NVIDIA GPU are absent. It uses process/file transfer per batch, not a resident CUDA service, so it is unsuitable for an HFT hot path. It does not use fast-math and disables fused multiply-add in the build. Use `make cuda-check` on an NVIDIA host to run the explicit CPU-parity gate over bit widths, group sizes, partial-byte packing, widths and batches. Set `HFT_CUDA_ARCH` to a target such as `sm_80` when compiling for another machine; the default is `native`. The GPU gate is ignored in ordinary CPU test runs and must pass before CUDA use. The helper is a trusted subprocess interface: Rust verifies HQT1 before encoding its payload; the C++ helper does not independently verify the SHA-256 digest. GPU reduction order differs from CPU and requires toleranced correctness tests on NVIDIA hardware before deployment. MLX/Apple and NVIDIA CUDA are separate backends, following [MLX](https://github.com/ml-explore/mlx) and [CUDA runtime device discovery](https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__DEVICE.html).
 
 ## Disk-constrained development
 
@@ -47,3 +47,7 @@ HFT_BIN_DIR="$PWD/.local/bin" make run-through
 ```
 
 This explicitly skips compilation. Install binaries from the source revision being evaluated before using this mode; the script checks that all seven executables exist. The default workflow still compiles the current source.
+
+Build and run the current source with reduced artifact size using `HFT_PROFILE=compact make run-through`. Compact timings are not interchangeable with release benchmarks.
+
+Loaded CPU batches check shape and finite inputs once, then reuse the internal packed kernel without rescanning each row. Journal replay also reuses its bounded frame buffer across records. Performance changes still require measurements on deployment hardware.

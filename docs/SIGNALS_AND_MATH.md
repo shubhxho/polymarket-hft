@@ -44,6 +44,6 @@ fixtures/paired-forecasts.json is an explicitly synthetic scoring demonstration 
 
 ## Deployment contract
 
-Package hft-signals as an input/output worker and feed bounded JSONL through stdin. Store emitted records with source/evaluation artifacts so consumers can inspect each candidate. There is no public server or authenticated production deployment in this release. The engine remains paper-only and Base-only.
+Package hft-signals as an input/output worker and feed bounded JSONL through stdin. Store emitted records with source/evaluation artifacts so consumers can inspect each candidate. There is no public server or authenticated production deployment in this release. The engine remains paper-only and Polygon-only.
 
 For fundraising or commercial evaluation, present measured operation benchmarks, reproducible code, forecast evidence and remaining gates. This project currently has no verified live revenue, fund returns, assets under management or investor commitments.

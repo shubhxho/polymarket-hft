@@ -9,7 +9,7 @@ cp reports/lookup-samples.csv "$destination/data/"
 tar -czf "$destination/source.tar.gz" README.md Cargo.toml Cargo.lock Makefile .gitignore .gitattributes docs rust schema fixtures scripts vendor reports publishing cuda
 archive_hash=$(shasum -a 256 "$destination/source.tar.gz" | cut -d ' ' -f 1)
 base64 < "$destination/source.tar.gz" > "$destination/source.tar.gz.base64"
-printf '# Reproduce version 0.3.0\n\nSource archive SHA-256: %s.\n\n' "$archive_hash" > "$destination/REPRODUCE.md"
+printf '# Reproduce version 0.4.0\n\nSource archive SHA-256: %s.\n\n' "$archive_hash" > "$destination/REPRODUCE.md"
 cat >> "$destination/REPRODUCE.md" <<'EOF'
 Download source.tar.gz.base64. On macOS decode with
 `base64 -D -i source.tar.gz.base64 -o source.tar.gz`.

@@ -1,8 +1,8 @@
 use crate::{
     Result,
-    base::{CHAIN_ID, PRICE_SCALE},
     book::{Book, Level, Side},
     model::{Bucket, Metric, probabilities},
+    polygon::{CHAIN_ID, PRICE_SCALE},
 };
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, VecDeque};
@@ -164,7 +164,7 @@ impl Engine {
     }
     pub fn new(config: Config) -> Result<Self> {
         if config.chain_id != CHAIN_ID {
-            return Err("Base_only: chain_id_must_be_8453".into());
+            return Err("Polygon_only: chain_id_must_be_137".into());
         }
         if config.max_order_micro == 0
             || config.max_city_micro == 0
@@ -282,7 +282,7 @@ impl Engine {
                 fee_bps,
             } => {
                 if chain_id != CHAIN_ID {
-                    return Err("Base_only: market_chain_mismatch".into());
+                    return Err("Polygon_only: market_chain_mismatch".into());
                 }
                 if token.is_empty()
                     || city.is_empty()

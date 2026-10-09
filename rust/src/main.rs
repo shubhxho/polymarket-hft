@@ -1,9 +1,10 @@
 use polymarket_hft::{
-    Result, base,
+    Result,
     buffer::Lines,
     engine::{Config, Engine, Event},
     model::{Bucket, Metric, probabilities},
     news::{JevClient, JevResponse, NewsItem},
+    polygon,
     storage::Journal,
 };
 use serde::Deserialize;
@@ -60,7 +61,7 @@ fn run() -> Result<()> {
             println!("{}",serde_json::json!({"summary":{"events":count,"new_events":applied,"recovered_events":recovered,"cash_micro":journal.engine().cash_micro(),"realized_pnl_micro":journal.engine().realized_pnl_micro().to_string(),"recovered_tail_bytes":journal.recovered_tail_bytes}}));
         }
         Some("journal") if args.len()==2=>{
-            let journal=Journal::open(&args[1],None)?;println!("{}",serde_json::json!({"events":journal.event_count(),"cash_micro":journal.engine().cash_micro(),"realized_pnl_micro":journal.engine().realized_pnl_micro().to_string(),"recovered_tail_bytes":journal.recovered_tail_bytes,"chain_id":base::CHAIN_ID}));
+            let journal=Journal::open(&args[1],None)?;println!("{}",serde_json::json!({"events":journal.event_count(),"cash_micro":journal.engine().cash_micro(),"realized_pnl_micro":journal.engine().realized_pnl_micro().to_string(),"recovered_tail_bytes":journal.recovered_tail_bytes,"chain_id":polygon::CHAIN_ID}));
         }
         Some("news") if args.len()==3||(args.len()==4&&args[3]=="--jev")=>{
             let mut journal=Journal::open(&args[2],None)?;
@@ -83,12 +84,12 @@ fn run() -> Result<()> {
                 serde_json::json!({"probabilities":p,"model":"untrained_truncated_normal","live_ready":false})
             );
         }
-        Some("base") if args.len() == 1 => println!(
+        Some("polygon") if args.len() == 1 => println!(
             "{}",
-            serde_json::json!({"chain": base::CHAIN_NAME, "chain_id": base::CHAIN_ID, "rpc": base::RPC, "live": false, "reason": "No verified Base Polymarket exchange deployment; settlement unavailable under Base-only policy"})
+            serde_json::json!({"chain": polygon::CHAIN_NAME, "chain_id": polygon::CHAIN_ID, "rpc": polygon::RPC, "live": false, "reason": "Polygon paper mode; signing, authenticated submission and reconciliation unavailable"})
         ),
         Some("live") => return Err(
-            "Base-only live execution unavailable: no verified Base Polymarket exchange deployment"
+            "Polygon live execution unavailable: signer, authenticated execution, reconciliation and operating limits are not configured"
                 .into(),
         ),
         Some("replay") if (2..=3).contains(&args.len()) => {
@@ -112,11 +113,11 @@ fn run() -> Result<()> {
             })?;
             println!(
                 "{}",
-                serde_json::json!({"summary": {"events": events, "fills": fills, "rejects": rejects, "cash_micro": engine.cash_micro(), "realized_pnl_micro": engine.realized_pnl_micro().to_string(), "paper": true, "chain_id": base::CHAIN_ID}})
+                serde_json::json!({"summary": {"events": events, "fills": fills, "rejects": rejects, "cash_micro": engine.cash_micro(), "realized_pnl_micro": engine.realized_pnl_micro().to_string(), "paper": true, "chain_id": polygon::CHAIN_ID}})
             );
         }
         _ => return Err(
-            "usage: hft base | fair <forecast.json> | replay <jsonl|-> [config.json] | durable-replay <jsonl|-> <journal> [config.json] | journal <journal> | news <jsonl|-> <journal> [--jev] | live"
+            "usage: hft polygon | fair <forecast.json> | replay <jsonl|-> [config.json] | durable-replay <jsonl|-> <journal> [config.json] | journal <journal> | news <jsonl|-> <journal> [--jev] | live"
                 .into(),
         ),
     }

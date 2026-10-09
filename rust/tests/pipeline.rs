@@ -270,3 +270,27 @@ fn drawdown_halts_new_risk_and_allows_inventory_exit() {
     );
     assert_eq!(j.engine().position("weather-yes"), 0);
 }
+
+#[test]
+fn legacy_base_journal_rejects_without_rewriting_history() {
+    use sha2::{Digest, Sha256};
+    let temp = Temp::new();
+    let config = Config {
+        chain_id: 8453,
+        ..Config::default()
+    };
+    let payload = serde_json::json!({"record":"config", "version":1, "config":config}).to_string();
+    let previous = "0".repeat(64);
+    let mut h = Sha256::new();
+    h.update(1u64.to_le_bytes());
+    h.update(previous.as_bytes());
+    h.update(payload.as_bytes());
+    let frame = serde_json::json!({"number":1,"previous":previous,"payload":payload,"hash":format!("{:x}",h.finalize())});
+    let original = format!("{frame}\n");
+    fs::write(temp.journal(), &original).unwrap();
+    let error = Journal::open(temp.journal(), None)
+        .err()
+        .expect("Base journal must reject");
+    assert_eq!(error, "Polygon_only: chain_id_must_be_137");
+    assert_eq!(fs::read_to_string(temp.journal()).unwrap(), original);
+}

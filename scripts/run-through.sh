@@ -1,20 +1,22 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
+profile=${HFT_PROFILE:-release}
+case "$profile" in release|compact) ;; *) echo "Unsupported HFT_PROFILE" >&2; exit 1;; esac
 if [ -n "${HFT_BIN_DIR:-}" ]; then
   case "$HFT_BIN_DIR" in /*) ;; *) echo "HFT_BIN_DIR must be absolute" >&2; exit 1;; esac
   bin_dir=$HFT_BIN_DIR
   echo "Running previously installed binaries from $bin_dir (no rebuild)"
 else
-if [ -n "${HFT_FEATURES:-}" ]; then
-  case "$HFT_FEATURES" in mlx|mlx-cpu) sh scripts/provision-mlx.sh; export CMAKE_TOOLCHAIN_FILE="$(pwd)/.cache/mlx/toolchain.cmake";; *) echo "Unsupported run-through feature" >&2; exit 1;; esac
-  cargo build --release --locked --offline --features "$HFT_FEATURES" --bin hft --bin hft-signals --bin hft-evaluate --bin hft-polymarket --bin hft-hardware --bin hft-pack --bin hft-infer
+  if [ -n "${HFT_FEATURES:-}" ]; then
+    case "$HFT_FEATURES" in mlx|mlx-cpu) sh scripts/provision-mlx.sh; export CMAKE_TOOLCHAIN_FILE="$(pwd)/.cache/mlx/toolchain.cmake";; *) echo "Unsupported run-through feature" >&2; exit 1;; esac
+    cargo build --profile "$profile" --locked --offline --features "$HFT_FEATURES" --bin hft --bin hft-signals --bin hft-evaluate --bin hft-polymarket --bin hft-hardware --bin hft-pack --bin hft-infer
 else
-  cargo build --release --locked --offline --bin hft --bin hft-signals --bin hft-evaluate --bin hft-polymarket --bin hft-hardware --bin hft-pack --bin hft-infer
-fi
+    cargo build --profile "$profile" --locked --offline --bin hft --bin hft-signals --bin hft-evaluate --bin hft-polymarket --bin hft-hardware --bin hft-pack --bin hft-infer
+  fi
   target_dir=$(cargo metadata --locked --offline --no-deps --format-version 1 | sed -n 's/.*"target_directory":"\([^"]*\)".*/\1/p')
   : "${target_dir:?cargo target directory unavailable}"
-  bin_dir="$target_dir/release"
+  bin_dir="$target_dir/$profile"
 fi
 for binary in hft hft-signals hft-evaluate hft-polymarket hft-hardware hft-pack hft-infer; do
   test -x "$bin_dir/$binary" || { echo "Missing executable: $bin_dir/$binary" >&2; exit 1; }
@@ -22,7 +24,9 @@ done
 work_dir=$(mktemp -d "${TMPDIR:-/tmp}/hft-run-through.XXXXXX")
 cli="$bin_dir/hft"
 {
-  "$cli" base
+  "$cli" polygon > "$work_dir/chain.json"
+  cat "$work_dir/chain.json"
+  rg -q '"chain_id":137' "$work_dir/chain.json"
   "$cli" fair fixtures/forecast.json
   "$cli" replay fixtures/smoke.jsonl
   "$cli" replay fixtures/weather.jsonl
@@ -62,7 +66,7 @@ cli="$bin_dir/hft"
     exit 1
   fi
   cat "$work_dir/live.txt"
-  echo "PASS: replay, weather, Base, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal"
+  echo "PASS: replay, weather, Polygon, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal"
 } > reports/run-through.txt
 cat reports/run-through.txt
 echo "Temporary evidence retained at $work_dir"

@@ -1,5 +1,5 @@
 //! Checked fixed-point binary-contract research math.
-use crate::{Result, base::PRICE_SCALE, engine::fee};
+use crate::{Result, engine::fee, polygon::PRICE_SCALE};
 use serde::Serialize;
 
 #[derive(Clone, Debug, Serialize)]

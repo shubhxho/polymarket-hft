@@ -11,14 +11,14 @@ make run-through
 make bench
 make codegen
 make install
-.local/bin/hft base
+.local/bin/hft polygon
 ```
 
 run-through exercises the CLI with temporary journals and writes reports/run-through.txt. It checks restart idempotence, news deduplication and the live settlement refusal. Existing journals are preserved.
 
 | Command | Behavior |
 |---|---|
-| hft base | Prints chain 8453 and live settlement blocker |
+| hft polygon | Prints Polygon chain 137 and execution status |
 | hft fair fixtures/forecast.json | Untrained weather probabilities |
 | hft replay fixtures/smoke.jsonl | Fresh in-memory paper state |
 | hft durable-replay fixtures/smoke.jsonl state.journal | Write-ahead replay with prefix validation |
@@ -26,7 +26,7 @@ run-through exercises the CLI with temporary journals and writes reports/run-thr
 | hft replay fixtures/reverse.jsonl | Target buy then sell at an intentional loss |
 | hft news fixtures/news.jsonl news.journal | Recorded fixture and missing-model review |
 | hft news input.jsonl news.journal --jev | Real Jev request; requires TYPESAFE_API_KEY |
-| hft live | Fails under Base-only policy |
+| hft live | Fails until authenticated execution and reconciliation exist |
 
 replay and durable-replay accept an optional final config.json. Configuration and events reject unknown fields. An existing journal retains its configuration; changes reject. Event tags are the public Event enum in rust/src/engine.rs. News input wraps item and response as shown in fixtures/news.jsonl. In --jev mode a supplied recorded response is prohibited. TYPESAFE_DEFAULT_MODEL defaults to jev-latest. Live Jev has not been validated with credentials.
 

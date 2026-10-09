@@ -1,3 +1,3 @@
-{"type":"market","token":"weather-yes","city":"nyc","tick":10000,"chain_id":8453,"fee_bps":20}
+{"type":"market","token":"weather-yes","city":"nyc","tick":10000,"chain_id":137,"fee_bps":20}
 {"type":"snapshot","token":"weather-yes","bids":[{"price":400000,"shares":50}],"asks":[{"price":450000,"shares":50}],"sequence":1,"time_ms":1000}
 {"type":"weather","tokens":["weather-yes"],"buckets":[{"lo":-100,"hi":200}],"metric":"high","observed":72.0,"mu":72.0,"sigma":1.0,"hours":0.0,"shares":10,"time_ms":1001}

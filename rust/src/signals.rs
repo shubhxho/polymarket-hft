@@ -1,10 +1,10 @@
 //! Stateless research candidates with declared provenance. This module submits no orders.
 use crate::{
     Result,
-    base::{CHAIN_ID, PRICE_SCALE},
     book::Side,
     engine::Event,
     math::{BinaryQuote, binary_quote, fraction_budget, fractional_kelly},
+    polygon::{CHAIN_ID, PRICE_SCALE},
 };
 use serde::{Deserialize, Serialize};
 
@@ -67,7 +67,7 @@ fn full_kelly() -> u32 {
 
 pub fn generate(r: &SignalRequest) -> Result<Signal> {
     if r.chain_id != CHAIN_ID {
-        return Err("Base_only: signal_chain_mismatch".into());
+        return Err("Polygon_only: signal_chain_mismatch".into());
     }
     if [&r.id, &r.token, &r.model_id, &r.evidence_ref]
         .iter()

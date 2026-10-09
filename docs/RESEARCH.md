@@ -12,4 +12,4 @@ The benchmark SVG uses log-scaled p95 bars and exact labels. Native CPU and Meta
 
 make compare runs five rounds of batched, equal-output book-top lookup at 1, 16 and 128 levels per side across 64 markets. It rotates backend order and retains every batch time. Ratios use matched-round medians; observed ranges are not confidence intervals. The batching resolves short-operation timer limits, but its amortized values are not per-request latency percentiles. [Measured comparison report](../reports/MEASURED_COMPARISONS.md) states wins and mixed results explicitly.
 
-Live readiness requires a compatible Base venue, authenticated adapters, reconnect/sequence handling, queue and latency modeling, fill/account reconciliation, resolution audits and held-out net-performance evaluation. The live command remains blocked.
+Live readiness requires a verified Polygon venue, authenticated adapters, reconnect/sequence handling, queue and latency modeling, fill/account reconciliation, resolution audits and held-out net-performance evaluation. The live command remains blocked.

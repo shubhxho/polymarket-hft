@@ -89,6 +89,7 @@ pub fn detect() -> Hardware {
 pub struct LoadedModel {
     weights: Quantized,
     backend: Backend,
+    cuda: Option<CudaModel>,
     #[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
     mlx: Option<crate::mlx::MlxLinear>,
 }
@@ -119,7 +120,18 @@ impl LoadedModel {
         } else {
             None
         };
+        let cuda = if backend == Backend::Cuda {
+            Some(CudaModel {
+                helper: std::env::var_os("HFT_CUDA_HELPER")
+                    .map(PathBuf::from)
+                    .ok_or("cuda_helper_missing")?,
+                encoded: weights.encode(),
+            })
+        } else {
+            None
+        };
         Ok(Self {
+            cuda,
             weights,
             backend,
             #[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
@@ -141,9 +153,13 @@ impl LoadedModel {
         match self.backend {
             Backend::Cpu => input
                 .chunks_exact(self.weights.len())
-                .map(|row| self.weights.dot(row))
+                .map(|row| self.weights.dot_finite_row(row))
                 .collect(),
-            Backend::Cuda => cuda_batch(&self.weights, input),
+            Backend::Cuda => self
+                .cuda
+                .as_ref()
+                .ok_or("cuda_model_missing")?
+                .infer_batch(self.weights.len(), input),
             Backend::MlxCpu | Backend::MlxMetal => {
                 #[cfg(any(feature = "mlx", feature = "mlx-cpu"))]
                 {
@@ -166,54 +182,59 @@ impl Drop for Temp {
         let _ = std::fs::remove_dir_all(&self.0);
     }
 }
-fn cuda_batch(weights: &Quantized, input: &[f32]) -> Result<Vec<f32>> {
-    static NEXT: AtomicU64 = AtomicU64::new(0);
-    let dir = std::env::temp_dir().join(format!(
-        "hft-cuda-{}-{}",
-        std::process::id(),
-        NEXT.fetch_add(1, Ordering::Relaxed)
-    ));
-    std::fs::create_dir(&dir).map_err(|e| e.to_string())?;
-    let temp = Temp(dir);
-    let encoded = weights.encode();
-    let mut payload = Vec::with_capacity(16 + encoded.len() + input.len() * 4);
-    payload.extend_from_slice(b"HCI1");
-    payload.extend_from_slice(&((input.len() / weights.len()) as u32).to_le_bytes());
-    payload.extend_from_slice(&(encoded.len() as u32).to_le_bytes());
-    payload.extend_from_slice(&[0; 4]);
-    payload.extend_from_slice(&encoded);
-    for x in input {
-        payload.extend_from_slice(&x.to_le_bytes());
+struct CudaModel {
+    helper: PathBuf,
+    encoded: Vec<u8>,
+}
+impl CudaModel {
+    fn infer_batch(&self, width: usize, input: &[f32]) -> Result<Vec<f32>> {
+        static NEXT: AtomicU64 = AtomicU64::new(0);
+        let dir = std::env::temp_dir().join(format!(
+            "hft-cuda-{}-{}",
+            std::process::id(),
+            NEXT.fetch_add(1, Ordering::Relaxed)
+        ));
+        std::fs::create_dir(&dir).map_err(|e| e.to_string())?;
+        let temp = Temp(dir);
+        let encoded = &self.encoded;
+        let mut payload = Vec::with_capacity(16 + encoded.len() + input.len() * 4);
+        payload.extend_from_slice(b"HCI1");
+        payload.extend_from_slice(&((input.len() / width) as u32).to_le_bytes());
+        payload.extend_from_slice(&(encoded.len() as u32).to_le_bytes());
+        payload.extend_from_slice(&[0; 4]);
+        payload.extend_from_slice(encoded);
+        for x in input {
+            payload.extend_from_slice(&x.to_le_bytes());
+        }
+        let source = temp.0.join("input.bin");
+        let output = temp.0.join("output.bin");
+        std::fs::write(&source, payload).map_err(|e| e.to_string())?;
+        let mut command = Command::new(&self.helper);
+        command.arg(&source).arg(&output);
+        if !succeeds(command) {
+            return Err("cuda_helper_failed_or_timed_out".into());
+        }
+        let expected = input.len() / width * 4;
+        let file = std::fs::File::open(&output).map_err(|e| e.to_string())?;
+        if file.metadata().map_err(|e| e.to_string())?.len() != expected as u64 {
+            return Err("cuda_output_shape".into());
+        }
+        let mut bytes = Vec::with_capacity(expected);
+        std::io::Read::read_to_end(
+            &mut std::io::Read::take(file, expected as u64 + 1),
+            &mut bytes,
+        )
+        .map_err(|e| e.to_string())?;
+        if bytes.len() != input.len() / width * 4 {
+            return Err("cuda_output_shape".into());
+        }
+        let values: Vec<_> = bytes
+            .chunks_exact(4)
+            .map(|b| f32::from_le_bytes(b.try_into().unwrap()))
+            .collect();
+        if values.iter().any(|x| !x.is_finite()) {
+            return Err("cuda_output_nonfinite".into());
+        }
+        Ok(values)
     }
-    let source = temp.0.join("input.bin");
-    let output = temp.0.join("output.bin");
-    std::fs::write(&source, payload).map_err(|e| e.to_string())?;
-    let mut command =
-        Command::new(std::env::var_os("HFT_CUDA_HELPER").ok_or("cuda_helper_missing")?);
-    command.arg(&source).arg(&output);
-    if !succeeds(command) {
-        return Err("cuda_helper_failed_or_timed_out".into());
-    }
-    let expected = input.len() / weights.len() * 4;
-    let file = std::fs::File::open(&output).map_err(|e| e.to_string())?;
-    if file.metadata().map_err(|e| e.to_string())?.len() != expected as u64 {
-        return Err("cuda_output_shape".into());
-    }
-    let mut bytes = Vec::with_capacity(expected);
-    std::io::Read::read_to_end(
-        &mut std::io::Read::take(file, expected as u64 + 1),
-        &mut bytes,
-    )
-    .map_err(|e| e.to_string())?;
-    if bytes.len() != input.len() / weights.len() * 4 {
-        return Err("cuda_output_shape".into());
-    }
-    let values: Vec<_> = bytes
-        .chunks_exact(4)
-        .map(|b| f32::from_le_bytes(b.try_into().unwrap()))
-        .collect();
-    if values.iter().any(|x| !x.is_finite()) {
-        return Err("cuda_output_nonfinite".into());
-    }
-    Ok(values)
 }

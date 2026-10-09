@@ -1,10 +1,10 @@
-# Polymarket HFT research engine — Rust, Base paper engine and Polygon planning
+# Polymarket HFT research engine — Rust and Polygon research engine
 
-Version 0.3.0. Read the [documentation index](docs/README.md), [architecture diagrams](docs/ARCHITECTURE.md) and [operations guide](docs/OPERATIONS.md).
+Version 0.4.0. Read the [documentation index](docs/README.md), [architecture diagrams](docs/ARCHITECTURE.md) and [operations guide](docs/OPERATIONS.md).
 
 The active engine, weather model, risk controls, replay CLI, code generation and benchmark runner are Rust. It is a paper research engine. It does **not** submit orders, sign transactions, manage a real fund, or establish profitable trading performance.
 
-Base mainnet (8453) remains the paper engine’s chain. A separate opt-in Polygon planner accepts chain 137 and never rewrites Base journal events. Polymarket's [published exchange contracts](https://docs.polymarket.com/resources/contracts) are on Polygon (137). The paper engine does not perform Polymarket settlement. Relabeling markets does not move their contracts to Base. The fixtures are synthetic Base-tagged paper markets, not Base Polymarket deployments.
+The active Rust runtime uses Polygon mainnet (137) for paper execution, signals and unsigned order planning. Base-tagged inputs reject. Old Base journals are preserved and rejected by the new runtime; start a fresh Polygon journal. The fixtures remain synthetic, and the engine does not sign orders, move funds or perform live settlement. See [Polygon migration](docs/POLYGON_EXECUTION.md).
 
 See [buffering, encoding and backend guide](docs/TRANSPORT_AND_BACKENDS.md) for HQT1 packed weights, reusable inference, hardware detection and the experimental CUDA port. [Polygon order plans](docs/POLYGON_EXECUTION.md) add protocol-specific signing metadata and conservative fee/Kelly sizing; actual signing and submission remain unavailable.
 
@@ -17,7 +17,7 @@ make check
 make run-through
 make replay
 make fair
-make base
+make polygon
 make bench
 make compare
 make report
@@ -56,7 +56,7 @@ Paper fees use a conservative flat bps-per-notional model rounded up per share. 
 
 ## Code generation and quantization
 
-`schema/base.conf` is compiled by a Rust build script into checked chain and price constants. Unknown/duplicate schema keys fail the build. Serde derive generates typed JSON codecs. The release profile uses LLVM, fat LTO and one codegen unit; `make codegen` emits LLVM IR and assembly for inspection. CPU-specific compilation is opt-in with `RUSTFLAGS='-C target-cpu=native'`. No claim of state-of-the-art superiority is established by these settings.
+`schema/polygon.conf` is compiled by a Rust build script into checked chain and price constants. Unknown/duplicate schema keys fail the build. Serde derive generates typed JSON codecs. The release profile uses LLVM, fat LTO and one codegen unit; `make codegen` emits LLVM IR and assembly for inspection. CPU-specific compilation is opt-in with `RUSTFLAGS='-C target-cpu=native'`. No claim of state-of-the-art superiority is established by these settings.
 
 Rust packed affine 2-, 4- and 8-bit reference kernels measure storage and numerical error. Money and risk calculations remain exact integers. Quantization is an optional research surface, not an unvalidated predictor attached to orders.
 
@@ -80,4 +80,6 @@ The [measured comparison report](reports/MEASURED_COMPARISONS.md) checks identic
 
 The [Hugging Face dataset](https://huggingface.co/datasets/shubhxho/polymarket-hft-benchmarks) publishes the raw batches, charts, native CPU results and reproducible source. make report exports the CSV in Rust; make package prepares the publication bundle.
 
-The former Python prototype is preserved under `legacy/python/` for reference. Its live gateway is disabled under the Base-only policy. It is not part of the Rust runtime or current validation surface.
+The former Python prototype is preserved under `legacy/python/` for reference. Its live gateway remains disabled. It is not part of the Rust runtime or current validation surface.
+
+Current Polygon migration and validation: [version 0.4.0 report](reports/POLYGON_MIGRATION.md). Fresh [compact CPU timings](reports/benchmark-polygon-compact.json) are separate from historical release measurements. On this disk-constrained Mac, run `HFT_PROFILE=compact make run-through`; the current installed runtime CLIs were refreshed with compact CPU builds. Native MLX requires a new feature-enabled build.

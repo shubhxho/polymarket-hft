@@ -102,7 +102,7 @@ fn signal_budget_candidate_and_engine_contract() {
 #[test]
 fn signals_fail_closed_for_chain_time_and_missing_evidence() {
     let mut r = request();
-    r.chain_id = 137;
+    r.chain_id = 8453;
     assert!(generate(&r).is_err());
     r = request();
     r.generated_ms = 2901;

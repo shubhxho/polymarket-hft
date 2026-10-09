@@ -1,4 +1,4 @@
-.PHONY: check bench compare package signals evaluate replay fair base mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
+.PHONY: check bench compare package signals evaluate replay fair polygon mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
 
 check:
 	cargo fmt --all -- --check
@@ -32,8 +32,8 @@ replay:
 fair:
 	cargo run --release --locked --offline --bin hft -- fair fixtures/forecast.json
 
-base:
-	cargo run --release --locked --offline --bin hft -- base
+polygon:
+	cargo run --release --locked --offline --bin hft -- polygon
 
 mlx-check:
 	xcrun -f metal
@@ -99,3 +99,7 @@ compact-check:
 	cargo fmt --all -- --check
 	cargo test --profile compact --locked --offline
 	cargo clippy --profile compact --locked --offline --all-targets -- -D warnings
+
+.PHONY: cuda-check
+cuda-check: cuda-build
+	HFT_CUDA_HELPER=$(CURDIR)/.local/bin/hft-cuda cargo test --profile compact --locked --offline --test cuda -- --ignored --nocapture

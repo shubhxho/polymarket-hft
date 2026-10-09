@@ -4,7 +4,7 @@ The Rust types in rust/src/engine.rs are authoritative. JSON uses snake_case eve
 
 | Event type | Fields besides type | Effect |
 |---|---|---|
-| market | token, city, tick, chain_id, fee_bps | Registers a paper market; only chain 8453 |
+| market | token, city, tick, chain_id, fee_bps | Registers a paper market; only chain 137 |
 | snapshot | token, bids, asks, sequence, time_ms | Replaces book; level objects contain price and shares |
 | update | token, side, level, sequence, time_ms | Replaces one level; zero shares removes it |
 | trade | token, side, fair_micro, shares, time_ms | Attempts a paper buy/sell against eligible depth |
@@ -20,7 +20,7 @@ Supply the complete configuration as the optional replay/durable-replay argument
 
 | Field | Default | Meaning |
 |---|---:|---|
-| chain_id | 8453 | Base mainnet only |
+| chain_id | 137 | Polygon mainnet only |
 | cash_micro | 1000000000 | Initial paper cash, $1,000 |
 | max_order_micro | 25000000 | Order budget, $25 |
 | max_city_micro | 150000000 | City cost-basis cap, $150 |

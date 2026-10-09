@@ -1,5 +1,5 @@
 //! Fixed-size local level-update frames. Token keys belong to a caller-owned session map.
-use crate::{Result, base::PRICE_SCALE, book::Side};
+use crate::{Result, book::Side, polygon::PRICE_SCALE};
 use serde::Serialize;
 pub const FRAME_BYTES: usize = 40;
 #[derive(Clone, Debug, Serialize, PartialEq)]

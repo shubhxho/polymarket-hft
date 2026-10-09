@@ -1,0 +1,107 @@
+Running previously installed binaries from /Users/shubh/Documents/polymarket-hft/.local/bin (no rebuild)
+{"chain":"Polygon","chain_id":137,"live":false,"reason":"Polygon paper mode; signing, authenticated submission and reconciliation unavailable","rpc":"https://polygon-rpc.com"}
+{"live_ready":false,"model":"untrained_truncated_normal","probabilities":[0.0,0.6922549006727781,0.307745099327222]}
+{"token":"weather-yes","side":"buy","shares":30,"notional_micro":13700000,"fee_micro":27400,"vwap_micro":456666,"worst_price_micro":460000,"cash_micro":986272600,"time_ms":1001,"paper":true,"chain_id":137}
+{"line":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"token":"weather-yes","side":"sell","shares":30,"notional_micro":20900000,"fee_micro":41800,"vwap_micro":696666,"worst_price_micro":690000,"cash_micro":1007130800,"time_ms":1101,"paper":true,"chain_id":137}
+{"line":7,"rejected":"stale_or_unsynchronized_book"}
+{"summary":{"cash_micro":1007130800,"chain_id":137,"events":8,"fills":2,"paper":true,"realized_pnl_micro":"7130800","rejects":2}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":137}
+{"summary":{"cash_micro":995491000,"chain_id":137,"events":3,"fills":1,"paper":true,"realized_pnl_micro":"0","rejects":0}}
+{"token":"weather-yes","side":"buy","shares":10,"notional_micro":4500000,"fee_micro":9000,"vwap_micro":450000,"worst_price_micro":450000,"cash_micro":995491000,"time_ms":1001,"paper":true,"chain_id":137}
+{"token":"weather-yes","side":"sell","shares":10,"notional_micro":3000000,"fee_micro":6000,"vwap_micro":300000,"worst_price_micro":300000,"cash_micro":998485000,"time_ms":1101,"paper":true,"chain_id":137}
+{"summary":{"cash_micro":998485000,"chain_id":137,"events":5,"fills":2,"paper":true,"realized_pnl_micro":"-1515000","rejects":0}}
+{"schema_version":1,"id":"synthetic-signal-1","token":"weather-yes","chain_id":137,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"buy_candidate","conservative_probability_micro":600000,"math":{"probability_micro":600000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":149100,"full_kelly_fraction_micro":271535},"capped_fraction_micro":50000,"budget_micro":25000000,"shares":20,"total_cost_micro":9018000,"suggested_event":{"type":"trade","token":"weather-yes","side":"buy","fair_micro":600000,"shares":20,"time_ms":1100},"research_only":true,"declared_evidence_only":true}
+{"schema_version":1,"id":"synthetic-signal-no-edge","token":"weather-yes","chain_id":137,"model_id":"synthetic-not-trained","evidence_ref":"fixture:forecast-v1","generated_ms":1100,"expires_ms":2900,"action":"no_edge","conservative_probability_micro":400000,"math":{"probability_micro":400000,"price_micro":450000,"fee_micro":900,"effective_cost_micro":450900,"expected_edge_micro":-50900,"full_kelly_fraction_micro":0},"capped_fraction_micro":0,"budget_micro":0,"shares":0,"total_cost_micro":0,"suggested_event":null,"research_only":true,"declared_evidence_only":true}
+{
+  "candidate_model": "synthetic-provided-forecasts",
+  "reference_model": "constant-0.5-synthetic-reference",
+  "dataset_id": "synthetic-scoring-demo-v1",
+  "split": "heldout",
+  "synthetic": true,
+  "candidate": {
+    "samples": 4,
+    "brier": 0.065,
+    "log_loss": 0.2899092476264711,
+    "calibration_error": 0.25
+  },
+  "reference": {
+    "samples": 4,
+    "brier": 0.25,
+    "log_loss": 0.6931471805599453,
+    "calibration_error": 0.0
+  },
+  "candidate_minus_reference_brier": -0.185,
+  "candidate_minus_reference_log_loss": -0.4032379329334742,
+  "mean_brier_difference_standard_error": 0.014433756729740649,
+  "candidate_lower_on_both_scores": true,
+  "model_inference_measured": false,
+  "provenance_verified": false
+}
+{
+  "os": "macos",
+  "arch": "aarch64",
+  "apple_silicon": true,
+  "nvidia_runtime_detected": false,
+  "cuda_helper_ready": false,
+  "mlx_cpu_compiled": false,
+  "mlx_metal_compiled": false,
+  "selected": "cpu"
+}
+{
+  "chain_id": 137,
+  "asset_id": "123",
+  "protocol": "v2",
+  "domain_name": "Polymarket CTF Exchange",
+  "domain_version": "3",
+  "verifying_contract": "0xe3333700cA9d93003F00f0F71f8515005F6c00Aa",
+  "side": "BUY",
+  "order_type": "FOK",
+  "maker_amount": "9000000",
+  "taker_amount": "20000000",
+  "price_micro": 450000,
+  "shares": 20,
+  "math": {
+    "probability_micro": 600000,
+    "price_micro": 450000,
+    "fee_micro": 17325,
+    "effective_cost_micro": 467325,
+    "expected_edge_micro": 132675,
+    "full_kelly_fraction_micro": 249073
+  },
+  "reserved_cost_micro": 9346500,
+  "expires_ms": 2900,
+  "model_id": "synthetic-fixture",
+  "evidence_ref": "fixtures/polygon-plan.json",
+  "submission_enabled": false,
+  "metadata_authenticated": false
+}
+{"bits":2,"checksum":"sha256","dense_bytes":256,"encoded_bytes":80,"format":"HQT1","group":64,"packed_storage_bytes":24,"trained_model":false,"weights":64}
+{"backend":"cpu","includes_setup_and_transfer":true,"trained_model":false,"values":[-1.142857313156128,-1.142857313156128]}
+submission unavailable: signer, authenticated execution, live reconciliation and approved operating limits are not configured
+{"event":1,"fill":null}
+{"event":2,"fill":null}
+{"event":3,"fill":{"cash_micro":986272600,"chain_id":137,"fee_micro":27400,"notional_micro":13700000,"paper":true,"shares":30,"side":"buy","time_ms":1001,"token":"weather-yes","vwap_micro":456666,"worst_price_micro":460000}}
+{"event":4,"rejected":"insufficient_edge_liquidity_or_budget"}
+{"event":5,"fill":null}
+{"event":6,"fill":{"cash_micro":1007130800,"chain_id":137,"fee_micro":41800,"notional_micro":20900000,"paper":true,"shares":30,"side":"sell","time_ms":1101,"token":"weather-yes","vwap_micro":696666,"worst_price_micro":690000}}
+{"event":7,"rejected":"stale_or_unsynchronized_book"}
+{"event":8,"fill":null}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":8,"realized_pnl_micro":"7130800","recovered_events":0,"recovered_tail_bytes":0}}
+{"event":1,"recovered":true}
+{"event":2,"recovered":true}
+{"event":3,"recovered":true}
+{"event":4,"recovered":true}
+{"event":5,"recovered":true}
+{"event":6,"recovered":true}
+{"event":7,"recovered":true}
+{"event":8,"recovered":true}
+{"summary":{"cash_micro":1007130800,"events":8,"new_events":0,"realized_pnl_micro":"7130800","recovered_events":8,"recovered_tail_bytes":0}}
+{"cash_micro":1007130800,"chain_id":137,"events":8,"realized_pnl_micro":"7130800","recovered_tail_bytes":0}
+{"decision":{"declared_source_only":true,"fingerprint":"ee3c40fef77e6e53bad082dec514992525f80fd8b6c23c296c88365decd9edab","id":"noaa-demo-1","model":"fixture-jev-not-live","reason":"typed_semantic_route_only","received_ms":2000,"route":"watch"},"service_error":null}
+{"decision":{"declared_source_only":true,"fingerprint":"648069f77d9cbc13bfc97baa682d3c75760daff41a6f31829fbaa7afc12efcd7","id":"noaa-demo-2","model":null,"reason":"model_unavailable","received_ms":2200,"route":"review"},"service_error":null}
+{"id":"noaa-demo-1","rejected":"stale_future_or_reversed_news_time"}
+{"id":"noaa-demo-2","rejected":"duplicate_news"}
+Polygon live execution unavailable: signer, authenticated execution, reconciliation and operating limits are not configured
+PASS: replay, weather, Polygon, reversal, signals, paired scoring, Polygon planning/refusal, pack/load/infer, hardware, durable restart, news dedup, live refusal
+Temporary evidence retained at /var/folders/ss/26l4n3y93ps20qrcs1z_dm6r0000gn/T//hft-run-through.p4T3Iu

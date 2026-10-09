@@ -4,7 +4,7 @@ The Rust Engine owns books, inventory, cash, clocks, limits and halts. Callers s
 
 ```mermaid
 flowchart LR
-    Schema["base.conf"] --> Build["Rust build.rs: checked constants"] --> Engine
+    Schema["polygon.conf"] --> Build["Rust build.rs: checked constants"] --> Engine
     Events["Normalized JSONL"] --> Decode["Serde typed decode"]
     Decode --> WAL["Optional journal: lock, append, fsync"] --> Engine["Rust Engine"]
     Decode --> Replay["Ephemeral replay"] --> Engine

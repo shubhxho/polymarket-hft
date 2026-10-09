@@ -1,15 +1,15 @@
-//! Polygon order planning is independent of the Base paper engine.
+//! Polygon order planning shares the paper engine’s chain constants.
 //! No wallet signing, approval, bridging or automatic submission occurs here.
 use crate::{
     Result,
-    base::PRICE_SCALE,
     math::{
         BinaryQuote, binary_quote_with_fee, fraction_budget, fractional_kelly, polymarket_fee_bound,
     },
+    polygon::PRICE_SCALE,
 };
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeSet, io::Read, time::Duration};
-pub const POLYGON: u64 = 137;
+pub const POLYGON: u64 = crate::polygon::CHAIN_ID;
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum Protocol {

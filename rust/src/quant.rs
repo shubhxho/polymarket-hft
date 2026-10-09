@@ -55,6 +55,11 @@ impl Quantized {
         if input.len() != self.len || input.iter().any(|x| !x.is_finite()) {
             return Err("invalid_input_shape_or_value".into());
         }
+        self.dot_finite_row(input)
+    }
+    /// Internal loaded-model path: caller has checked shape and finite values for the entire batch.
+    pub(crate) fn dot_finite_row(&self, input: &[f32]) -> Result<f32> {
+        debug_assert_eq!(input.len(), self.len);
         let sum = match self.bits {
             2 => self.dot_packed::<2>(input),
             4 => self.dot_packed::<4>(input),
