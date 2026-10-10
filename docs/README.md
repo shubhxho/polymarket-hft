@@ -24,3 +24,4 @@ Run `make codegen` or `make simulations`; see [stress methods and CUDA waiting](
 - [Local Rust research desk, incoming data and retained inference](RESEARCH_DESK.md)
 
 - [Bounded Rust streams, equal-output benchmark and current MLX CPU validation](STREAMING.md)
+- [Test inventory, CUDA harness, Blacksmith pipelines, GCP/GCS and read-only wallets](TESTING_AND_CLOUD.md)

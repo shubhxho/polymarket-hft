@@ -1,0 +1,130 @@
+name: Blacksmith correctness and evidence
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      mlx_cpu:
+        description: Run native MLX CPU on Blacksmith Apple Silicon
+        type: boolean
+        default: false
+      publish_gcs:
+        description: Publish passing compact evidence to configured GCS bucket
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: blacksmith-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CARGO_BUILD_JOBS: '2'
+  CARGO_INCREMENTAL: '0'
+  CARGO_TARGET_DIR: ${{ github.workspace }}/target
+jobs:
+  rust:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [compact, release]
+    steps:
+      - name: Load exact source archive without a checkout
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          curl -fsSL --max-time 120 --retry 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/tarball/$GITHUB_SHA" \
+            -o "$RUNNER_TEMP/source.tar.gz"
+          tar -xzf "$RUNNER_TEMP/source.tar.gz" --strip-components=1 -C "$GITHUB_WORKSPACE"
+      - name: Install Rust tools
+        shell: bash
+        run: rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+      - name: Fetch locked dependencies
+        run: cargo +stable fetch --locked
+      - name: Test every default target and host protocol
+        shell: bash
+        run: |
+          mkdir -p evidence
+          {
+            cargo +stable fmt --all -- --check
+            cargo +stable test --profile "${{ matrix.profile }}" --locked --offline --all-targets
+            cargo +stable test --profile "${{ matrix.profile }}" --locked --offline --doc
+            cargo +stable clippy --profile "${{ matrix.profile }}" --locked --offline --all-targets -- -D warnings
+            HFT_HOST_SANITIZERS=1 sh scripts/test-cuda-host.sh
+            python3 scripts/test_ci_artifacts.py
+          } 2>&1 | tee evidence/checks.txt
+      - name: Run connected paper workflows and equal-output benchmark
+        if: matrix.profile == 'compact'
+        shell: bash
+        run: |
+          HFT_PROFILE=compact sh scripts/run-through.sh 2>&1 | tee evidence/run-through.txt
+          cargo +stable run --profile compact --locked --offline --bin hft-bench > evidence/benchmark.json
+          cargo +stable run --profile compact --locked --offline --bin hft-stream-bench > evidence/stream-benchmark.json
+          HFT_PROFILE=compact sh scripts/test-inventory.sh
+          cp reports/test-inventory.txt evidence/test-inventory.txt
+          python3 scripts/ci-artifacts.py evidence artifacts
+      - name: Retain passing compact evidence
+        if: matrix.profile == 'compact'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: hft-evidence-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 14
+  mlx:
+    if: github.event_name == 'workflow_dispatch' && inputs.mlx_cpu
+    runs-on: blacksmith-6vcpu-macos-15
+    timeout-minutes: 30
+    steps:
+      - name: Load exact source archive without a checkout
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          curl -fsSL --max-time 120 --retry 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/tarball/$GITHUB_SHA" \
+            -o "$RUNNER_TEMP/source.tar.gz"
+          tar -xzf "$RUNNER_TEMP/source.tar.gz" --strip-components=1 -C "$GITHUB_WORKSPACE"
+      - name: Install Rust tools
+        shell: bash
+        run: rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+      - run: cargo +stable fetch --locked
+      - name: Native MLX CPU correctness
+        run: make mlx-cpu-check
+  gcs:
+    needs: rust
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish_gcs
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    timeout-minutes: 10
+    environment: benchmark-publication
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Require configured publication identity
+        env:
+          PROVIDER: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          BUCKET: ${{ vars.GCS_BUCKET }}
+        run: |
+          test -n "$PROVIDER"
+          test -n "$SERVICE_ACCOUNT"
+          test -n "$BUCKET"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: hft-evidence-${{ github.sha }}
+          path: artifacts
+      - uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/upload-cloud-storage@6397bd7208e18d13ba2619ee21b9873edc94427a # v3
+        with:
+          path: artifacts
+          destination: ${{ vars.GCS_BUCKET }}/hft/${{ github.sha }}/${{ github.run_id }}-${{ github.run_attempt }}
+          parent: false

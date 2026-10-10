@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstring>
 #include <stdexcept>
+#include "protocol.hpp"
 static void check(cudaError_t e){if(e!=cudaSuccess)throw std::runtime_error(cudaGetErrorString(e));}
 // Eight warp partials and one block barrier; bit width is a compile-time constant.
 // No fast-math: preserve ordinary float semantics for the CPU parity gate.
@@ -38,18 +39,18 @@ __global__ void packed_dot(const uint8_t* __restrict__ w,
 }
 struct Stream { cudaStream_t value; Stream(){check(cudaStreamCreateWithFlags(&value,cudaStreamNonBlocking));} ~Stream(){cudaStreamDestroy(value);} Stream(const Stream&)=delete; };
 struct DeviceBuffer {void* p=nullptr;DeviceBuffer(size_t n){check(cudaMalloc(&p,n));}~DeviceBuffer(){if(p)cudaFree(p);}DeviceBuffer(const DeviceBuffer&)=delete;};
-static uint32_t u32(const uint8_t* b){return uint32_t(b[0])|(uint32_t(b[1])<<8)|(uint32_t(b[2])<<16)|(uint32_t(b[3])<<24);}
 int main(int argc,char** argv){try{
  if(argc==2&&std::string(argv[1])=="--probe"){int n=0;check(cudaGetDeviceCount(&n));if(n<1)return 1;check(cudaSetDevice(0));check(cudaFree(nullptr));return 0;}
  if(argc!=3)throw std::runtime_error("usage: hft-cuda input.bin output.bin");
  std::ifstream f(argv[1],std::ios::binary|std::ios::ate);if(!f)throw std::runtime_error("input_missing");auto length=f.tellg();if(length<72||length>224*1024*1024)throw std::runtime_error("input_size");f.seekg(0);std::vector<uint8_t> b(static_cast<size_t>(length));if(!f.read(reinterpret_cast<char*>(b.data()),b.size()))throw std::runtime_error("input_read");
- if(std::memcmp(b.data(),"HCI1",4)||u32(b.data()+12))throw std::runtime_error("input_header");uint32_t rows=u32(b.data()+4),qbytes=u32(b.data()+8);if(rows==0||rows>256||qbytes<56||size_t(qbytes)+16>b.size())throw std::runtime_error("shape");auto q=b.data()+16;
- if(std::memcmp(q,"HQT1",4)||q[5]||q[6]||q[7])throw std::runtime_error("weights_header");uint32_t bits=q[4],group=u32(q+8),width=u32(q+12),packed=u32(q+16),groups=u32(q+20);
- if((bits!=2&&bits!=4&&bits!=8)||width==0||width>16*1024*1024||group==0||width%group||groups!=width/group||packed!=(uint64_t(width)*bits+7)/8||qbytes!=24+uint64_t(groups)*8+packed+32||uint64_t(width)*rows>16*1024*1024||b.size()!=16+qbytes+uint64_t(width)*rows*4)throw std::runtime_error("weights_shape");
- std::vector<float> scales(groups),biases(groups),x(size_t(width)*rows),y(rows);for(uint32_t i=0;i<groups;i++){std::memcpy(&scales[i],q+24+i*8,4);std::memcpy(&biases[i],q+28+i*8,4);if(!std::isfinite(scales[i])||scales[i]<=0||!std::isfinite(biases[i]))throw std::runtime_error("weights_nonfinite");}std::memcpy(x.data(),b.data()+16+qbytes,x.size()*4);for(float v:x)if(!std::isfinite(v))throw std::runtime_error("input_nonfinite");
+ auto frame = hft::parse(b);
+ const auto rows = frame.rows, bits = frame.bits, group = frame.group, width = frame.width, packed = frame.packed;
+ const auto groups = frame.scales.size();
+ auto& scales = frame.scales; auto& biases = frame.biases; auto& x = frame.input;
+ std::vector<float> y(rows);
  check(cudaSetDevice(0));cudaDeviceProp properties{};check(cudaGetDeviceProperties(&properties,0));if(properties.maxThreadsPerBlock<256||rows>uint32_t(properties.maxGridSize[0]))throw std::runtime_error("launch_coordinates_unsupported");
  Stream stream;
- DeviceBuffer dw(packed),ds(groups*4),db(groups*4),dx(x.size()*4),dy(rows*4);check(cudaMemcpyAsync(dw.p,q+24+groups*8,packed,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(ds.p,scales.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(db.p,biases.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(dx.p,x.data(),x.size()*4,cudaMemcpyHostToDevice,stream.value));
+ DeviceBuffer dw(packed),ds(groups*4),db(groups*4),dx(x.size()*4),dy(rows*4);check(cudaMemcpyAsync(dw.p,frame.weights.data(),packed,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(ds.p,scales.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(db.p,biases.data(),groups*4,cudaMemcpyHostToDevice,stream.value));check(cudaMemcpyAsync(dx.p,x.data(),x.size()*4,cudaMemcpyHostToDevice,stream.value));
  switch(bits) {
  case 2: packed_dot<2><<<rows,256,0,stream.value>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;
  case 4: packed_dot<4><<<rows,256,0,stream.value>>>(static_cast<uint8_t*>(dw.p),static_cast<float*>(ds.p),static_cast<float*>(db.p),static_cast<float*>(dx.p),static_cast<float*>(dy.p),width,group); break;

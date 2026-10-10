@@ -1,0 +1,2 @@
+    Checking polymarket-hft v0.4.0 (/private/tmp/polymarket-hft-publish/rust)
+    Finished `compact` profile [optimized] target(s) in 3.70s

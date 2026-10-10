@@ -17,6 +17,7 @@ pub mod signals;
 pub mod simulation;
 pub mod storage;
 pub mod venue;
+pub mod wallet;
 pub mod weather;
 pub mod polygon {
     include!(concat!(env!("OUT_DIR"), "/polygon.rs"));

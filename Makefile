@@ -4,7 +4,7 @@ export CARGO_BUILD_JOBS ?= 1
 
 .PHONY: check bench compare package signals evaluate replay fair polygon mlx-check mlx-bench mlx-cpu-check mlx-cpu-bench reverse durable news codegen install run-through report
 
-check:
+check: cuda-host-check ci-artifact-check
 	cargo fmt --all -- --check
 	cargo test --profile $(HFT_PROFILE) --locked --offline
 	cargo clippy --profile $(HFT_PROFILE) --locked --offline --all-targets -- -D warnings
@@ -101,19 +101,19 @@ mlx-cpu-release-check:
 	CMAKE_TOOLCHAIN_FILE=$(CURDIR)/.cache/mlx/toolchain.cmake cargo clippy --profile release --locked --offline --all-targets --features mlx-cpu -- -D warnings
 
 .PHONY: release-check
-release-check:
+release-check: cuda-host-check ci-artifact-check
 	cargo fmt --all -- --check
 	cargo test --profile release --locked --offline
 	cargo clippy --profile release --locked --offline --all-targets -- -D warnings
 
 .PHONY: compact-check
-compact-check:
+compact-check: cuda-host-check ci-artifact-check
 	cargo fmt --all -- --check
 	cargo test --profile compact --locked --offline
 	cargo clippy --profile compact --locked --offline --all-targets -- -D warnings
 
 .PHONY: cuda-check
-cuda-check: cuda-build
+cuda-check: cuda-host-check ci-artifact-check cuda-build
 	HFT_CUDA_HELPER=$(CURDIR)/.local/bin/hft-cuda cargo test --profile compact --locked --offline --test cuda -- --ignored --nocapture
 
 .PHONY: simulations
@@ -154,3 +154,17 @@ desk-gif: disk-preflight
 stream-bench: disk-preflight
 	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-stream-bench > reports/stream-benchmark-$(HFT_PROFILE).json.tmp
 	mv reports/stream-benchmark-$(HFT_PROFILE).json.tmp reports/stream-benchmark-$(HFT_PROFILE).json
+
+.PHONY: cuda-host-check wallet
+cuda-host-check:
+	sh scripts/test-cuda-host.sh
+
+wallet:
+	cargo run --profile $(HFT_PROFILE) --locked --offline --bin hft-wallet -- $(HFT_WALLET_ADDRESS) $(HFT_TOKEN_CONTRACT)
+
+.PHONY: test-inventory ci-artifact-check
+test-inventory:
+	sh scripts/test-inventory.sh
+
+ci-artifact-check:
+	python3 scripts/test_ci_artifacts.py

@@ -1,0 +1,103 @@
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+0 tests, 0 benchmarks
+cash_order_city_and_inventory_caps_include_fees: test
+json_schema_strict_and_replay_deterministic: test
+loss_kill_switch_and_rate_limit: test
+malformed_update_disables_execution_until_snapshot: test
+no_silent_tick_clamping_or_duplicate_snapshot_levels: test
+polygon_only_on_config_and_market: test
+quantization_memory_and_error_bound: test
+randomized_book_matches_ordered_reference: test
+sell_cannot_short_and_releases_city_budget: test
+sequence_gap_requires_snapshot_and_crossed_update_is_atomic: test
+stale_future_and_reversed_clocks_reject: test
+sweep_uses_actual_depth_and_fee_then_depletes: test
+weather_high_low_final_observation_and_mass: test
+weather_signal_runs_through_execution_risk: test
+
+14 tests, 0 benchmarks
+cuda_bridge_checks_helper_status_output_shape_and_finite_values: test
+cuda_bridge_emits_canonical_frames_and_rejects_batches_before_launch: test
+cuda_matches_packed_cpu_across_bits_groups_widths_and_batches: test
+
+3 tests, 0 benchmarks
+http_rejects_rebinding_cross_origin_smuggling_and_large_bodies: test
+ranking_order_duplicates_and_bounds: test
+ranking_rechecks_wall_clock_and_market_fees: test
+
+3 tests, 0 benchmarks
+desk_dispatch_replays_validates_and_retains_supplied_feed: test
+desk_retains_packed_cpu_model_across_batches: test
+
+2 tests, 0 benchmarks
+binary_math_exact_and_extreme_budget_checked: test
+paired_evaluation_rejects_leakage_duplicates_and_invalid_probabilities: test
+paired_scores_use_identical_records_and_report_provenance_limits: test
+signal_budget_candidate_and_engine_contract: test
+signals_fail_closed_for_chain_time_and_missing_evidence: test
+truncated_normal_matches_half_normal_reference: test
+uncertain_signals_and_budget_cannot_create_orders: test
+weather_reference_grid_preserves_support_and_mass: test
+
+8 tests, 0 benchmarks
+bad_model_outputs_fail_and_contradiction_overrides_watch: test
+binary_scoring_is_finite_and_rejects_bad_data: test
+dedup_survives_restart_and_missing_model_routes_review: test
+drawdown_halts_new_risk_and_allows_inventory_exit: test
+durable_state_recovers_without_double_fills: test
+journaled_news_halt_recovers_and_blocks_orders: test
+legacy_base_journal_rejects_without_rewriting_history: test
+source_time_and_content_dedup_gates: test
+torn_final_record_recovers_but_complete_corruption_fails: test
+writer_lock_and_config_drift_reject: test
+
+10 tests, 0 benchmarks
+stress_is_deterministic_and_reports_real_failures_and_loss: test
+stress_work_is_bounded: test
+
+2 tests, 0 benchmarks
+broken_output_never_retries_even_on_drop: test
+oversized_lines_are_terminal_and_interrupted_reads_retry: test
+serialization_limits_include_newline_and_commit_no_partial_record: test
+
+3 tests, 0 benchmarks
+asset_id_uint256_and_backend_readiness: test
+bounded_lines_handle_small_chunks_crlf_blank_and_eof: test
+fee_and_fractional_kelly_round_down_and_bound: test
+fixed_encoding_roundtrips_and_rejects_noncanonical_frames: test
+grouped_kernel_matches_decoded_dense_reference: test
+loaded_cpu_model_batches_without_reprobes: test
+output_errors_are_returned_and_batch_finish_flushes: test
+polygon_planning_domains_amounts_sizing_and_fail_closed: test
+quantized_weights_corruption_shape_padding_and_numeric_checks: test
+venue_book_normalization_uses_best_tick_and_conservative_whole_depth: test
+venue_decimal_is_exact_and_refuses_rounding_or_overflow: test
+
+11 tests, 0 benchmarks
+addresses_and_rpc_urls_reject_credentials_zero_and_wrong_scheme: test
+balance_of_is_pinned_read_only_and_cannot_encode_arbitrary_calls: test
+inspection_checks_chain_twice_and_uses_one_block_for_both_balances: test
+inspection_stops_on_wrong_chain_bad_block_malformed_balance_or_transport_error: test
+polygon_quantities_and_uint256_token_words_are_exact: test
+rpc_envelopes_require_version_exact_id_string_result_and_no_error: test
+
+6 tests, 0 benchmarks
+all_weather_contracts_share_ten_thousand_and_settle_without_future_data: test
+weather_bounds_and_missing_outcomes_fail: test
+
+2 tests, 0 benchmarks
