@@ -145,3 +145,7 @@ credentials; errors do not echo them.
 - [GCP identity federation for deployment pipelines](https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines)
 - [Google authentication action](https://github.com/google-github-actions/auth)
 - [Google GCS upload action](https://github.com/google-github-actions/upload-cloud-storage)
+
+Current local and remote observations are recorded in
+[CUDA and cloud readiness](../reports/CUDA_AND_CLOUD.md), including the remote
+startup failures. Local syntax validation does not establish remote execution.

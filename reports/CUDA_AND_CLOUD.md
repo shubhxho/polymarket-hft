@@ -18,7 +18,7 @@ currently be read. No local Git commands were invoked.
 | Workflow syntax | actionlint v1.7.12 passed with explicit Blacksmith labels |
 | Native CUDA compile / NVIDIA parity | Not executed: no nvcc/GPU; Docker socket access denied in this environment |
 | Release profile | Configured in CI; not run locally during this change |
-| Remote Blacksmith and GCP/GCS execution | Not established by local tests; repository app, identity and bucket configuration required |
+| Remote Blacksmith and GCP/GCS execution | GitHub registered both workflows, but automatic and manual runs failed at startup before any jobs; no cloud upload ran |
 | Live wallet RPC | Not queried; full read sequence covered with injected transport tests |
 
 Evidence: [default gates](cuda-wallet-checks.txt), [native MLX CPU tests](cuda-wallet-mlx.txt),
@@ -28,3 +28,20 @@ The inventory includes the ignored NVIDIA test; listing it does not mean it ran.
 There is no new claim of reduced exchange latency, profitability, crypto
 exclusivity, company accreditation or live execution readiness. The wallet
 adapter reads Polygon balances only. See [test and deployment setup](../docs/TESTING_AND_CLOUD.md).
+
+## Remote workflow observation
+
+Source was published as `481d2b0c9cdd6def98c3112f29a35663d761c97d` using
+GitHub's `createCommitOnBranch` API. All 23 published file content hashes were
+verified against the local tested files without a Git command.
+
+- [CUDA compile dispatch](https://github.com/shubhxho/polymarket-hft/actions/runs/38082239929): `startup_failure`, no jobs.
+- [CPU correctness dispatch](https://github.com/shubhxho/polymarket-hft/actions/runs/38082241982): `startup_failure`, no jobs.
+- [Initial push](https://github.com/shubhxho/polymarket-hft/actions/runs/38082099389): `startup_failure`, no jobs.
+
+Repository Actions permissions are enabled and allow all actions. The workflow
+files pass actionlint, and GitHub accepted both manual dispatch requests. GitHub
+returned no diagnostic check runs/annotations identifying the startup cause;
+this evidence does not establish that a particular external configuration is
+at fault. Resolve the repository's startup condition before claiming Blacksmith
+execution, release-profile results, CUDA compilation or cloud publication.
